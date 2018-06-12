@@ -17,8 +17,9 @@ class CreateProductsTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('productName');
             $table->string('brand');
-            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+      //      $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+      //      $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+		$table->timestamps();
             $table->softDeletes();
         });
     }

@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
-    /**
+   /**
      * Run the migrations.
      *
      * @return void
@@ -22,9 +22,10 @@ class CreateUsersTable extends Migration
             $table->boolean('status')->default(1)->comment('1->Active User, 0->Inactive User');
 
             $table->rememberToken();
-            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->softDeletes();
+           // $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+           // $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
+		$table->softDeletes();
         });
     }
 
