@@ -15,7 +15,7 @@ class BaseApiController extends Controller
 {
 
     public static function successResponse($data=[], $message = '', $errors = [], $statusCode = Response::HTTP_OK){
-        $result = ['status' => 1, 'message'=>$message, 'errors'=>$errors, 'data'=>$data];
+        $result = ['status' => 200, 'message'=>$message, 'errors'=>$errors, 'data'=>$data];
         return ReturnResponse::json($result, $statusCode)->header('Content-Type', "application/json");
     }
 
@@ -25,7 +25,7 @@ class BaseApiController extends Controller
     }
 
     public function returnResponse($result){
-        if ($result['status']==1){
+        if ($result['status']==200){
             return BaseApiController::successResponse($result['data'],$result['message']);
         }else{
             return BaseApiController::errorResponse($result['data'],$result['message']);

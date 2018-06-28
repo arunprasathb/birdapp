@@ -32,8 +32,8 @@ class UserServiceProvider extends BaseServiceProvider {
                 $accessToken = md5(uniqid(mt_rand(), true));
                 $isAccessTokenCreated = $this->accessTokenObj->create($request, $accessToken, $userId);
                 if ($userId && $isAccessTokenCreated) {
-                    UserServiceProvider::$data['status'] = 1;
-                    UserServiceProvider::$data['data'] = array_merge($request->all(), ['accessToken' => $accessToken]);
+                    UserServiceProvider::$data['status'] = 200;
+                    UserServiceProvider::$data['data'] = array_merge($request->all(), ['accessToken' => $accessToken], ['id' => $userId]);
                     UserServiceProvider::$data['message'] = trans('messages.user_registered');
                     }
         } catch (\Exception $e) {
@@ -62,13 +62,14 @@ class UserServiceProvider extends BaseServiceProvider {
                     if(empty($accessTokenData)) {
                         $isAccessTokenCreated = $this->accessTokenObj->create($data, $accessToken, $user->id);
                         if ($user->id && $isAccessTokenCreated) {
-                            UserServiceProvider::$data['status'] = 1;
-                            UserServiceProvider::$data['data'] = ['accessToken' => $accessToken];
+                            UserServiceProvider::$data['status'] = 200;
+                            UserServiceProvider::$data['data'] = array_merge(['accessToken' => $accessToken], ['id' => $user->id], ['name' => $user->name], ['email' => $user->email], ['status' => $user->status]);
+                            // UserServiceProvider::$data['data'] = ['id' => $user->id];
                             UserServiceProvider::$data['message'] = trans('messages.login_success');
                         }
                     }else {
-                        UserServiceProvider::$data['status'] = 1;
-                        UserServiceProvider::$data['data'] = ['accessToken' => $accessTokenData->accessToken];
+                        UserServiceProvider::$data['status'] = 200;
+                        UserServiceProvider::$data['data'] = array_merge(['accessToken' => $accessTokenData->accessToken], ['id' => $user->id], ['name' => $user->name], ['email' => $user->email], ['status' => $user->status]);
                         UserServiceProvider::$data['message'] = trans('messages.already_login');
                     }
                 }
@@ -85,7 +86,7 @@ class UserServiceProvider extends BaseServiceProvider {
         try {
                     $isAccessTokenDeleted =  AccessToken::where('accessToken',$data->header('accessToken'))->delete();
                     if($isAccessTokenDeleted) {
-                            UserServiceProvider::$data['status'] = 1;
+                            UserServiceProvider::$data['status'] = 200;
                             UserServiceProvider::$data['message'] = trans('messages.logout_success');
  
                     }

@@ -21,7 +21,7 @@ class BookServiceProvider extends BaseServiceProvider {
     public function getBooks() {
         try {
             $books = books::select()->get();
-                BookServiceProvider::$data['status'] = 1;
+                BookServiceProvider::$data['status'] = 200;
                 BookServiceProvider::$data['data'] = ['books' => $books];
                 BookServiceProvider::$data['message'] = trans('messages.books_list');
         } catch (\Exception $e) {
@@ -39,7 +39,7 @@ class BookServiceProvider extends BaseServiceProvider {
         try {
             $isBookUpdated = books::where('id',$request->bookId)->update(['bookName'=>$request->bookName]);
             if($isBookUpdated){
-                BookServiceProvider::$data['status'] = 1;
+                BookServiceProvider::$data['status'] = 200;
                 BookServiceProvider::$data['message'] = trans('messages.book_updated');
             }
 
@@ -57,7 +57,7 @@ class BookServiceProvider extends BaseServiceProvider {
         try {
             $isBookUpdated = books::where('id',$request->bookId)->delete();
             if($isBookUpdated){
-                BookServiceProvider::$data['status'] = 1;
+                BookServiceProvider::$data['status'] = 200;
                 BookServiceProvider::$data['message'] = trans('messages.book_deleted');
             }
 
