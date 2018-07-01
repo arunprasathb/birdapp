@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 // use App\Http\Requests\UpdateBookRequest;
 use App\Providers\BookServiceProvider;
 use App\books;
-// use Illuminate\Http\Request;
+use App\species;
+use Illuminate\Http\Request;
 
 class BookController extends BaseApiController
 {
@@ -18,25 +19,20 @@ class BookController extends BaseApiController
     public function index() {
         $result = $this->bookServiceProvider->getBooks();
         return $this->returnResponse($result);
-        // try {
-        //     $books = books::select('id','bookName','price')->get();
-        //         $data['status'] = 1;
-        //         $data['data'] = ['books' => $books];
-        //         $data['message'] = 'messages.books_list';
-        // } catch (\Exception $e) {
-        //     $this->logError(__CLASS__,__METHOD__,$e->getMessage());
-        // }
-        // return response($data);
     }
  
-    // public function update(UpdateBookRequest $request){
-    //     $result = $this->bookServiceProvider->updateBook($request);
-    //     return $this->returnResponse($result);
-    // }
+    public function update(Request $request){
+        $result = $this->bookServiceProvider->updateBook($request);
+        return $this->returnResponse($result);
+    }
  
- 
-    // public function delete(DeleteBookRequest $request){
-    //     $result = $this->bookServiceProvider->deleteBook($request);
-    //     return $this->returnResponse($result);
-    // }
+    public function delete(Request $request){
+        $result = $this->bookServiceProvider->deleteBook($request);
+        return $this->returnResponse($result);
+    }
+
+    public function bookById(Request $request){
+        $result = $this->bookServiceProvider->bookById($request);
+        return $this->returnResponse($result);
+    }
 }

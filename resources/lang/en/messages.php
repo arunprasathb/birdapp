@@ -14,4 +14,9 @@ return [
     'books_list' => 'Books list',
     'book_updated' => 'Book has been updated successfully',
     'book_deleted' => 'Book has been deleted successfully',
+    'species_list' => 'Species list',
+    'species_updated' => 'Species has been updated successfully',
+    'species_deleted' => 'Species has been deleted successfully',
+    'species_added' => 'Species has been added successfully',
+    'book_species_list' => 'Book species list',
 ];

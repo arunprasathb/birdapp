@@ -67,5 +67,27 @@ class BookServiceProvider extends BaseServiceProvider {
         return BookServiceProvider::$data;
     }
 
+    /**
+     * delete book
+     * @return type
+     */
+    public function bookById($request){
+         try {
+            $book_result = books::find($request->bookId);
+            $species_result = books::join('species', 'species.book_id', '=', 'books.id')
+                ->select('species.*')
+                ->where('books.id',$request->bookId)
+                ->get();
+            $result = array_merge(["book" => $book_result],['species' => $species_result]);
+
+            BookServiceProvider::$data['status'] = 200;
+            BookServiceProvider::$data['data'] = ['bookdetails' => $book_result, 'species' => $species_result];
+            BookServiceProvider::$data['message'] = trans('messages.book_species_list');
+        } catch (Exception $e) {
+            $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+        }
+        return BookServiceProvider::$data;
+    }
+
 
 }

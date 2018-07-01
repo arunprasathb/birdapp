@@ -10,7 +10,7 @@ class books extends Model
 	protected $table = 'books';
 
 	public function species() {
-		return $this->belongsToMany('Species', 'birds_species');
+		return $this->belongsToMany('species', 'birds_species');
 	}
 	
 }
