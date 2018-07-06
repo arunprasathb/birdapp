@@ -4,6 +4,8 @@ namespace App\Providers;
 
 // use App\Models\Book;
 use App\species;
+use App\voices;
+use App\galleries;
 
 /**
  * SpeciesServiceProvider class contains methods for Book management
@@ -68,4 +70,29 @@ class SpeciesServiceProvider extends BaseServiceProvider {
     }
 
 
+    /**
+     * retrieve species galleries
+     * @return type
+     */
+    public function speciesById($request){
+         try {
+            $species_result = species::find($request->speciesId);
+            $galleries_result = species::join('galleries', 'galleries.species_id', '=', 'species.id')
+                ->select('galleries.*')
+                ->where('species.id',$request->speciesId)
+                ->get();
+            $voices_result = species::join('voices', 'voices.species_id', '=', 'species.id')
+                ->select('voices.*')
+                ->where('species.id',$request->speciesId)
+                ->get();
+            $result = array_merge(["species" => $species_result],['species' => $species_result]);
+
+            SpeciesServiceProvider::$data['status'] = 200;
+            SpeciesServiceProvider::$data['data'] = ['species_details' => $species_result, 'galleries' => $galleries_result, 'voices' => $voices_result];
+            SpeciesServiceProvider::$data['message'] = trans('messages.species_voices_gallery_list');
+        } catch (Exception $e) {
+            $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+        }
+        return SpeciesServiceProvider::$data;
+    }
 }
