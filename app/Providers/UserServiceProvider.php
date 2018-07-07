@@ -33,7 +33,16 @@ class UserServiceProvider extends BaseServiceProvider {
                 $isAccessTokenCreated = $this->accessTokenObj->create($request, $accessToken, $userId);
                 if ($userId && $isAccessTokenCreated) {
                     UserServiceProvider::$data['status'] = 200;
-                    UserServiceProvider::$data['data'] = array_merge($request->all(), ['accessToken' => $accessToken], ['id' => $userId]);
+                    $userdata = $request->all();
+                    $user_result['name'] = $userdata['name'];
+                    $user_result['email'] = $userdata['email']; 
+                    if(isset($userdata['mobile'])){
+                        $user_result['mobile'] = $userdata['mobile']; 
+                    }else{
+                        $user_result['mobile'] = null; 
+                    }
+                    $user_result['deviceType'] = $userdata['deviceType']; 
+                    UserServiceProvider::$data['data'] = array_merge($user_result, ['accessToken' => $accessToken], ['id' => $userId]);
                     UserServiceProvider::$data['message'] = trans('messages.user_registered');
                     }
         } catch (\Exception $e) {
@@ -63,13 +72,12 @@ class UserServiceProvider extends BaseServiceProvider {
                         $isAccessTokenCreated = $this->accessTokenObj->create($data, $accessToken, $user->id);
                         if ($user->id && $isAccessTokenCreated) {
                             UserServiceProvider::$data['status'] = 200;
-                            UserServiceProvider::$data['data'] = array_merge(['accessToken' => $accessToken], ['id' => $user->id], ['name' => $user->name], ['email' => $user->email], ['status' => $user->status]);
-                            // UserServiceProvider::$data['data'] = ['id' => $user->id];
+                            UserServiceProvider::$data['data'] = array_merge(['accessToken' => $accessToken], ['id' => $user->id], ['name' => $user->name], ['email' => $user->email], ['mobile' => $user->mobile]);
                             UserServiceProvider::$data['message'] = trans('messages.login_success');
                         }
                     }else {
                         UserServiceProvider::$data['status'] = 200;
-                        UserServiceProvider::$data['data'] = array_merge(['accessToken' => $accessTokenData->accessToken], ['id' => $user->id], ['name' => $user->name], ['email' => $user->email], ['status' => $user->status]);
+                        UserServiceProvider::$data['data'] = array_merge(['accessToken' => $accessTokenData->accessToken], ['id' => $user->id], ['name' => $user->name], ['email' => $user->email], ['mobile' => $user->mobile]);
                         UserServiceProvider::$data['message'] = trans('messages.already_login');
                     }
                 }

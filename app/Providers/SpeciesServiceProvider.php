@@ -81,6 +81,10 @@ class SpeciesServiceProvider extends BaseServiceProvider {
                 ->select('galleries.*')
                 ->where('species.id',$request->speciesId)
                 ->get();
+                $galleries = [];
+                foreach ($galleries_result as $key => $value) {
+                    $galleries[] = $galleries_result[$key]->imageUrl;
+                }
             $voices_result = species::join('voices', 'voices.species_id', '=', 'species.id')
                 ->select('voices.*')
                 ->where('species.id',$request->speciesId)
@@ -88,7 +92,7 @@ class SpeciesServiceProvider extends BaseServiceProvider {
             $result = array_merge(["species" => $species_result],['species' => $species_result]);
 
             SpeciesServiceProvider::$data['status'] = 200;
-            SpeciesServiceProvider::$data['data'] = ['species_details' => $species_result, 'galleries' => $galleries_result, 'voices' => $voices_result];
+            SpeciesServiceProvider::$data['data'] = ['species_details' => $species_result, 'galleries' => $galleries, 'calls' => $voices_result];
             SpeciesServiceProvider::$data['message'] = trans('messages.species_voices_gallery_list');
         } catch (Exception $e) {
             $this->logError(__CLASS__,__METHOD__,$e->getMessage());
