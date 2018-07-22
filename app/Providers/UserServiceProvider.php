@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Helpers\AppUtility;
 use App\Models\AccessToken;
 use App\Models\User;
+use Image;
 
 /**
  * UserServiceProvider class contains methods for user management
@@ -50,6 +51,50 @@ class UserServiceProvider extends BaseServiceProvider {
         }
         return UserServiceProvider::$data;
     }
+
+    /**
+     * Profile update for app user
+     * @param type $request
+     * @return type
+     */
+    /*public function profileupdate($request, $id) {
+        try {
+            $user = User::where('id', $id)->firstOrFail();
+            $user->name = $request['name'];
+            if(isset($request['mobile'])){
+                $user->mobile = $request['mobile'];    
+            }
+            if(isset($request['password'])){
+                $user->password = $request['password'];
+            }
+            if($request->hasFile('profileImage')){
+                $file = $request->file('profileImage');
+                $this->validate($request, ['profileImage' => 'required|image|mimes:jpeg,png,jpg|max:1024']);
+                $thumbnail_path = public_path('/images/profile/thumbnail/');
+                $original_path = public_path('/images/profile/original/');
+                $file_name = 'user_'. $user->id .'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+                Image::make($file)
+                      ->resize(261,null,function ($constraint) {
+                        $constraint->aspectRatio();
+                         })
+                      ->save($original_path . $file_name)
+                      ->resize(90, 90)
+                      ->save($thumbnail_path . $file_name); 
+                // $file->move($thumbnail_path, $file_name);
+                $user->profileImage = $file_name;
+            }
+            $user->save();
+            if($user){
+                UserServiceProvider::$data['status'] = 200;
+                UserServiceProvider::$data['message'] = trans('messages.user_updated');
+                UserServiceProvider::$data['data'] = $user;
+            }
+            
+        } catch (\Exception $e) {
+                $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+        }
+        return UserServiceProvider::$data;
+    }*/
 
 
     /**

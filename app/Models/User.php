@@ -10,6 +10,6 @@ class User extends Model
     const APP_USER = 2;
 
     public function create($request,$password){
-            return User::insertGetId(['name'=>$request->name,'email'=>$request->email,'password'=>$password,'password'=>$password]);
+            return User::insertGetId(['name'=>$request->name, 'mobile'=>$request->mobile, 'email'=>$request->email,'password'=>$password]);
     }
 }

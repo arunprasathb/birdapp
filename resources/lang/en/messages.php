@@ -3,6 +3,8 @@
 return [
 
     'user_registered' => 'You have been registered successfully.',
+    'user_updated' => 'You have been updated successfully.',
+    'password_reset' => 'Password reset successfully. New password sent to your mail.',
     'server_error' => 'Oops! Something went wrong, Please contact to Admin.',
     'validation_errors' => 'Validation errors',
     'login_success' => 'User logged in successfully',

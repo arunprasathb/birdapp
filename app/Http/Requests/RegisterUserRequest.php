@@ -13,9 +13,10 @@ class RegisterUserRequest extends BaseApiRequest   {
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'mobile' => 'required|regex:/[0-9]{10}/|digits:10',
             'password' => 'required|min:8|max:25',
             'role' => 'required|in:2,3',
-            'image' => 'sometimes',
+            'profileImage' => 'sometimes',
             // 'deviceId' => 'required',
             'deviceType' => 'required|in:1,2',
             // 'deviceToken' => 'sometimes'

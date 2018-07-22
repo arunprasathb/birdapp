@@ -17,7 +17,9 @@ class CreateUsersTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('mobile')->unique();
             $table->string('password');
+            $table->string('profileImage')->nullable();
             $table->tinyInteger('role')->default(2)->comment('1->Admin, 2->AppUser, 3->Vendor');
             $table->boolean('status')->default(1)->comment('1->Active User, 0->Inactive User');
 
