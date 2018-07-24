@@ -11,7 +11,7 @@ class GalleriesTableSeeder extends Seeder {
          //insert some dummy records
          DB::table('galleries')->insert(
          	array(
-	            array('imageUrl'=> 'https://en.wikipedia.org/wiki/Indian_peafowl#/media/File:Pavo_Real_Venezolano.jpg', 'species_id'=> 1),
+	            array('imageUrl'=> 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Pavo_Real_Venezolano.jpg', 'species_id'=> 1),
                 array('imageUrl'=> 'https://upload.wikimedia.org/wikipedia/commons/6/63/Indian_peafowl_white_mutation.jpg', 'species_id'=> 1),
                 array('imageUrl'=> 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Peacock_Dance.jpg', 'species_id'=> 1),
                 array('imageUrl'=> 'https://upload.wikimedia.org/wikipedia/commons/3/39/Peacock_at_Sithulpawwa%2C_Sri_Lanka.png', 'species_id'=> 1),
