@@ -50,6 +50,26 @@ class UserController extends BaseApiController
                 $utilObj = new AppUtility();
                 $user->password = $utilObj->generatePassword($request['password']);
             }
+            $user->save();
+            if($user){
+                $data['status'] = 200;
+                $data['message'] = trans('messages.user_updated');
+                $data['data'] = $user;
+            }
+            
+        } catch (\Exception $e) {
+                // $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+                // Log::info($e->getMessage());
+                // Log::error('Model Not Found');
+                    return response(array(
+                        'error' => 'Data not found'
+                    ), 400);
+        }
+        return response($data);
+    }
+    public function profileImageUpdate(Request $request, $id){
+        try {
+            $user = User::where('id', $id)->firstOrFail();
             if($request->hasFile('profileImage')){
                 $file = $request->file('profileImage');
                  $validator = Validator::make($request->all(), [
