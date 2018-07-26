@@ -42,21 +42,33 @@ class UserController extends BaseApiController
     public function profileupdate(Request $request, $id){
         try {
             $user = User::where('id', $id)->firstOrFail();
-            $user->name = $request['name'];
-            if(isset($request['mobile'])){
-                $user->mobile = $request['mobile'];    
+            if(!empty($user)) {
+                if(isset($request['name'])){
+                    $user->name = $request['name'];
+                }
+                
+                if(isset($request['mobile'])){
+                    $user->mobile = $request['mobile'];    
+                }
+                if(isset($request['password']) && isset($request['old_password'])){
+                    $utilObj = new AppUtility();
+                    $isPasswordMatched = $utilObj->matchPassword($request['old_password'], $user->password);
+
+                    if($isPasswordMatched) {
+                        $user->password = $utilObj->generatePassword($request['password']);
+                    }else{
+                        return response(array('message' => 'Given old password not matched'), 400);
+                    }
+                }elseif(isset($request['password'])) {
+                     return response(array('message' => 'Old Password required'), 400);
+                }
+                $user->save();
+                if($user){
+                    $data['status'] = 200;
+                    $data['message'] = trans('messages.user_updated');
+                    $data['data'] = $user;
+                }
             }
-            if(isset($request['password'])){
-                $utilObj = new AppUtility();
-                $user->password = $utilObj->generatePassword($request['password']);
-            }
-            $user->save();
-            if($user){
-                $data['status'] = 200;
-                $data['message'] = trans('messages.user_updated');
-                $data['data'] = $user;
-            }
-            
         } catch (\Exception $e) {
                 // $this->logError(__CLASS__,__METHOD__,$e->getMessage());
                 // Log::info($e->getMessage());
