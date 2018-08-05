@@ -14,6 +14,7 @@
                 margin-top: 5%;
             }*/
         </style>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">

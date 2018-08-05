@@ -1,5 +1,5 @@
 @section('content')
-@extends('layout')
+@extends('table-layout')
 @include('header')
 @include('sidebar')
 
@@ -22,6 +22,7 @@
     <!-- Main content -->
      <!-- Main content -->
     <section class="content">
+      @include('flash::message')
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -81,20 +82,23 @@
               <div class="box">
                   <div class="box-header">
                     <h3 class="box-title">Book Species List</h3>
+                    <a href="/admin/books/{{$book_details['id']}}/add-species" class="btn btn-block btn-primary btn-sm max-w-100px pull-right"><i class='fa fa-plus'></i> Add Species</a>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="species-list" class="table table-bordered table-striped">
                       <thead>
                       <tr>
+                        <th>S.No</th>
                         <th>Species Name</th>
                         <th>Species Image</th>
                         <th>Actions</th>
                       </tr>
                       </thead>
                       <tbody>
-                        @foreach($book_species as $species)
+                        @foreach($book_species as $index => $species)
                           <tr>
+                            <td>{{$index+1}}</td>
                             <td>{{$species['speciesName']}}</td>
                             <td>
                                 @if ($book_details->imageUrl != '')
@@ -102,7 +106,19 @@
                                 @endif
                             <td>
                               <a href="/admin/species/{{$species['id']}}/view" class="btn btn-success"><i class='fa fa-eye'></i> View</a> 
-                              <a href="/admin/species/{{$species['id']}}/edit" class="btn btn-danger"><i class='fa fa-pencil'></i> Edit</a>
+                              <a href="/admin/species/{{$species['id']}}/edit" class="btn btn-primary"><i class='fa fa-pencil'></i> Edit</a>
+                              {!! Form::open([
+                                    'method'=>'DELETE',
+                                    'url' => ['/admin/species', $species['id']],
+                                    'style' => 'display:inline'
+                                ]) !!}
+                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-danger',
+                                            'title' => 'Delete Post',
+                                            'onclick'=>'return confirm("Confirm delete?")'
+                                    )) !!}
+                                {!! Form::close() !!}
                             </td>
                           </tr>
                         @endforeach

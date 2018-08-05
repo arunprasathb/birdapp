@@ -25,7 +25,16 @@ class UserController extends BaseApiController
         $this->userModelObj = new User();
         $this->userServiceProvider = new UserServiceProvider();
     }
-
+    public function index(){
+        $user = auth()->guard('admin')->user();
+        $users = User::select()->get();
+        return view('users.users_list')->with(['users'=>$users]);
+    }
+    public function show_user($id){
+        $user = auth()->guard('admin')->user();
+        $user_details = User::where('id', $id)->firstOrFail();
+        return view('users.view_user')->with(['user_details'=>$user_details]);
+    }
     public function register(RegisterUserRequest $request) {
         $result = $this->userServiceProvider->registerUser($request);
         return $this->returnResponse($result);

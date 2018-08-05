@@ -22,6 +22,7 @@
     <!-- Main content -->
      <!-- Main content -->
     <section class="content">
+      @include('flash::message')
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -71,6 +72,7 @@
           <div class="box">
               <div class="box-header">
                 <h3 class="box-title">Species Voices List</h3>
+                <a href="/admin/species/{{$species_details['id']}}/add-voices" class="btn btn-block btn-primary btn-sm max-w-100px pull-right"><i class='fa fa-plus'></i> Add Voices</a>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -78,20 +80,36 @@
                   <thead>
                   <tr>
                     <th>S.No</th>
+                    <th>Voice Name</th>
                     <th>Voices</th>
-                    <!-- <th>Actions</th> -->
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach($voices_list as $voice)
+                    @foreach($voices_list as $index => $voice)
                       <tr>
-                        <td>1</td>
+                        <td>{{$index+1}}</td>
+                        <td>{{$voice['name']}}</td>
                         <td>
                             @if ($voice['mediaUrl'] != '')
                                 <audio controls>
                                     <source src="{{$voice['mediaUrl']}}" type="audio/ogg">
                                   </audio>
                             @endif
+                          </td>
+                          <td>
+                            {!! Form::open([
+                                    'method'=>'DELETE',
+                                    'url' => ['/admin/voices', $voice['id']],
+                                    'style' => 'display:inline'
+                                ]) !!}
+                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-danger',
+                                            'title' => 'Delete Post',
+                                            'onclick'=>'return confirm("Confirm delete?")'
+                                    )) !!}
+                                {!! Form::close() !!}
                           </td>
                         
                       </tr>
@@ -106,6 +124,7 @@
             <div class="box">
               <div class="box-header">
                 <h3 class="box-title">Species Gallery List</h3>
+                <a href="/admin/species/{{$species_details['id']}}/add-galleries" class="btn btn-block btn-primary btn-sm max-w-100px pull-right"><i class='fa fa-plus'></i> Add Galleries</a>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -114,19 +133,32 @@
                   <tr>
                     <th>S.No</th>
                     <th>Gallery Image</th>
-                    <!-- <th>Actions</th> -->
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach($galleries_list as $gallery)
+                    @foreach($galleries_list as $index => $gallery)
                       <tr>
-                        <td>1</td>
+                        <td>{{$index+1}}</td>
                         <td>
                             @if ($gallery['imageUrl'] != '')
                                 <img src="{{$gallery['imageUrl']}}" class="admin-species-list-img">
                             @endif
                           </td>
-                        
+                          <td>
+                            {!! Form::open([
+                                    'method'=>'DELETE',
+                                    'url' => ['/admin/galleries', $gallery['id']],
+                                    'style' => 'display:inline'
+                                ]) !!}
+                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-danger',
+                                            'title' => 'Delete Post',
+                                            'onclick'=>'return confirm("Confirm delete?")'
+                                    )) !!}
+                                {!! Form::close() !!}
+                          </td>
                       </tr>
                     @endforeach
                   </tfoot>
