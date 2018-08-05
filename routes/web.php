@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['middleware' => ['web']], function () {
-    Route::get('login', 'UserLoginController@getUserLogin');
-    Route::post('login', ['as'=>'user.auth','uses'=>'UserLoginController@userAuth']);
+    // Route::get('login', 'UserLoginController@getUserLogin');
+    // Route::post('login', ['as'=>'user.auth','uses'=>'UserLoginController@userAuth']);
     Route::get('admin/', 'AdminLoginController@getAdminLogin');
     Route::get('admin/login', 'AdminLoginController@getAdminLogin');
     Route::post('admin/login', ['as'=>'admin.auth','uses'=>'AdminLoginController@adminAuth']);

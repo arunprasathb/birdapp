@@ -23,6 +23,10 @@ class BookController extends BaseApiController
         $books = books::select()->get();
         return view('books.index')->with(['books'=>$books]);
     }
+    public function bookList() {
+       $result = $this->bookServiceProvider->getBooks();
+       return $this->returnResponse($result);
+    }
     public function show_book($id){
         $user = auth()->guard('admin')->user();
         $book_details = books::find($id);

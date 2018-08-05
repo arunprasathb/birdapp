@@ -8,7 +8,7 @@
     	Route::post('/user/logout', 'UserController@logout');
         Route::post('/user/profileupdate/{id}', 'UserController@profileupdate');
         Route::post('/user/profileImageUpdate/{id}', 'UserController@profileImageUpdate');
-        Route::get('/books', 'BookController@index');
+        Route::get('/books', 'BookController@bookList');
         Route::post('/bookById/{bookId}', 'BookController@bookById');
         Route::post('/speciesById/{speciesId}', 'SpeciesController@speciesById');
     });
