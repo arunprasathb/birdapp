@@ -173,7 +173,7 @@ class BookController extends BaseApiController
         if($request->hasFile('paidPdfUrl')){
             $file = $request->file('paidPdfUrl');
             $validator = Validator::make($request->all(), [
-                'paidPdfUrl' => 'mimes:pdf|max:1024',
+                'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
             ]);
             if ($validator->fails()) {
                return response(array(
@@ -193,7 +193,7 @@ class BookController extends BaseApiController
         if($request->hasFile('unpaidPdfUrl')){
             $file = $request->file('unpaidPdfUrl');
             $validator = Validator::make($request->all(), [
-                'unpaidPdfUrl' => 'mimes:pdf|max:1024',
+                'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
             ]);
             if ($validator->fails()) {
                return response(array(

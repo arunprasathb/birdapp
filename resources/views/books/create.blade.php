@@ -48,8 +48,8 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="number" class="form-control" name="price" id="price" placeholder="Price" required="required">
+                    <label for="price">Cost</label>
+                    <input type="number" class="form-control" name="price" id="price" placeholder="Cost" required="required">
                   </div>
 
                   <div class="form-group">

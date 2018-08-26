@@ -28,6 +28,7 @@
             <i class="fa fa-book"></i>
             <span>Books</span>
             <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">

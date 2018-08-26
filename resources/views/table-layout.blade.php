@@ -7,6 +7,7 @@
         <link rel='stylesheet' href='/css/bootstrap.min.css'>
         <link href="/css/font-awesome/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" href="/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
         <link href="/css/AdminLTE.min.css" rel="stylesheet">
         <link href="/css/_all-skins.min.css" rel="stylesheet">
         <style>
@@ -27,6 +28,8 @@
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/jquery.dataTables.min.js"></script>
         <script src="/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
         <script src="/js/adminlte.min.js"></script>
     </body> 
 </html>

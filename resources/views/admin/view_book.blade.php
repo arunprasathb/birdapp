@@ -56,7 +56,7 @@
 
               <hr>
 
-              <strong><i class="fa fa-money margin-r-5"></i> Price</strong>
+              <strong><i class="fa fa-money margin-r-5"></i> Cost</strong>
 
               <p class="text-muted">{{$book_details->price}}</p>
 
@@ -84,7 +84,7 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-striped table-bordered dt-responsive nowrap">
                       <thead>
                       <tr>
                         <th>Species Name</th>

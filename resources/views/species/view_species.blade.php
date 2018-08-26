@@ -76,7 +76,7 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="voice-list" class="table table-striped table-bordered dt-responsive nowrap">
                   <thead>
                   <tr>
                     <th>S.No</th>
@@ -103,9 +103,9 @@
                                     'url' => ['/admin/voices', $voice['id']],
                                     'style' => 'display:inline'
                                 ]) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', array(
                                             'type' => 'submit',
-                                            'class' => 'btn btn-danger',
+                                            'class' => 'btn btn-danger delete-link',
                                             'title' => 'Delete Post',
                                             'onclick'=>'return confirm("Confirm delete?")'
                                     )) !!}
@@ -128,7 +128,7 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="gallery-list" class="table table-striped table-bordered dt-responsive nowrap">
                   <thead>
                   <tr>
                     <th>S.No</th>
@@ -151,9 +151,9 @@
                                     'url' => ['/admin/galleries', $gallery['id']],
                                     'style' => 'display:inline'
                                 ]) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', array(
                                             'type' => 'submit',
-                                            'class' => 'btn btn-danger',
+                                            'class' => 'btn btn-danger delete-link',
                                             'title' => 'Delete Post',
                                             'onclick'=>'return confirm("Confirm delete?")'
                                     )) !!}

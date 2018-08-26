@@ -57,7 +57,7 @@
 
               <hr>
 
-              <strong><i class="fa fa-money margin-r-5"></i> Price</strong>
+              <strong><i class="fa fa-money margin-r-5"></i> Cost</strong>
 
               <p class="text-muted">{{$book_details->price}}</p>
 
@@ -72,7 +72,7 @@
                   <hr>
 
                   <strong><i class="fa fa-file-image-o margin-r-5"></i> Map</strong> <br>
-                  <img src="{{$book_details->map}}" alt="{{$book_details->map}}" class="admin-book-img">
+                  <img src="{{$book_details->map}}" alt="Map" class="admin-book-img">
               @endif
             </div>
             <!-- /.box-body -->
@@ -86,7 +86,7 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                    <table id="species-list" class="table table-bordered table-striped">
+                    <table id="species-list" class="table table-striped table-bordered dt-responsive nowrap">
                       <thead>
                       <tr>
                         <th>S.No</th>
@@ -105,16 +105,16 @@
                                     <img src="{{$species->imageUrl}}" alt="{{$species->speciesName}}" class="admin-species-list-img">
                                 @endif
                             <td>
-                              <a href="/admin/species/{{$species['id']}}/view" class="btn btn-success"><i class='fa fa-eye'></i> View</a> 
-                              <a href="/admin/species/{{$species['id']}}/edit" class="btn btn-primary"><i class='fa fa-pencil'></i> Edit</a>
+                              <a href="/admin/species/{{$species['id']}}/view"><i class='fa fa-eye button-link'></i></a> 
+                              <a href="/admin/species/{{$species['id']}}/edit"><i class='fa fa-pencil button-link'></i></a>
                               {!! Form::open([
                                     'method'=>'DELETE',
                                     'url' => ['/admin/species', $species['id']],
                                     'style' => 'display:inline'
                                 ]) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', array(
                                             'type' => 'submit',
-                                            'class' => 'btn btn-danger',
+                                            'class' => 'btn btn-danger button-link delete-link',
                                             'title' => 'Delete Post',
                                             'onclick'=>'return confirm("Confirm delete?")'
                                     )) !!}

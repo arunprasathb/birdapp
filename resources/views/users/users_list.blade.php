@@ -29,7 +29,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="users-list" class="table table-bordered table-striped">
+              <table id="users-list" class="table table-striped table-bordered dt-responsive nowrap">
                 <thead>
                 <tr>
                   <th>Name</th>
@@ -45,7 +45,7 @@
                       <td>{{$user->email}}</td>
                       <td>{{$user->mobile}}</td>
                       <td>
-                        <a href="/admin/users/{{$user->id}}/view" data-toggle="modal" class="btn btn-success"><i class='fa fa-eye'></i> View</a> 
+                        <a href="/admin/users/{{$user->id}}/view" data-toggle="modal"><i class='fa fa-eye'></i></a> 
                        <!--  <a href="/admin/users/delete/{{$user->id}}" data-toggle="modal" class="btn btn-danger"><i class='fa fa-trash'></i> Delete</a> -->
                       </td>
                     </tr>

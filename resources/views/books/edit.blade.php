@@ -49,8 +49,8 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="number" class="form-control" name="price" id="price" placeholder="Price" required="required" value={{$book->price}}>
+                    <label for="price">Cost</label>
+                    <input type="number" class="form-control" name="price" id="price" placeholder="Cost" required="required" value={{$book->price}}>
                   </div>
 
                   <div class="form-group">

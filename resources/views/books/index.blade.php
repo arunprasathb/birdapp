@@ -31,12 +31,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="books-list" class="table table-bordered table-striped">
+              <table id="books-list" class="table table-striped table-bordered dt-responsive nowrap">
                 <thead>
                 <tr>
-                  <th>S.No</th>
+                  <!-- <th>S.No</th> -->
                   <th>Book Name</th>
-                  <th>Book Price</th>
+                  <th>Book Cost</th>
                   <th>Author</th>
                   <th>Status</th>
                   <th>Actions</th>
@@ -45,22 +45,22 @@
                 <tbody>
                   @foreach($books as $index => $book)
                     <tr>
-                      <td>{{$index+1}}</td>
+                      <!-- <td>{{$index+1}}</td> -->
                       <td>{{$book->bookName}}</td>
                       <td>{{$book->price}}</td>
                       <td>{{$book->author}}</td>
                       <td>{{$book->status}}</td>
                       <td>
-                        <a href="/admin/books/{{$book->id}}/view" class="btn btn-success"><i class='fa fa-eye'></i> View</a> 
-                        <a href="/admin/books/{{$book->id}}/edit" class="btn btn-primary"><i class='fa fa-pencil'></i> Edit</a>
+                        <a href="/admin/books/{{$book->id}}/view" title="View"><i class='fa fa-eye button-link'></i></a> 
+                        <a href="/admin/books/{{$book->id}}/edit" title="Edit"><i class='fa fa-pencil button-link'></i></a>
                          {!! Form::open([
                                     'method'=>'DELETE',
                                     'url' => ['/admin/books', $book['id']],
                                     'style' => 'display:inline'
                                 ]) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                    {!! Form::button('<i class="fa fa-trash-o button-link" aria-hidden="true"></i>', array(
                                             'type' => 'submit',
-                                            'class' => 'btn btn-danger',
+                                            'class' => 'btn btn-danger delete-link',
                                             'title' => 'Delete Post',
                                             'onclick'=>'return confirm("Confirm delete?")'
                                     )) !!}
