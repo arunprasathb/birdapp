@@ -32,8 +32,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/admin/books"><i class="fa fa-circle-o"></i> Books list</a></li>
             <li><a href="/admin/books/add"><i class="fa fa-circle-o"></i> Add Book</a></li>
+            <li><a href="/admin/books"><i class="fa fa-circle-o"></i> Books list</a></li>
           </ul>
         </li>
         
@@ -46,6 +46,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+             <li><a href="/admin/users/add"><i class="fa fa-circle-o"></i> Add User</a></li>
             <li><a href="/admin/users"><i class="fa fa-circle-o"></i> Users List</a></li>
           </ul>
         </li>

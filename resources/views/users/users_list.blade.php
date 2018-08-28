@@ -21,11 +21,13 @@
     <!-- Main content -->
      <!-- Main content -->
     <section class="content">
+      @include('flash::message')
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Users List</h3>
+              <a href="/admin/users/add" class="btn btn-block btn-primary btn-sm max-w-100px pull-right"><i class='fa fa-plus'></i> Add User</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -46,6 +48,7 @@
                       <td>{{$user->mobile}}</td>
                       <td>
                         <a href="/admin/users/{{$user->id}}/view" data-toggle="modal"><i class='fa fa-eye'></i></a> 
+                        <a href="/admin/users/{{$user->id}}/edit" data-toggle="modal"><i class='fa fa-pencil'></i></a> 
                        <!--  <a href="/admin/users/delete/{{$user->id}}" data-toggle="modal" class="btn btn-danger"><i class='fa fa-trash'></i> Delete</a> -->
                       </td>
                     </tr>

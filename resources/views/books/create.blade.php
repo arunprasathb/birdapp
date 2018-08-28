@@ -28,7 +28,7 @@
               <h3 class="box-title">Add Book</h3>
             </div>
             <div class="box-body">
-              @if (count($errors) > 0)
+              <!--  @if (count($errors) > 0)
                 <div class="alert alert-danger">
                   <strong>Whoops!</strong> There were some problems with your input.<br><br>
                   <ul>
@@ -37,6 +37,15 @@
                     @endforeach
                   </ul>
                 </div>
+              @endif -->
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div><br />
               @endif
             <!-- form start -->
               <form role="form" method="post" action="{{url('/admin/books/create')}}" enctype="multipart/form-data">

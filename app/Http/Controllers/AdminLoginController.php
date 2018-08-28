@@ -33,7 +33,7 @@ class AdminLoginController extends Controller
         {
             return redirect()->route('admin.dashboard');
         }else{
-            dd('your username and password are wrong.');
+            return redirect()->back()->withErrors("your username and password are wrong");
         }
     }
     public function logout(Request $request) {

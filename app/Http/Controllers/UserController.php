@@ -30,6 +30,94 @@ class UserController extends BaseApiController
         $users = User::select()->get();
         return view('users.users_list')->with(['users'=>$users]);
     }
+    /**
+     * EdCreateit the specified user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function create(){
+        return view('users.create');
+    }
+
+    /**
+     * EdCreateit the specified user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required',
+            'mobile' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'confirm_password' => 'same:password'
+        ]);
+
+        $utilObj = new AppUtility();
+        $users = new User();
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->mobile = $request->input('mobile');
+        if($request->input('password')){
+            $users->password = $utilObj->generatePassword($request->input('password'));
+        }
+        $users->save();
+        flash('New user has been added successfully.')->success();
+        return redirect('/admin/users');
+
+    }
+
+
+     /**
+     * Edit the specified user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id){
+        $users = user   ::where('id', $id)
+                        ->first();
+        return view('users.edit', compact('users', 'id'));
+    }
+
+     /**
+     * Update the specified user in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'mobile' => 'required',
+            'confirm_password' => 'same:password'
+        ]);
+        if ($validator->fails()) {
+           return response(array(
+                'message' => 'parameters missing',
+                'missing_parameters' =>  $validator->errors()
+            ), 400);
+        }
+
+        $utilObj = new AppUtility();
+        $users = User::find($id);
+        $users->name = $request->input('name');
+        $users->mobile = $request->input('mobile');
+        if($request->input('password')){
+            $users->password = $utilObj->generatePassword($request->input('password'));
+        }
+        $users->save();
+        flash('User has been updated!!.')->success();
+        return redirect('/admin/users');
+    }
+
     public function show_user($id){
         $user = auth()->guard('admin')->user();
         $user_details = User::where('id', $id)->firstOrFail();

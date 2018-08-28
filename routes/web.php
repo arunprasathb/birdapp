@@ -25,7 +25,11 @@ Route::group(['middleware' => ['web']], function () {
         
         Route::get('admin/users', ['as'=>'admin.users','uses'=>'UserController@index']);
         Route::get('admin/users/{userId}/view', ['as'=>'admin.show_user','uses'=>'UserController@show_user']);
-        
+        Route::get('admin/users/{userId}/edit', ['as'=>'admin.edit_user','uses'=>'UserController@edit']);
+        Route::post('admin/users/{userId}/edit', ['as'=>'admin.update_user','uses'=>'UserController@update']);
+        Route::get('admin/users/add', ['as'=>'admin.users','uses'=>'UserController@create']);
+        Route::post('admin/users/store', ['as'=>'admin.users','uses'=>'UserController@store']);
+
         Route::get('admin/books', ['as'=>'admin.books','uses'=>'BookController@index']);
         Route::get('admin/books/add', ['as'=>'admin.books','uses'=>'BookController@create']);
         Route::post('admin/books/create', ['as'=>'admin.books','uses'=>'BookController@store']);
