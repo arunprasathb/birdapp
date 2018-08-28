@@ -13,7 +13,7 @@
         Species
       </h1>
       <ol class="breadcrumb">
-        <li><a href="javascript:void();"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="javascript:void();"><i class="fa fa-book"></i> Species</a></li>
         <li class="active">{{$species_details->speciesName}}</li>
       </ol>

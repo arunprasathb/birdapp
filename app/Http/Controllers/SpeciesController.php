@@ -32,6 +32,12 @@ class SpeciesController extends Controller
      */
     public function store(Request $request, $book_id)
     {
+        $this->validate($request, [
+            'speciesName' => 'required',
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'shortDescription' => 'required|min:10',
+            'description' => 'min:10'
+        ]);
         $species = new species();
         $species->book_id = $book_id;
         $species->speciesName = $request->input('speciesName');
@@ -39,7 +45,7 @@ class SpeciesController extends Controller
         $species->description = $request->input('description');
         if($request->hasFile('imageUrl')){
             $file = $request->file('imageUrl');
-             $validator = Validator::make($request->all(), [
+            /* $validator = Validator::make($request->all(), [
                 'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
             ]);
             if ($validator->fails()) {
@@ -47,7 +53,7 @@ class SpeciesController extends Controller
                 'message' => 'parameters missing',
                 'missing_parameters' =>  $validator->errors()
             ), 400);
-            }
+            }*/
             $thumbnail_path = public_path('/images/species/');
             
             $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
@@ -162,6 +168,12 @@ class SpeciesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'speciesName' => 'required',
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'shortDescription' => 'required|min:10',
+            'description' => 'min:10'
+        ]);
         $species = species::find($id);
         $book_id = $species->book_id;
         $species->speciesName = $request->input('speciesName');
@@ -169,7 +181,7 @@ class SpeciesController extends Controller
         $species->description = $request->input('description');
         if($request->hasFile('imageUrl_new')){
             $file = $request->file('imageUrl_new');
-             $validator = Validator::make($request->all(), [
+             /*$validator = Validator::make($request->all(), [
                 'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:1024',
             ]);
             if ($validator->fails()) {
@@ -177,7 +189,7 @@ class SpeciesController extends Controller
                 'message' => 'parameters missing',
                 'missing_parameters' =>  $validator->errors()
             ), 400);
-            }
+            }*/
             $thumbnail_path = public_path('/images/species/');
             
             $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();

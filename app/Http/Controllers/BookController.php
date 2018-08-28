@@ -121,6 +121,16 @@ class BookController extends BaseApiController
         return view('books.create');
     }
     public function store(Request $request){
+        $this->validate($request, [
+            'bookName' => 'required|min:2|unique:books,bookName',
+            'shortDescription' => 'required|min:10',
+            'price' => 'required',
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'map' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
+            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024'
+        ]);
+
         $books = new books();
         $books->bookName = $request->input('bookName');
         $books->shortDescription = $request->input('shortDescription');
@@ -139,9 +149,7 @@ class BookController extends BaseApiController
                 'missing_parameters' =>  $validator->errors()
             ), 400);
             }*/
-            $this->validate($request, [
-               'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024'
-          ]);
+            /*min:4*/
             $thumbnail_path = public_path('/images/books/');
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
@@ -154,7 +162,7 @@ class BookController extends BaseApiController
         }
         if($request->hasFile('map')){
             $file = $request->file('map');
-             $validator = Validator::make($request->all(), [
+             /*$validator = Validator::make($request->all(), [
                 'map' => 'image|mimes:jpeg,png,jpg|max:1024',
             ]);
             if ($validator->fails()) {
@@ -162,7 +170,7 @@ class BookController extends BaseApiController
                 'message' => 'parameters missing',
                 'missing_parameters' =>  $validator->errors()
             ), 400);
-            }
+            }*/
             $thumbnail_path = public_path('/images/books/map/');
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
@@ -175,7 +183,7 @@ class BookController extends BaseApiController
         }
         if($request->hasFile('paidPdfUrl')){
             $file = $request->file('paidPdfUrl');
-            $validator = Validator::make($request->all(), [
+            /*$validator = Validator::make($request->all(), [
                 'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
             ]);
             if ($validator->fails()) {
@@ -183,7 +191,7 @@ class BookController extends BaseApiController
                 'message' => 'parameters missing',
                 'missing_parameters' =>  $validator->errors()
             ), 400);
-            }
+            }*/
             $thumbnail_path = public_path('/images/books/files/');
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
@@ -195,7 +203,7 @@ class BookController extends BaseApiController
         }
         if($request->hasFile('unpaidPdfUrl')){
             $file = $request->file('unpaidPdfUrl');
-            $validator = Validator::make($request->all(), [
+            /*$validator = Validator::make($request->all(), [
                 'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
             ]);
             if ($validator->fails()) {
@@ -203,7 +211,7 @@ class BookController extends BaseApiController
                 'message' => 'parameters missing',
                 'missing_parameters' =>  $validator->errors()
             ), 400);
-            }
+            }*/
             $thumbnail_path = public_path('/images/books/files/');
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
@@ -237,6 +245,16 @@ class BookController extends BaseApiController
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'bookName' => 'required|min:2|unique:books,bookName,'.$id,
+            'shortDescription' => 'required|min:10',
+            'price' => 'required',
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'map' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
+            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024'
+        ]);
+
         $books = books::find($id);
         $books->bookName = $request->input('bookName');
         $books->shortDescription = $request->input('shortDescription');

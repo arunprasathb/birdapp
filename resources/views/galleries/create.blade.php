@@ -10,7 +10,7 @@
         Species
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Galleries</li>
       </ol>
     </section>
@@ -37,14 +37,14 @@
               <form method="post" action="{{action('GalleryController@store', $id)}}" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="input-group control-group increment" >
-                  <input type="file" name="imageUrl[]" class="form-control">
+                  <input type="file" name="image[]" class="form-control">
                   <div class="input-group-btn"> 
                     <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                   </div>
                 </div>
                 <div class="clone hide">
                   <div class="control-group input-group" style="margin-top:10px">
-                    <input type="file" name="imageUrl[]" class="form-control">
+                    <input type="file" name="image[]" class="form-control">
                     <div class="input-group-btn"> 
                       <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                     </div>

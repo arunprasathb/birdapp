@@ -13,8 +13,8 @@
         Books
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-book"></i> Books</a></li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin/books"><i class="fa fa-book"></i> Books</a></li>
         <li class="active">{{$book_details->bookName}}</li>
       </ol>
     </section>

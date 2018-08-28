@@ -21,13 +21,13 @@ class VoiceController extends Controller
     {
 
 		$this->validate($request, [
-			'name' => 'required',
-		    'mediaUrl' => 'required',
-		    'mediaUrl.*' => 'mimes:mp3,ogg,mpga'
+			'audio-name' => 'required',
+		    'audio' => 'required',
+		    'audio.*' => 'mimes:mp3,ogg,mpga'
 
 		]);
-		foreach($request->file('mediaUrl') as $key => $value) {
-			if($request->hasFile('mediaUrl')){
+		foreach($request->file('audio') as $key => $value) {
+			if($request->hasFile('audio')){
 	            $voices = new voice();
         		$voices->species_id = $id;
 	            $thumbnail_path = public_path('/media/');
@@ -36,8 +36,8 @@ class VoiceController extends Controller
 
 	            if ($value->move($thumbnail_path,  $file_name)) {
 	           		$voices->mediaUrl = url('/').'/media/'.$file_name;
-	           		if(isset($request->input('name')[$key])){
-	           			$voices->name = $request->input('name')[$key];
+	           		if(isset($request->input('audio-name')[$key])){
+	           			$voices->name = $request->input('audio-name')[$key];
 	           		}
 			        $voices->save();
 		        }

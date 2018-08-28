@@ -10,7 +10,7 @@
         Species
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Voices</li>
       </ol>
     </section>
@@ -24,7 +24,7 @@
               <h3 class="box-title">Add Voices</h3>
             </div>
             <div class="box-body">
-              @if (count($errors) > 0)
+             <!--  @if (count($errors) > 0)
                 <div class="alert alert-danger">
                   <strong>Whoops!</strong> There were some problems with your input.<br><br>
                   <ul>
@@ -33,17 +33,26 @@
                     @endforeach
                   </ul>
                 </div>
+              @endif -->
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div><br />
               @endif
               <form method="post" action="{{action('VoiceController@store', $id)}}" enctype="multipart/form-data">
                 {{csrf_field()}}
-                <label for="bookName">Audio File (Media URL)</label>
+                <label for="bookName">Audio Name and File (Media URL)</label>
                 <div class="input-group control-group increment" >
                   <div class="row">
                     <div class="col-md-6">
-                      <input type="name" name="name[]" class="form-control">
+                      <input type="text" name="audio-name[]" class="form-control">
                     </div>
                     <div class="col-md-4">
-                      <input type="file" name="mediaUrl[]" class="form-control">
+                      <input type="file" name="audio[]" class="form-control">
                     </div>
                   </div>
                   <div class="input-group-btn"> 
@@ -54,10 +63,10 @@
                   <div class="control-group input-group" style="margin-top:10px">
                     <div class="row">
                       <div class="col-md-6">
-                        <input type="name" name="name[]" class="form-control">
+                        <input type="text" name="audio-name[]" class="form-control">
                       </div>
                       <div class="col-md-4">
-                        <input type="file" name="mediaUrl[]" class="form-control">
+                        <input type="file" name="audio[]" class="form-control">
                       </div>
                     </div>
                     <div class="input-group-btn"> 

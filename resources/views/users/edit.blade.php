@@ -13,8 +13,9 @@
         Users
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Users</li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin/users">Users</a></li>
+        <li class="active">Edit User</li>
       </ol>
     </section>
 
@@ -73,7 +74,7 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
 
               </form>

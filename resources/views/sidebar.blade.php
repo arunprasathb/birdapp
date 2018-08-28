@@ -16,14 +16,14 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         
-        <li class="active">
-          <a href="/admin/" class="active">
+        <li>
+          <a href="/admin/dashboard">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="treeview {{ Route::currentRouteName() == 'books' ? 'active menu-open' : '' }}">
           <a href="#">
             <i class="fa fa-book"></i>
             <span>Books</span>
@@ -37,7 +37,7 @@
           </ul>
         </li>
         
-        <li class="treeview">
+        <li class="treeview {{ Route::currentRouteName() == 'users' ? 'active menu-open' : '' }}">
           <a href="#">
             <i class="fa fa-users"></i>
             <span>Users</span>

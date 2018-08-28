@@ -52,8 +52,9 @@ class UserController extends BaseApiController
 
         $this->validate($request, [
             'name' => 'required',
+            // 'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'mobile' => 'required',
-            'email' => 'required|email',
             'password' => 'required',
             'confirm_password' => 'same:password'
         ]);
@@ -94,17 +95,12 @@ class UserController extends BaseApiController
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'name' => 'required',
+            'email' => 'unique:users,email,'.$id,
             'mobile' => 'required',
             'confirm_password' => 'same:password'
         ]);
-        if ($validator->fails()) {
-           return response(array(
-                'message' => 'parameters missing',
-                'missing_parameters' =>  $validator->errors()
-            ), 400);
-        }
 
         $utilObj = new AppUtility();
         $users = User::find($id);

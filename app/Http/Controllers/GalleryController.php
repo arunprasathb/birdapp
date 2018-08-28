@@ -20,12 +20,12 @@ class GalleryController extends Controller
 
 		$this->validate($request, [
 			// 'imageUrl' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
-		    'imageUrl' => 'required',
-		    'imageUrl.*' => 'mimes:jpg,png,jpeg'
+		    'image' => 'required',
+		    'image.*' => 'mimes:jpg,png,jpeg'
 
 		]);
-		foreach($request->file('imageUrl') as $key => $value) {
-			if($request->hasFile('imageUrl')){
+		foreach($request->file('image') as $key => $value) {
+			if($request->hasFile('image')){
 	            $galleries = new gallery();
         		$galleries->species_id = $id;
 	            $thumbnail_path = public_path('/images/galleries/');

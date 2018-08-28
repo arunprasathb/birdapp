@@ -13,8 +13,9 @@
         Users
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Users</li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin/users">Users</a></li>
+        <li class="active">Add User</li>
       </ol>
     </section>
 
@@ -45,27 +46,27 @@
                   <div class="form-group">
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <label for="user_name">User Name</label>
-                    <input type="text" name="name" class="form-control" id="user_name" placeholder="Enter User Name">
+                    <input type="text" name="name" class="form-control" id="user_name" placeholder="Enter User Name" required="required">
                   </div>
 
                   <div class="form-group">
                     <label for="user_name">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter User Email">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter User Email" required="required">
                   </div>
                   
                   <div class="form-group">
                     <label for="user_name">Mobile</label>
-                    <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Enter User Mobile Number">
+                    <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Enter User Mobile Number" required="required">
                   </div>
 
                   <div class="form-group">
                     <label for="user_name">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
                   </div>
 
                   <div class="form-group">
                     <label for="user_name">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password"  required="required">
                   </div>
 
                   

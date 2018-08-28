@@ -13,7 +13,7 @@
         Species
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Species</li>
       </ol>
     </section>
@@ -28,7 +28,7 @@
               <h3 class="box-title">Add Species</h3>
             </div>
             <div class="box-body">
-              @if ($errors->any())
+             @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
                           @foreach ($errors->all() as $error)
@@ -51,7 +51,7 @@
 
                   <div class="form-group">
                     <label for="imageUrl">Species Image</label>
-                    <input type="file" id="imageUrl" name="imageUrl">
+                    <input type="file" id="imageUrl" name="imageUrl" required="required">
                   </div>
                   
                   <div class="form-group">

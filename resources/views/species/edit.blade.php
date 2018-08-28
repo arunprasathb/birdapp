@@ -13,7 +13,7 @@
         Species
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Species</li>
       </ol>
     </section>
@@ -28,7 +28,7 @@
               <h3 class="box-title">Edit Species</h3>
             </div>
             <div class="box-body">
-              @if ($errors->any())
+             @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
                           @foreach ($errors->all() as $error)
@@ -70,7 +70,7 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
 
               </form>
