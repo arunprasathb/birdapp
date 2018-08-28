@@ -21,7 +21,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('admin/login', 'AdminLoginController@getAdminLogin');
     Route::post('admin/login', ['as'=>'admin.auth','uses'=>'AdminLoginController@adminAuth']);
     Route::group(['middleware' => ['admin']], function () {
-        Route::get('admin/dashboard', ['as'=>'admin.dashboard','uses'=>'AdminController@dashboard'])->name('dashboard');
+        Route::get('admin/dashboard', ['as'=>'admin.dashboard','uses'=>'AdminController@dashboard']);
         // Route::group(['prefix' => 'users'], function(){
             Route::get('admin/users', ['as'=>'users','uses'=>'UserController@index']);
             Route::get('admin/users/{userId}/view', ['as'=>'users','uses'=>'UserController@show_user']);
