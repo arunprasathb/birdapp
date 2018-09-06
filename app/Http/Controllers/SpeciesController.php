@@ -35,13 +35,13 @@ class SpeciesController extends Controller
         $this->validate($request, [
             'speciesName' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
-            'shortDescription' => 'required|min:10',
+            // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);
         $species = new species();
         $species->book_id = $book_id;
         $species->speciesName = $request->input('speciesName');
-        $species->shortDescription = $request->input('shortDescription');
+        $species->shortDescription = "";
         $species->description = $request->input('description');
         if($request->hasFile('imageUrl')){
             $file = $request->file('imageUrl');
@@ -67,7 +67,7 @@ class SpeciesController extends Controller
         
         $species->save();
         flash('Species added successfully.')->success();
-        return redirect('/admin/books/'.$book_id.'/view');
+        return redirect('/admin/books/'.$book_id.'/edit');
     }
 
     public function index() {
@@ -171,13 +171,13 @@ class SpeciesController extends Controller
         $this->validate($request, [
             'speciesName' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
-            'shortDescription' => 'required|min:10',
+            // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);
         $species = species::find($id);
         $book_id = $species->book_id;
         $species->speciesName = $request->input('speciesName');
-        $species->shortDescription = $request->input('shortDescription');
+        $species->shortDescription = "";
         $species->description = $request->input('description');
         if($request->hasFile('imageUrl_new')){
             $file = $request->file('imageUrl_new');
@@ -203,7 +203,7 @@ class SpeciesController extends Controller
         
         $species->save();
 
-        return redirect('/admin/books/'.$book_id.'/view')->with('success', 'Species has been updated!!');
+        return redirect('/admin/books/'.$book_id.'/edit')->with('success', 'Species has been updated!!');
     }
 
 }

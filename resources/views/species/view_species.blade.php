@@ -44,14 +44,14 @@
                 {{$book_details->bookName}}
               </p>
 
-              <hr>
+             <!--  <hr>
               <strong><i class="fa fa-sticky-note margin-r-5"></i> Short Description</strong>
 
               <p class="text-muted">{{$species_details->shortDescription}}</p>
-
+ -->
               <hr>
 
-              <strong><i class="fa fa-file-pdf-o margin-r-5"></i> Long Description</strong>
+              <strong><i class="fa fa-file-pdf-o margin-r-5"></i> Description</strong>
 
               <p class="text-muted">{{$species_details->description}}</p>
 

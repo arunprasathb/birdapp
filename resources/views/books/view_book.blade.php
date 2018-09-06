@@ -78,56 +78,7 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-          <br>
-              <div class="box">
-                  <div class="box-header">
-                    <h3 class="box-title">Book Species List</h3>
-                    <a href="/admin/books/{{$book_details['id']}}/add-species" class="btn btn-block btn-primary btn-sm max-w-100px pull-right"><i class='fa fa-plus'></i> Add Species</a>
-                  </div>
-                  <!-- /.box-header -->
-                  <div class="box-body">
-                    <table id="species-list" class="table table-striped table-bordered dt-responsive nowrap">
-                      <thead>
-                      <tr>
-                        <th>S.No</th>
-                        <th>Species Name</th>
-                        <th>Species Image</th>
-                        <th>Actions</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                        @foreach($book_species as $index => $species)
-                          <tr>
-                            <td>{{$index+1}}</td>
-                            <td>{{$species['speciesName']}}</td>
-                            <td>
-                                @if ($book_details->imageUrl != '')
-                                    <img src="{{$species->imageUrl}}" alt="{{$species->speciesName}}" class="admin-species-list-img">
-                                @endif
-                            <td>
-                              <a href="/admin/species/{{$species['id']}}/view"><i class='fa fa-eye button-link'></i></a> 
-                              <a href="/admin/species/{{$species['id']}}/edit"><i class='fa fa-pencil button-link'></i></a>
-                              {!! Form::open([
-                                    'method'=>'DELETE',
-                                    'url' => ['/admin/species', $species['id']],
-                                    'style' => 'display:inline'
-                                ]) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', array(
-                                            'type' => 'submit',
-                                            'class' => 'btn btn-danger button-link delete-link',
-                                            'title' => 'Delete Post',
-                                            'onclick'=>'return confirm("Confirm delete?")'
-                                    )) !!}
-                                {!! Form::close() !!}
-                            </td>
-                          </tr>
-                        @endforeach
-                      </tfoot>
-                    </table>
-                  </div>
-                  <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
+          
         </div>
         <!-- /.col -->
       </div>

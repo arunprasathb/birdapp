@@ -56,10 +56,10 @@
                     <input type="file" id="imageUrl" name="imageUrl_new">
                   </div>
                   
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="shortDescription">Species Short Description</label>
                     <textarea class="form-control" rows="3" id="shortDescription" name="shortDescription" placeholder="Enter Species Short Description ..." required="required">{{$species->shortDescription}}</textarea>
-                  </div>
+                  </div> -->
                   
                   <div class="form-group">
                     <label for="description">Species Description</label>

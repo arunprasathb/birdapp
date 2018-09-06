@@ -233,7 +233,15 @@ class BookController extends BaseApiController
     public function edit($id){
         $book = books::where('id', $id)
                         ->first();
-        return view('books.edit', compact('book', 'id'));
+        $user = auth()->guard('admin')->user();
+        $book_details = books::find($id);
+        $book_species = books::join('species', 'species.book_id', '=', 'books.id')
+                ->select('species.*')
+                ->where('books.id',$id)
+                ->get();
+        $book_details = books::where('id', $id)->firstOrFail();
+        return view('books.edit')->with(['book_details'=>$book_details, 'book_species'=> $book_species, 'id' => $id]);
+        // return view('books.edit', compact('book', 'id'));
     }
 
      /**
