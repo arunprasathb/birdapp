@@ -346,4 +346,15 @@ class BookController extends BaseApiController
         return redirect('/admin/books');
     }
 
+    /**
+     *  Book payment details update
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function payment(Request $request){
+        $result = $this->bookServiceProvider->payment($request);
+        return $this->returnResponse($result);
+    }
 }

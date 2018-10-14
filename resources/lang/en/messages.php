@@ -22,4 +22,5 @@ return [
     'species_added' => 'Species has been added successfully',
     'book_species_list' => 'Book species list',
     'species_voices_gallery_list' => 'Species galleries and voices retrieved successfully',
+    'payment_success' => 'Book purchased successfully',
 ];

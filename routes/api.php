@@ -11,6 +11,7 @@
         Route::get('/books', 'BookController@bookList');
         Route::post('/bookById/{bookId}', 'BookController@bookById');
         Route::post('/speciesById/{speciesId}', 'SpeciesController@speciesById');
+        Route::post('/books/payment', 'BookController@payment');
     });
     
 // });

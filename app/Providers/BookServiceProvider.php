@@ -4,14 +4,17 @@ namespace App\Providers;
 
 // use App\Models\Book;
 use App\books;
+use App\book_payment;
 
 /**
  * BookServiceProvider class contains methods for Book management
  */
 class BookServiceProvider extends BaseServiceProvider {
 
+    protected $book_payment;
     public function __construct()
     {
+        $this->book_payment = new book_payment();
     }
 
     /**
@@ -83,6 +86,33 @@ class BookServiceProvider extends BaseServiceProvider {
             BookServiceProvider::$data['status'] = 200;
             BookServiceProvider::$data['data'] = ['bookdetails' => $book_result, 'species' => $species_result];
             BookServiceProvider::$data['message'] = trans('messages.book_species_list');
+        } catch (Exception $e) {
+            $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+        }
+        return BookServiceProvider::$data;
+    }
+
+    /**
+     * delete book
+     * @return type
+     */
+    public function payment($data){
+         try {
+            // books::where('id',$request->bookId)
+            // $userbook = book_payment::where('bookId', $data['book_id'])->where('user_id', $data['user_id']);
+            // print_r($userbook);die;
+            $bookPayment = new book_payment();
+            $bookPayment->bookId = $data['book_id'];
+            $bookPayment->user_id = $data['user_id'];
+            $bookPayment->payment_status = $data['payment_status'];
+            $bookPayment->transaction_id = $data['transaction_id'];
+            $bookPayment->amount = $data['amount'];
+            $bookPayment->download_count = $data['download_count'];
+            // print_r($bookPayment);die;
+            $bookPayment->save();
+            BookServiceProvider::$data['status'] = 200;
+            BookServiceProvider::$data['data'] = $bookPayment;
+            BookServiceProvider::$data['message'] = trans('messages.payment_success');
         } catch (Exception $e) {
             $this->logError(__CLASS__,__METHOD__,$e->getMessage());
         }
