@@ -93,7 +93,7 @@ class BookServiceProvider extends BaseServiceProvider {
     }
 
     /**
-     * delete book
+     * Payment book
      * @return type
      */
     public function payment($data){
