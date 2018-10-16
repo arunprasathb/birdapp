@@ -46,17 +46,17 @@
                   <div class="form-group">
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <label for="user_name">User Name</label>
-                    <input type="text" name="name" class="form-control" id="user_name" placeholder="Enter User Name" required="required" value={{$users->name}}>
+                    <input type="text" name="name" class="form-control" id="user_name" placeholder="Enter User Name" required="required" value="{{$users->name}}">
                   </div>
 
                   <div class="form-group">
                     <label for="user_name">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter User Email" disabled="disabled" required="required" value={{$users->email}}>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter User Email" disabled="disabled" required="required" value="{{$users->email}}">
                   </div>
                   
                   <div class="form-group">
                     <label for="user_name">Mobile</label>
-                    <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Enter User Mobile Number" required="required" value={{$users->mobile}}>
+                    <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Enter User Mobile Number" required="required" value="{{$users->mobile}}">
                   </div>
 
                   <div class="form-group">

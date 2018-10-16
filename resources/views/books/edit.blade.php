@@ -46,17 +46,17 @@
                   <div class="form-group">
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <label for="bookName">Book Name</label>
-                    <input type="text" name="bookName" class="form-control" id="bookName" placeholder="Enter Book Name" required="required" value={{$book_details->bookName}}>
+                    <input type="text" name="bookName" class="form-control" id="bookName" placeholder="Enter Book Name" required="required" value="{{$book_details->bookName}}">
                   </div>
 
                   <div class="form-group">
                     <label for="price">Cost</label>
-                    <input type="number" class="form-control" name="price" id="price" placeholder="Cost" required="required" value={{$book_details->price}}>
+                    <input type="number" class="form-control" name="price" id="price" placeholder="Cost" required="required" value="{{$book_details->price}}">
                   </div>
 
                   <div class="form-group">
                     <label for="author">Author Name</label>
-                    <input type="text" name="author" class="form-control" id="author" placeholder="Enter Author Name" required="required" value={{$book_details->author}}>
+                    <input type="text" name="author" class="form-control" id="author" placeholder="Enter Author Name" required="required" value="{{$book_details->author}}">
                   </div>
 
                   <div class="form-group">

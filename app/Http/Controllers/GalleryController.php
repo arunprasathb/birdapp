@@ -19,7 +19,7 @@ class GalleryController extends Controller
     {
 
 		$this->validate($request, [
-			// 'imageUrl' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+			// 'imageUrl' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:'env('IMAGE_MAX_SIZE'),
 		    'image' => 'required',
 		    'image.*' => 'mimes:jpg,png,jpeg'
 

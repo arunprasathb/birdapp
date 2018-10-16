@@ -34,7 +34,7 @@ class SpeciesController extends Controller
     {
         $this->validate($request, [
             'speciesName' => 'required',
-            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);
@@ -46,7 +46,7 @@ class SpeciesController extends Controller
         if($request->hasFile('imageUrl')){
             $file = $request->file('imageUrl');
             /* $validator = Validator::make($request->all(), [
-                'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             ]);
             if ($validator->fails()) {
                return response(array(
@@ -170,7 +170,7 @@ class SpeciesController extends Controller
     {
         $this->validate($request, [
             'speciesName' => 'required',
-            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);
@@ -182,7 +182,7 @@ class SpeciesController extends Controller
         if($request->hasFile('imageUrl_new')){
             $file = $request->file('imageUrl_new');
              /*$validator = Validator::make($request->all(), [
-                'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             ]);
             if ($validator->fails()) {
                return response(array(

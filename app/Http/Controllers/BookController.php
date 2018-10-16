@@ -125,10 +125,10 @@ class BookController extends BaseApiController
             'bookName' => 'required|min:2|unique:books,bookName',
             'shortDescription' => 'required|min:10',
             'price' => 'required',
-            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
-            'map' => 'image|mimes:jpeg,png,jpg|max:1024',
-            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
-            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024'
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+            'map' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE'),
+            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE')
         ]);
 
         $books = new books();
@@ -141,7 +141,7 @@ class BookController extends BaseApiController
         if($request->hasFile('imageUrl')){
             $file = $request->file('imageUrl');
             /* $validator = Validator::make($request->all(), [
-                'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             ]);
             if ($validator->fails()) {
                return response(array(
@@ -163,7 +163,7 @@ class BookController extends BaseApiController
         if($request->hasFile('map')){
             $file = $request->file('map');
              /*$validator = Validator::make($request->all(), [
-                'map' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'map' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             ]);
             if ($validator->fails()) {
                return response(array(
@@ -184,7 +184,7 @@ class BookController extends BaseApiController
         if($request->hasFile('paidPdfUrl')){
             $file = $request->file('paidPdfUrl');
             /*$validator = Validator::make($request->all(), [
-                'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
+                'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE'),
             ]);
             if ($validator->fails()) {
                return response(array(
@@ -204,7 +204,7 @@ class BookController extends BaseApiController
         if($request->hasFile('unpaidPdfUrl')){
             $file = $request->file('unpaidPdfUrl');
             /*$validator = Validator::make($request->all(), [
-                'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
+                'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE'),
             ]);
             if ($validator->fails()) {
                return response(array(
@@ -257,10 +257,10 @@ class BookController extends BaseApiController
             'bookName' => 'required|min:2|unique:books,bookName,'.$id,
             'shortDescription' => 'required|min:10',
             'price' => 'required',
-            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:1024',
-            'map' => 'image|mimes:jpeg,png,jpg|max:1024',
-            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024',
-            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:1024'
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+            'map' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE'),
+            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE')
         ]);
 
         $books = books::find($id);
@@ -273,7 +273,7 @@ class BookController extends BaseApiController
         if($request->hasFile('imageUrl_new')){
             $file = $request->file('imageUrl_new');
             /* $validator = Validator::make($request->all(), [
-                'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             ]);
             if ($validator->fails()) {
                return response(array(
@@ -282,7 +282,7 @@ class BookController extends BaseApiController
             ), 400);
             }*/
             $this->validate($request, [
-                 'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:1024'
+                 'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE')
             ]);
             $thumbnail_path = public_path('/images/books/');
             
@@ -297,7 +297,7 @@ class BookController extends BaseApiController
         if($request->hasFile('map_new')){
             $file = $request->file('map_new');
              $validator = Validator::make($request->all(), [
-                'map_new' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'map_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             ]);
             if ($validator->fails()) {
                return response(array(
