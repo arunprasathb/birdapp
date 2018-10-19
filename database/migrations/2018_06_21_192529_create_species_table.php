@@ -19,6 +19,7 @@ class CreateSpeciesTable extends Migration
             $table->text('shortDescription');
             $table->text('description');
             $table->string('imageUrl');
+            $table->string('map');
             $table->integer('book_id')->unsigned();
             $table->foreign('book_id')->references('id')->on('books');
             $table->timestamps();

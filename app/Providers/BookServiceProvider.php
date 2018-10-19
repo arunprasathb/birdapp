@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Providers;
-
-// use App\Models\Book;
 use App\books;
 use App\book_payment;
 
@@ -21,12 +19,22 @@ class BookServiceProvider extends BaseServiceProvider {
      * books list
      * @return type
      */
-    public function getBooks() {
+    public function getBooks($request) {
         try {
             $books = books::select()->get();
-                BookServiceProvider::$data['status'] = 200;
-                BookServiceProvider::$data['data'] = ['books' => $books];
-                BookServiceProvider::$data['message'] = trans('messages.books_list');
+            foreach ($books as $key => $value) {
+                $userbook = book_payment::where('bookId', $value->id)->where('user_id', $request->user_id)->get();
+                if(count($userbook) > 0){
+                    $value['download_count'] = $userbook[0]['download_count'];
+                    $value['payment_status'] = $userbook[0]['payment_status'];
+                }else{
+                    $value['download_count'] = 0;
+                    $value['payment_status'] = 0;
+                }
+            }
+            BookServiceProvider::$data['status'] = 200;
+            BookServiceProvider::$data['data'] = ['books' => $books];
+            BookServiceProvider::$data['message'] = trans('messages.books_list');
         } catch (\Exception $e) {
             $this->logError(__CLASS__,__METHOD__,$e->getMessage());
         }

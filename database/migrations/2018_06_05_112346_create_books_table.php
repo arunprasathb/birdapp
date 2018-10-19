@@ -22,7 +22,6 @@ class CreateBooksTable extends Migration
             $table->string('imageUrl');
             $table->string('paidPdfUrl');
             $table->string('unpaidPdfUrl');
-            $table->string('map');
             $table->string('author');
             $table->boolean('status')->default(1)->comment('1->Active, 0->Inactive');
 //            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
