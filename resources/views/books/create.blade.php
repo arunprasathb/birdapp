@@ -73,11 +73,6 @@
                   </div>
                   
                   <div class="form-group">
-                    <label for="map">Map</label>
-                    <input type="file" id="map" name="map" required="required">
-                  </div>
-
-                  <div class="form-group">
                     <label for="paidPdfUrl">Paid book PDF file</label>
                     <input type="file" id="paidPdfUrl" name="paidPdfUrl" required="required">
                   </div>

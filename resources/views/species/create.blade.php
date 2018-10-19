@@ -58,6 +58,10 @@
                     <label for="shortDescription">Species Short Description</label>
                     <textarea class="form-control" rows="3" id="shortDescription" name="shortDescription" placeholder="Enter Species Short Description ..." required="required"></textarea>
                   </div> -->
+                  <div class="form-group">
+                    <label for="map">Map</label>
+                    <input type="file" id="map" name="map" required="required">
+                  </div>
                   
                   <div class="form-group">
                     <label for="description">Species Description</label>

@@ -60,6 +60,13 @@
                     <label for="shortDescription">Species Short Description</label>
                     <textarea class="form-control" rows="3" id="shortDescription" name="shortDescription" placeholder="Enter Species Short Description ..." required="required">{{$species->shortDescription}}</textarea>
                   </div> -->
+                  <div class="form-group">
+                    <label for="map">Map</label>
+                    @if ($species->map != '')
+                        <img src="{{$species->map}}" alt="{{$species->bookName}} map" class="admin-book-img">
+                    @endif
+                    <input type="file" id="map" name="map_new">
+                  </div>
                   
                   <div class="form-group">
                     <label for="description">Species Description</label>

@@ -35,6 +35,7 @@ class SpeciesController extends Controller
         $this->validate($request, [
             'speciesName' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+            'map' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);
@@ -64,7 +65,28 @@ class SpeciesController extends Controller
                   ->save($thumbnail_path . $file_name);
             $species->imageUrl = url('/').'/images/species/'.$file_name;
         }
-        
+        if($request->hasFile('map')){
+            $file = $request->file('map');
+             /*$validator = Validator::make($request->all(), [
+                'map' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+            ]);
+            if ($validator->fails()) {
+               return response(array(
+                'message' => 'parameters missing',
+                'missing_parameters' =>  $validator->errors()
+            ), 400);
+            }*/
+            $thumbnail_path = public_path('/images/species/map/');
+            
+            $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+            Image::make($file)
+                  ->resize(120,180,function ($constraint) {
+                    $constraint->aspectRatio();
+                     })
+                  ->save($thumbnail_path . $file_name);
+            $species->map = url('/').'/images/species/map/'.$file_name;
+        }
+
         $species->save();
         flash('Species added successfully.')->success();
         return redirect('/admin/books/'.$book_id.'/edit');
@@ -113,7 +135,14 @@ class SpeciesController extends Controller
                 @unlink($gallery_path);
             }   
         }
-                    
+        if(isset($species_details['map'])){
+              $speciesMapUrlArray = explode('/', $species_details['map']);
+              $species_map_path = public_path('/images/species/map/'.$speciesMapUrlArray[count($speciesMapUrlArray)-1]);
+              if(file_exists($species_map_path)) {
+                  @unlink($species_map_path);
+              }   
+          }
+                 
         gallery::where('species_id', $id)->delete();
         voice::where('species_id', $id)->delete();
         species::destroy($id);
@@ -171,6 +200,7 @@ class SpeciesController extends Controller
         $this->validate($request, [
             'speciesName' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+            'map' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
             // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);
@@ -200,7 +230,27 @@ class SpeciesController extends Controller
                   ->save($thumbnail_path . $file_name);
             $species->imageUrl = url('/').'/images/species/'.$file_name;
         }
-        
+        if($request->hasFile('map_new')){
+            $file = $request->file('map_new');
+             $validator = Validator::make($request->all(), [
+                'map_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+            ]);
+            if ($validator->fails()) {
+               return response(array(
+                'message' => 'parameters missing',
+                'missing_parameters' =>  $validator->errors()
+            ), 400);
+            }
+            $thumbnail_path = public_path('/images/species/map/');
+            
+            $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+            Image::make($file)
+                  ->resize(120,180,function ($constraint) {
+                    $constraint->aspectRatio();
+                     })
+                  ->save($thumbnail_path . $file_name);
+            $species->map = url('/').'/images/species/map/'.$file_name;
+        }
         $species->save();
 
         return redirect('/admin/books/'.$book_id.'/edit')->with('success', 'Species has been updated!!');

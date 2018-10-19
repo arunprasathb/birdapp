@@ -68,12 +68,7 @@
                   <img src="{{$book_details->imageUrl}}" alt="{{$book_details->bookName}}" class="admin-book-img">
               @endif
 
-              @if ($book_details->map != '')
-                  <hr>
-
-                  <strong><i class="fa fa-file-image-o margin-r-5"></i> Map</strong> <br>
-                  <img src="{{$book_details->map}}" alt="Map" class="admin-book-img">
-              @endif
+              
             </div>
             <!-- /.box-body -->
           </div>

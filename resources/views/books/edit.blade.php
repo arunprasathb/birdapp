@@ -66,14 +66,6 @@
                     @endif
                     <input type="file" id="imageUrl" name="imageUrl_new">
                   </div>
-                  
-                  <div class="form-group">
-                    <label for="map">Map</label>
-                    @if ($book_details->map != '')
-                        <img src="{{$book_details->map}}" alt="{{$book_details->bookName}} map" class="admin-book-img">
-                    @endif
-                    <input type="file" id="map" name="map_new">
-                  </div>
 
                   <div class="form-group">
                     <label for="paidPdfUrl">Paid book PDF file</label>

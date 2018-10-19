@@ -63,6 +63,13 @@
                   <strong><i class="fa fa-file-image-o margin-r-5"></i> Species Image</strong> <br>
                   <img src="{{$species_details->imageUrl}}" alt="{{$species_details->bookName}}" class="admin-book-img">
               @endif
+
+              @if ($species_details->map != '')
+                  <hr>
+
+                  <strong><i class="fa fa-file-image-o margin-r-5"></i> Map</strong> <br>
+                  <img src="{{$species_details->map}}" alt="Map" class="admin-book-img">
+              @endif
             </div>
             <!-- /.box-body -->
           </div>
