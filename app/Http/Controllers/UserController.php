@@ -178,7 +178,7 @@ class UserController extends BaseApiController
             if($request->hasFile('profileImage')){
                 $file = $request->file('profileImage');
                  $validator = Validator::make($request->all(), [
-                    'profileImage' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+                    'profileImage' => 'image|mimes:jpeg,png,jpg|max:10240',
                 ]);
                 if ($validator->fails()) {
                    return response(array(

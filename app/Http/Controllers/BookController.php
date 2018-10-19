@@ -119,9 +119,9 @@ class BookController extends BaseApiController
             'bookName' => 'required|min:2|unique:books,bookName',
             'shortDescription' => 'required|min:10',
             'price' => 'required',
-            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
-            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE'),
-            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE')
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240',
+            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240'
         ]);
 
         $books = new books();
@@ -230,9 +230,9 @@ class BookController extends BaseApiController
             'bookName' => 'required|min:2|unique:books,bookName,'.$id,
             'shortDescription' => 'required|min:10',
             'price' => 'required',
-            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
-            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE'),
-            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE')
+            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240',
+            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240'
         ]);
 
         $books = books::find($id);
@@ -254,7 +254,7 @@ class BookController extends BaseApiController
             ), 400);
             }*/
             $this->validate($request, [
-                 'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE')
+                 'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:10240'
             ]);
             $thumbnail_path = public_path('/images/books/');
             
