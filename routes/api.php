@@ -9,7 +9,7 @@
         Route::post('/user/profileupdate/{id}', 'UserController@profileupdate');
         Route::post('/user/profileImageUpdate/{id}', 'UserController@profileImageUpdate');
         Route::post('/books', 'BookController@bookList');
-        Route::post('/bookById/{bookId}', 'BookController@bookById');
+        Route::post('/bookById', 'BookController@bookById');
         Route::post('/speciesById/{speciesId}', 'SpeciesController@speciesById');
         Route::post('/books/payment', 'BookController@payment');
         Route::post('/books/getBookFullDetails', 'BookPaymentController@getBookFullDetails');

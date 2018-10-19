@@ -84,11 +84,21 @@ class BookServiceProvider extends BaseServiceProvider {
      */
     public function bookById($request){
          try {
-            $book_result = books::find($request->bookId);
-            $species_result = books::join('species', 'species.book_id', '=', 'books.id')
+            $book_result = books::find($request->book_id);
+            $userbook = book_payment::where('bookId', $request->book_id)->where('user_id', $request->user_id)->get();
+            if(count($userbook) > 0){ 
+                $species_result = books::join('species', 'species.book_id', '=', 'books.id')
                 ->select('species.*')
-                ->where('books.id',$request->bookId)
+                ->where('books.id',$request->book_id)
                 ->get();
+            }else{;
+                $species_result = books::join('species', 'species.book_id', '=', 'books.id')
+                ->select('species.*')
+                ->where('books.id',$request->book_id)
+                ->limit(5)
+                ->get();
+            }
+            
             $result = array_merge(["book" => $book_result],['species' => $species_result]);
 
             BookServiceProvider::$data['status'] = 200;
