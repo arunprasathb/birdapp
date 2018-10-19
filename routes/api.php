@@ -10,8 +10,10 @@
         Route::post('/user/profileImageUpdate/{id}', 'UserController@profileImageUpdate');
         Route::post('/books', 'BookController@bookList');
         Route::post('/bookById', 'BookController@bookById');
-        Route::post('/speciesById/{speciesId}', 'SpeciesController@speciesById');
+        Route::post('/speciesById', 'SpeciesController@speciesById');
         Route::post('/books/payment', 'BookController@payment');
+        Route::post('/species/commentImageUpload', 'SpeciesController@commentImageUpload');
+        Route::post('/species/comments', 'SpeciesController@comments');
         Route::post('/books/getBookFullDetails', 'BookPaymentController@getBookFullDetails');
     });
     

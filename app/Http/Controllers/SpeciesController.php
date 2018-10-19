@@ -5,6 +5,7 @@ use App\species;
 use App\books;
 use App\voice;
 use App\gallery;
+use App\species_comments;
 use Illuminate\Http\Request;
 use App\Providers\SpeciesServiceProvider;
 use Validator;
@@ -254,6 +255,69 @@ class SpeciesController extends Controller
         $species->save();
 
         return redirect('/admin/books/'.$book_id.'/edit')->with('success', 'Species has been updated!!');
+    }
+
+    /**
+     * Species under comments image upload
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function commentImageUpload(Request $request)
+    {
+        $this->validate($request, [
+            'image' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240'
+        ]);
+
+        try {
+          if($request->hasFile('image')){
+              $file = $request->file('image');
+            
+              $thumbnail_path = public_path('/images/species/comments//');
+              
+              $file_name = 'comments'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+              Image::make($file)
+                    ->save($thumbnail_path . $file_name);
+              $imageUrl = url('/').'/images/species/comments/'.$file_name;
+          }
+
+          $data['status'] = 200;
+          $data['message'] = trans('messages.image_upload_success');
+
+          $data['data'] = ['image' => $imageUrl];
+        } catch (Exception $e) {
+            $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+        }
+         return response($data);
+    }
+
+     /**
+     * Species under comments add option
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function comments(Request $request)
+    {
+        try {
+
+            $species_comments = new species_comments();
+            $species_comments->species_id = $request['species_id'];
+            $species_comments->user_id = $request['user_id'];
+            $species_comments->image = $request['image'];
+            $species_comments->comment = $request['comment'];
+            $species_comments->save();
+
+            $data['status'] = 200;
+            $data['data'] = ['comments_details' => $species_comments];
+            $data['message'] = trans('messages.comment_success');
+        } catch (Exception $e) {
+            $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+        }
+         return response($data);
     }
 
 }

@@ -23,4 +23,6 @@ return [
     'book_species_list' => 'Book species list',
     'species_voices_gallery_list' => 'Species galleries and voices retrieved successfully',
     'payment_success' => 'Book purchased successfully',
+    'image_upload_success' => 'Image uploaded successfully',
+    'comment_success' => 'Comment added successfully',
 ];
