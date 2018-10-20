@@ -15,7 +15,6 @@ class CreateVoicesTable extends Migration
     {
         Schema::create('voices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
             $table->string('mediaUrl');
             $table->integer('species_id')->unsigned();
             $table->foreign('species_id')->references('id')->on('species');

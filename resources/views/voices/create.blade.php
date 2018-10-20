@@ -45,12 +45,12 @@
               @endif
               <form method="post" action="{{action('VoiceController@store', $id)}}" enctype="multipart/form-data">
                 {{csrf_field()}}
-                <label for="bookName">Audio Name and File (Media URL)</label>
+                <label for="bookName">Audio File</label>
                 <div class="input-group control-group increment" >
                   <div class="row">
-                    <div class="col-md-6">
+                   <!--  <div class="col-md-6">
                       <input type="text" name="audio-name[]" class="form-control">
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                       <input type="file" name="audio[]" class="form-control">
                     </div>
@@ -62,9 +62,9 @@
                 <div class="clone hide">
                   <div class="control-group input-group" style="margin-top:10px">
                     <div class="row">
-                      <div class="col-md-6">
+                      <!-- <div class="col-md-6">
                         <input type="text" name="audio-name[]" class="form-control">
-                      </div>
+                      </div> -->
                       <div class="col-md-4">
                         <input type="file" name="audio[]" class="form-control">
                       </div>

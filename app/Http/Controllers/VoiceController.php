@@ -21,7 +21,7 @@ class VoiceController extends Controller
     {
 
 		$this->validate($request, [
-			'audio-name' => 'required',
+			// 'audio-name' => 'required',
 		    'audio' => 'required',
 		    'audio.*' => 'mimes:mp3,ogg,mpga'
 
