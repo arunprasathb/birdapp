@@ -8,3 +8,6 @@
 .admin-book-img{max-height:200px;}
 .admin-species-list-img{max-height:150px;max-width:200px;}
 .max-w-100px{max-width:100px;}
+body{
+    background-color: #d2d6de !important;
+}

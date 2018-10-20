@@ -19,9 +19,9 @@ class AdminLoginController extends Controller
     }
     public function getAdminLogin()
     {
-        
+        $site_name = config('constants.site_name');
         if (auth()->guard('admin')->user()) return redirect()->route('admin.dashboard');
-        return view('adminLogin');
+        return view('adminLogin', compact('site_name'));
     }
     public function adminAuth(Request $request)
     {
