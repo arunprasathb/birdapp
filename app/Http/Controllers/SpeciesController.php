@@ -40,57 +40,65 @@ class SpeciesController extends Controller
             // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);
-        $species = new species();
-        $species->book_id = $book_id;
-        $species->speciesName = $request->input('speciesName');
-        $species->shortDescription = "";
-        $species->description = $request->input('description');
-        if($request->hasFile('imageUrl')){
-            $file = $request->file('imageUrl');
-            /* $validator = Validator::make($request->all(), [
-                'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
-            ]);
-            if ($validator->fails()) {
-               return response(array(
-                'message' => 'parameters missing',
-                'missing_parameters' =>  $validator->errors()
-            ), 400);
-            }*/
-            $thumbnail_path = public_path('/images/species/');
-            
-            $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
-            Image::make($file)
-                  ->resize(120,180,function ($constraint) {
-                    $constraint->aspectRatio();
-                     })
-                  ->save($thumbnail_path . $file_name);
-            $species->imageUrl = url('/').'/images/species/'.$file_name;
-        }
-        if($request->hasFile('map')){
-            $file = $request->file('map');
-             /*$validator = Validator::make($request->all(), [
-                'map' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
-            ]);
-            if ($validator->fails()) {
-               return response(array(
-                'message' => 'parameters missing',
-                'missing_parameters' =>  $validator->errors()
-            ), 400);
-            }*/
-            $thumbnail_path = public_path('/images/species/map/');
-            
-            $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
-            Image::make($file)
-                  ->resize(120,180,function ($constraint) {
-                    $constraint->aspectRatio();
-                     })
-                  ->save($thumbnail_path . $file_name);
-            $species->map = url('/').'/images/species/map/'.$file_name;
-        }
+        $species_details = species::where('book_id', $book_id)
+        ->where('speciesName', $request->input('speciesName'))
+        ->get();
+        if(count($species_details) > 0){
+            flash('Species name already exist.')->error();
+            return redirect('/admin/books/'.$book_id.'/edit');
+          }else{
+            $species = new species();
+            $species->book_id = $book_id;
+            $species->speciesName = $request->input('speciesName');
+            $species->shortDescription = "";
+            $species->description = $request->input('description');
+            if($request->hasFile('imageUrl')){
+                $file = $request->file('imageUrl');
+                /* $validator = Validator::make($request->all(), [
+                    'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+                ]);
+                if ($validator->fails()) {
+                   return response(array(
+                    'message' => 'parameters missing',
+                    'missing_parameters' =>  $validator->errors()
+                ), 400);
+                }*/
+                $thumbnail_path = public_path('/images/species/');
+                
+                $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+                Image::make($file)
+                      ->resize(120,180,function ($constraint) {
+                        $constraint->aspectRatio();
+                         })
+                      ->save($thumbnail_path . $file_name);
+                $species->imageUrl = url('/').'/images/species/'.$file_name;
+            }
+            if($request->hasFile('map')){
+                $file = $request->file('map');
+                 /*$validator = Validator::make($request->all(), [
+                    'map' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+                ]);
+                if ($validator->fails()) {
+                   return response(array(
+                    'message' => 'parameters missing',
+                    'missing_parameters' =>  $validator->errors()
+                ), 400);
+                }*/
+                $thumbnail_path = public_path('/images/species/map/');
+                
+                $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+                Image::make($file)
+                      ->resize(120,180,function ($constraint) {
+                        $constraint->aspectRatio();
+                         })
+                      ->save($thumbnail_path . $file_name);
+                $species->map = url('/').'/images/species/map/'.$file_name;
+            }
 
-        $species->save();
-        flash('Species added successfully.')->success();
-        return redirect('/admin/books/'.$book_id.'/edit');
+            $species->save();
+            flash('Species added successfully.')->success();
+            return redirect('/admin/books/'.$book_id.'/edit');
+        }
     }
 
     public function index() {
@@ -205,54 +213,66 @@ class SpeciesController extends Controller
             // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);
+
         $species = species::find($id);
         $book_id = $species->book_id;
-        $species->speciesName = $request->input('speciesName');
-        $species->shortDescription = "";
-        $species->description = $request->input('description');
-        if($request->hasFile('imageUrl_new')){
-            $file = $request->file('imageUrl_new');
-             /*$validator = Validator::make($request->all(), [
-                'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
-            ]);
-            if ($validator->fails()) {
-               return response(array(
-                'message' => 'parameters missing',
-                'missing_parameters' =>  $validator->errors()
-            ), 400);
-            }*/
-            $thumbnail_path = public_path('/images/species/');
-            
-            $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
-            Image::make($file)
-                  ->resize(120,180,function ($constraint) {
-                    $constraint->aspectRatio();
-                     })
-                  ->save($thumbnail_path . $file_name);
-            $species->imageUrl = url('/').'/images/species/'.$file_name;
-        }
-        if($request->hasFile('map_new')){
-            $file = $request->file('map_new');
-             $validator = Validator::make($request->all(), [
-                'map_new' => 'image|mimes:jpeg,png,jpg|max:10240',
-            ]);
-            if ($validator->fails()) {
-               return response(array(
-                'message' => 'parameters missing',
-                'missing_parameters' =>  $validator->errors()
-            ), 400);
-            }
-            $thumbnail_path = public_path('/images/species/map/');
-            
-            $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
-            Image::make($file)
-                  ->resize(120,180,function ($constraint) {
-                    $constraint->aspectRatio();
-                     })
-                  ->save($thumbnail_path . $file_name);
-            $species->map = url('/').'/images/species/map/'.$file_name;
-        }
-        $species->save();
+
+        $species_details = species::where('book_id', $book_id)
+        ->where('speciesName', $request->input('speciesName'))
+        ->where('id','!=', $id)
+        ->get(); 
+        if(count($species_details) > 0){
+            flash('Species name already exist.')->error();
+            return redirect('/admin/books/'.$book_id.'/edit');
+          }else{
+
+              $species->speciesName = $request->input('speciesName');
+              $species->shortDescription = "";
+              $species->description = $request->input('description');
+              if($request->hasFile('imageUrl_new')){
+                  $file = $request->file('imageUrl_new');
+                   /*$validator = Validator::make($request->all(), [
+                      'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
+                  ]);
+                  if ($validator->fails()) {
+                     return response(array(
+                      'message' => 'parameters missing',
+                      'missing_parameters' =>  $validator->errors()
+                  ), 400);
+                  }*/
+                  $thumbnail_path = public_path('/images/species/');
+                  
+                  $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+                  Image::make($file)
+                        ->resize(120,180,function ($constraint) {
+                          $constraint->aspectRatio();
+                           })
+                        ->save($thumbnail_path . $file_name);
+                  $species->imageUrl = url('/').'/images/species/'.$file_name;
+              }
+              if($request->hasFile('map_new')){
+                  $file = $request->file('map_new');
+                   $validator = Validator::make($request->all(), [
+                      'map_new' => 'image|mimes:jpeg,png,jpg|max:10240',
+                  ]);
+                  if ($validator->fails()) {
+                     return response(array(
+                      'message' => 'parameters missing',
+                      'missing_parameters' =>  $validator->errors()
+                  ), 400);
+                  }
+                  $thumbnail_path = public_path('/images/species/map/');
+                  
+                  $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+                  Image::make($file)
+                        ->resize(120,180,function ($constraint) {
+                          $constraint->aspectRatio();
+                           })
+                        ->save($thumbnail_path . $file_name);
+                  $species->map = url('/').'/images/species/map/'.$file_name;
+              }
+              $species->save();
+          }
 
         return redirect('/admin/books/'.$book_id.'/edit')->with('success', 'Species has been updated!!');
     }
