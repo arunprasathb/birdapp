@@ -56,20 +56,22 @@
               <p class="text-muted">{{$species_details->description}}</p>
 
               <hr>
-
+              <div class="row">
+                
               @if ($species_details->imageUrl != '')
-                  <hr>
-
+                <div class="col-md-6">
                   <strong><i class="fa fa-file-image-o margin-r-5"></i> Species Image</strong> <br>
                   <img src="{{$species_details->imageUrl}}" alt="{{$species_details->bookName}}" class="admin-book-img">
+                </div>
               @endif
 
               @if ($species_details->map != '')
-                  <hr>
-
+                <div class="col-md-6">
                   <strong><i class="fa fa-file-image-o margin-r-5"></i> Map</strong> <br>
                   <img src="{{$species_details->map}}" alt="Map" class="admin-book-img">
+                </div>
               @endif
+              </div>
             </div>
             <!-- /.box-body -->
           </div>

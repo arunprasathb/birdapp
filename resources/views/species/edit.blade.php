@@ -47,25 +47,25 @@
                     <label for="speciesName">Species Name</label>
                     <input type="text" name="speciesName" class="form-control" id="speciesName" placeholder="Enter Species Name" required="required" value="{{$species->speciesName}}">
                   </div>
-
-                  <div class="form-group">
-                    <label for="imageUrl">Species Image</label>
-                    @if ($species->imageUrl != '')
-                        <img src="{{$species->imageUrl}}" alt="{{$species->speciesName}}" class="admin-book-img">
-                    @endif
-                    <input type="file" id="imageUrl" name="imageUrl_new">
-                  </div>
-                  
-                  <!-- <div class="form-group">
-                    <label for="shortDescription">Species Short Description</label>
-                    <textarea class="form-control" rows="3" id="shortDescription" name="shortDescription" placeholder="Enter Species Short Description ..." required="required">{{$species->shortDescription}}</textarea>
-                  </div> -->
-                  <div class="form-group">
-                    <label for="map">Map</label>
-                    @if ($species->map != '')
-                        <img src="{{$species->map}}" alt="{{$species->bookName}} map" class="admin-book-img">
-                    @endif
-                    <input type="file" id="map" name="map_new">
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="imageUrl">Species Image</label><br>
+                          @if ($species->imageUrl != '')
+                              <img src="{{$species->imageUrl}}" alt="{{$species->speciesName}}" class="admin-book-img">
+                          @endif
+                          <input type="file" id="imageUrl" name="imageUrl_new">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="form-group">
+                          <label for="map">Map</label><br>
+                          @if ($species->map != '')
+                              <img src="{{$species->map}}" alt="{{$species->bookName}} map" class="admin-book-img">
+                          @endif
+                          <input type="file" id="map" name="map_new">
+                        </div>
+                    </div>
                   </div>
                   
                   <div class="form-group">

@@ -69,6 +69,25 @@
               @endif
 
               
+              <hr>
+              <div class="row">
+                @if ($book_details->paidPdfUrl != '')
+                    <div class="col-md-6">
+                      <strong><i class="fa fa-file-image-o margin-r-5"></i> Part-1 PDF</strong> <br>
+                      <embed src="{{$book_details->paidPdfUrl}}" style="min-height: 370px;width: 90%;" />
+                    </div>
+                @endif
+                @if ($book_details->unpaidPdfUrl != '')
+                  <div class="col-md-6">
+                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Part-2 PDF</strong> <br>
+                    <embed src="{{$book_details->unpaidPdfUrl}}"  style="min-height: 370px;width: 90%;" />
+                  </div>
+              @endif
+
+              </div>
+                  
+              <br><br>
+    
             </div>
             <!-- /.box-body -->
           </div>
