@@ -48,9 +48,9 @@
                 <label for="bookName">Audio File</label>
                 <div class="input-group control-group increment" >
                   <div class="row">
-                   <!--  <div class="col-md-6">
-                      <input type="text" name="audio-name[]" class="form-control">
-                    </div> -->
+                    <div class="col-md-6">
+                      <input type="text" placeholder="Audio Name" name="audio-name[]" class="form-control">
+                    </div>
                     <div class="col-md-4">
                       <input type="file" name="audio[]" class="form-control">
                     </div>
@@ -62,9 +62,9 @@
                 <div class="clone hide">
                   <div class="control-group input-group" style="margin-top:10px">
                     <div class="row">
-                      <!-- <div class="col-md-6">
-                        <input type="text" name="audio-name[]" class="form-control">
-                      </div> -->
+                      <div class="col-md-6">
+                        <input type="text" placeholder="Audio Name" name="audio-name[]" class="form-control">
+                      </div>
                       <div class="col-md-4">
                         <input type="file" name="audio[]" class="form-control">
                       </div>

@@ -89,7 +89,7 @@
                   <thead>
                   <tr>
                     <th>S.No</th>
-                    <!-- <th>Voice Name</th> -->
+                    <th>Voice Name</th>
                     <th>Voices</th>
                     <th>Actions</th>
                   </tr>
@@ -98,7 +98,7 @@
                     @foreach($voices_list as $index => $voice)
                       <tr>
                         <td>{{$index+1}}</td>
-                        <!-- <td>{{$voice['name']}}</td> -->
+                        <td>{{$voice['name']}}</td>
                         <td>
                             @if ($voice['mediaUrl'] != '')
                                 <audio controls>
