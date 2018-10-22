@@ -25,4 +25,5 @@ return [
     'payment_success' => 'Book purchased successfully',
     'image_upload_success' => 'Image uploaded successfully',
     'comment_success' => 'Comment added successfully',
+    'book_full_details' => 'Book full details retrieved successfully',
 ];
