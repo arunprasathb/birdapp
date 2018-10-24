@@ -35,14 +35,20 @@ class BookPaymentController extends Controller
             if(count($userbook) > 0){
             	$book_result['download_count'] = $userbook[0]['download_count'];
             	$book_result['payment_status'] = $userbook[0]['payment_status'];
-        	 }else{
-        	 	$book_result['download_count'] = 0;
-        		$book_result['payment_status'] = 0;
-        	 }
-            $species_result = books::join('species', 'species.book_id', '=', 'books.id')
+                $species_result = books::join('species', 'species.book_id', '=', 'books.id')
                 ->select('species.*')
                 ->where('books.id',$request->book_id)
                 ->get();
+        	 }else{
+        	 	$book_result['download_count'] = 0;
+        		$book_result['payment_status'] = 0;
+                $species_result = books::join('species', 'species.book_id', '=', 'books.id')
+                ->select('species.*')
+                ->where('books.id',$request->book_id)
+                ->limit(5)
+                ->get();
+        	 }
+            
             
             foreach ($species_result as $key => $value) {
             	$species_details[] = $species_result[$key];
