@@ -67,6 +67,7 @@
                                 <img src="{{$book_details->imageUrl}}" alt="{{$book_details->bookName}}" class="admin-book-img">
                             @endif
                             <input type="file" id="imageUrl" name="imageUrl_new">
+                            <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -76,6 +77,7 @@
                               <embed src="{{$book_details->paidPdfUrl}}" width="150px" height="200px" />
                           @endif
                           <input type="file" id="paidPdfUrl" name="paidPdfUrl_new">
+                          <small><b>Note:</b> Maximum PDF size is 10MB</small>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -85,6 +87,7 @@
                               <embed src="{{$book_details->unpaidPdfUrl}}" width="150px" height="200px" />
                           @endif
                           <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl_new">
+                          <small><b>Note:</b> Maximum PDF size is 10MB</small>
                         </div>
                     </div>
                   </div>
@@ -94,10 +97,10 @@
 
                   
                   
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="shortDescription">Book Short Description</label>
                     <textarea class="form-control" rows="3" id="shortDescription" name="shortDescription" placeholder="Enter Book Short Description ..." required="required">{{$book_details->shortDescription}}</textarea>
-                  </div>
+                  </div> -->
                   
                   <div class="form-group">
                     <label for="description">Book Description</label>

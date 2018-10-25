@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class books extends Model
 {
-	protected $fillable = ['bookName', 'price', 'shortDescription', 'description', 'imageUrl', 'paidPdfUrl', 'unpaidPdfUrl'];
+	protected $fillable = ['bookName', 'price', 'description', 'imageUrl', 'paidPdfUrl', 'unpaidPdfUrl'];
 	protected $table = 'books';
 
 	public function species() {

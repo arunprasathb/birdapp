@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('bookName');
             $table->integer('price');
-            $table->text('shortDescription');
+            // $table->text('shortDescription');
             $table->text('description');
             $table->string('imageUrl');
             $table->string('paidPdfUrl');

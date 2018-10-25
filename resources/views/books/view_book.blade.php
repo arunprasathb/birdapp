@@ -37,15 +37,15 @@
                 {{$book_details->bookName}}
               </p>
 
-              <hr>
+              <!-- <hr>
 
               <strong><i class="fa fa-sticky-note margin-r-5"></i> Short Description</strong>
 
-              <p class="text-muted">{{$book_details->shortDescription}}</p>
+              <p class="text-muted">{{$book_details->shortDescription}}</p> -->
 
               <hr>
 
-              <strong><i class="fa fa-file-pdf-o margin-r-5"></i> Long Description</strong>
+              <strong><i class="fa fa-file-pdf-o margin-r-5"></i>Description</strong>
 
               <p class="text-muted">{{$book_details->description}}</p>
 
@@ -71,15 +71,15 @@
               
               <hr>
               <div class="row">
-                @if ($book_details->paidPdfUrl != '')
+               <!--  @if ($book_details->paidPdfUrl != '')
                     <div class="col-md-6">
                       <strong><i class="fa fa-file-image-o margin-r-5"></i> Part-1 PDF</strong> <br>
                       <embed src="{{$book_details->paidPdfUrl}}" style="min-height: 370px;width: 90%;" />
                     </div>
-                @endif
+                @endif -->
                 @if ($book_details->unpaidPdfUrl != '')
                   <div class="col-md-6">
-                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Part-2 PDF</strong> <br>
+                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Unpaid PDF</strong> <br>
                     <embed src="{{$book_details->unpaidPdfUrl}}"  style="min-height: 370px;width: 90%;" />
                   </div>
               @endif

@@ -50,7 +50,7 @@ class SpeciesController extends Controller
             $species = new species();
             $species->book_id = $book_id;
             $species->speciesName = $request->input('speciesName');
-            $species->shortDescription = "";
+            // $species->shortDescription = "";
             $species->description = $request->input('description');
             if($request->hasFile('imageUrl')){
                 $file = $request->file('imageUrl');
@@ -67,9 +67,9 @@ class SpeciesController extends Controller
                 
                 $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
                 Image::make($file)
-                      ->resize(120,180,function ($constraint) {
-                        $constraint->aspectRatio();
-                         })
+                      // ->resize(120,180,function ($constraint) {
+                      //   $constraint->aspectRatio();
+                      //    })
                       ->save($thumbnail_path . $file_name);
                 $species->imageUrl = url('/').'/images/species/'.$file_name;
             }
@@ -88,9 +88,9 @@ class SpeciesController extends Controller
                 
                 $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
                 Image::make($file)
-                      ->resize(120,180,function ($constraint) {
-                        $constraint->aspectRatio();
-                         })
+                      // ->resize(120,180,function ($constraint) {
+                      //   $constraint->aspectRatio();
+                      //    })
                       ->save($thumbnail_path . $file_name);
                 $species->map = url('/').'/images/species/map/'.$file_name;
             }
@@ -227,7 +227,7 @@ class SpeciesController extends Controller
           }else{
 
               $species->speciesName = $request->input('speciesName');
-              $species->shortDescription = "";
+              // $species->shortDescription = "";
               $species->description = $request->input('description');
               if($request->hasFile('imageUrl_new')){
                   $file = $request->file('imageUrl_new');
@@ -244,9 +244,9 @@ class SpeciesController extends Controller
                   
                   $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
                   Image::make($file)
-                        ->resize(120,180,function ($constraint) {
-                          $constraint->aspectRatio();
-                           })
+                        // ->resize(120,180,function ($constraint) {
+                        //   $constraint->aspectRatio();
+                        //    })
                         ->save($thumbnail_path . $file_name);
                   $species->imageUrl = url('/').'/images/species/'.$file_name;
               }
@@ -265,9 +265,9 @@ class SpeciesController extends Controller
                   
                   $file_name = 'species'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
                   Image::make($file)
-                        ->resize(120,180,function ($constraint) {
-                          $constraint->aspectRatio();
-                           })
+                        // ->resize(120,180,function ($constraint) {
+                        //   $constraint->aspectRatio();
+                        //    })
                         ->save($thumbnail_path . $file_name);
                   $species->map = url('/').'/images/species/map/'.$file_name;
               }

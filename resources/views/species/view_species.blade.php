@@ -184,5 +184,17 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+<script type="text/javascript">
+  
+  document.addEventListener('play', function(e){
+        var audios = document.getElementsByTagName('audio');
+        for(var i = 0, len = audios.length; i < len;i++){
+            if(audios[i] != e.target){
+                this.currentTime = 0;
+                audios[i].pause();
+            }
+        }
+    }, true);
+        
+</script>
 @stop

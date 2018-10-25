@@ -117,7 +117,7 @@ class BookController extends BaseApiController
     public function store(Request $request){
         $this->validate($request, [
             'bookName' => 'required|min:2|unique:books,bookName',
-            'shortDescription' => 'required|min:10',
+            // 'shortDescription' => 'required|min:10',
             'price' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
             'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240',
@@ -126,7 +126,7 @@ class BookController extends BaseApiController
 
         $books = new books();
         $books->bookName = $request->input('bookName');
-        $books->shortDescription = $request->input('shortDescription');
+        // $books->shortDescription = $request->input('shortDescription');
         $books->description = $request->input('description');
         $books->price = $request->input('price');
         $books->author = $request->input('author');
@@ -147,9 +147,9 @@ class BookController extends BaseApiController
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
             Image::make($file)
-                  ->resize(120,180,function ($constraint) {
+                 /* ->resize(120,180,function ($constraint) {
                     $constraint->aspectRatio();
-                     })
+                     })*/
                   ->save($thumbnail_path . $file_name);
             $books->imageUrl = url('/').'/images/books/'.$file_name;
         }
@@ -228,7 +228,7 @@ class BookController extends BaseApiController
     {
         $this->validate($request, [
             'bookName' => 'required|min:2|unique:books,bookName,'.$id,
-            'shortDescription' => 'required|min:10',
+            // 'shortDescription' => 'required|min:10',
             'price' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
             'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240',
@@ -237,7 +237,7 @@ class BookController extends BaseApiController
 
         $books = books::find($id);
         $books->bookName = $request->input('bookName');
-        $books->shortDescription = $request->input('shortDescription');
+        // $books->shortDescription = $request->input('shortDescription');
         $books->description = $request->input('description');
         $books->price = $request->input('price');
         $books->author = $request->input('author');
@@ -260,9 +260,9 @@ class BookController extends BaseApiController
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
             Image::make($file)
-                  ->resize(120,180,function ($constraint) {
-                    $constraint->aspectRatio();
-                     })
+                  // ->resize(120,180,function ($constraint) {
+                  //   $constraint->aspectRatio();
+                  //    })
                   ->save($thumbnail_path . $file_name);
             $books->imageUrl = url('/').'/images/books/'.$file_name;
         }
@@ -273,9 +273,9 @@ class BookController extends BaseApiController
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
             Image::make($file)
-                  ->resize(120,180,function ($constraint) {
-                    $constraint->aspectRatio();
-                     })
+                  // ->resize(120,180,function ($constraint) {
+                  //   $constraint->aspectRatio();
+                  //    })
                   ->save($thumbnail_path . $file_name);
             $books->paidPdfUrl = url('/').'/images/books/files/'.$file_name;
         }
@@ -286,9 +286,9 @@ class BookController extends BaseApiController
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
             Image::make($file)
-                  ->resize(120,180,function ($constraint) {
-                    $constraint->aspectRatio();
-                     })
+                  // ->resize(120,180,function ($constraint) {
+                  //   $constraint->aspectRatio();
+                  //    })
                   ->save($thumbnail_path . $file_name);
             $books->unpaidPdfUrl = url('/').'/images/books/files/'.$file_name;
         }

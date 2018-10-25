@@ -65,27 +65,31 @@
                   <div class="form-group">
                     <label for="author">Author Name</label>
                     <input type="text" name="author" class="form-control" id="author" placeholder="Enter Author Name" required="required">
+
                   </div>
 
                   <div class="form-group">
                     <label for="imageUrl">Book Image</label>
                     <input type="file" id="imageUrl" name="imageUrl" required="required">
+                    <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
                   </div>
                   
                   <div class="form-group">
                     <label for="paidPdfUrl">Paid book PDF file</label>
                     <input type="file" id="paidPdfUrl" name="paidPdfUrl" required="required">
+                     <small><b>Note:</b> Maximum PDF size is 10MB</small>
                   </div>
 
                   <div class="form-group">
                     <label for="unpaidPdfUrl">Unpaid book PDF file</label>
                     <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl" required="required">
+                    <small><b>Note:</b> Maximum PDF size is 10MB</small>
                   </div>
                   
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="shortDescription">Book Short Description</label>
                     <textarea class="form-control" rows="3" id="shortDescription" name="shortDescription" placeholder="Enter Book Short Description ..." required="required"></textarea>
-                  </div>
+                  </div> -->
                   
                   <div class="form-group">
                     <label for="description">Book Description</label>

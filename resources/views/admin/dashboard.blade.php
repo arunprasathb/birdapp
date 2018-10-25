@@ -23,6 +23,7 @@
       <!-- Info boxes -->
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
+          <a href="/admin/users">
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
 
@@ -32,10 +33,12 @@
             </div>
             <!-- /.info-box-content -->
           </div>
+          </a>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
+          <a href="/admin/books">
           <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-book"></i></span>
 
@@ -45,6 +48,7 @@
             </div>
             <!-- /.info-box-content -->
           </div>
+          </a>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->

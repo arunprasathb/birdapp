@@ -52,6 +52,7 @@
                   <div class="form-group">
                     <label for="imageUrl">Species Image</label>
                     <input type="file" id="imageUrl" name="imageUrl" required="required">
+                    <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
                   </div>
                   
                   <!-- <div class="form-group">
@@ -61,6 +62,7 @@
                   <div class="form-group">
                     <label for="map">Map</label>
                     <input type="file" id="map" name="map" required="required">
+                    <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
                   </div>
                   
                   <div class="form-group">
