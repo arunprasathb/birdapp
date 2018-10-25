@@ -77,7 +77,7 @@
                 <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
               </form> 
               <br>
-              <small><b>Note:</b> Maximum audio size is 5MB</small>       
+              <small><b>Note:</b><ul><li>Maximum audio size is 5MB</li></ul></small>     
             </div>
           </div>
         </div>

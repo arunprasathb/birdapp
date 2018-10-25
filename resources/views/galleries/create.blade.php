@@ -53,7 +53,7 @@
                 <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
               </form>        
               <br>
-              <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
+              <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration
             // $table->text('shortDescription');
             $table->text('description');
             $table->string('imageUrl');
-            $table->string('paidPdfUrl');
+            // $table->string('paidPdfUrl');
             $table->string('unpaidPdfUrl');
             $table->string('author');
             $table->boolean('status')->default(1)->comment('1->Active, 0->Inactive');

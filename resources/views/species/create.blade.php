@@ -50,21 +50,36 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="imageUrl">Species Image</label>
-                    <input type="file" id="imageUrl" name="imageUrl" required="required">
-                    <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">Species Image</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-6">
+                          <input type="file" id="imageUrl" name="imageUrl" required="required">
+                        </div>
+                        <div class="col-md-6">
+                          <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  
                   <!-- <div class="form-group">
                     <label for="shortDescription">Species Short Description</label>
                     <textarea class="form-control" rows="3" id="shortDescription" name="shortDescription" placeholder="Enter Species Short Description ..." required="required"></textarea>
                   </div> -->
+                 
                   <div class="form-group">
-                    <label for="map">Map</label>
-                    <input type="file" id="map" name="map" required="required">
-                    <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="map">Map</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-6">
+                          <input type="file" id="map" name="map" required="required">
+                        </div>
+                        <div class="col-md-6">
+                          <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  
                   <div class="form-group">
                     <label for="description">Species Description</label>
                     <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Species Description..." required="required"></textarea>

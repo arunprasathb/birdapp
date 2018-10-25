@@ -69,22 +69,37 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="imageUrl">Book Image</label>
-                    <input type="file" id="imageUrl" name="imageUrl" required="required">
-                    <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">Book Image</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-6">
+                          <input type="file" id="imageUrl" name="imageUrl" required="required">
+                        </div>
+                        <div class="col-md-6">
+                          <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  
                   <div class="form-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="unpaidPdfUrl">Unpaid book PDF file</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-6">
+                          <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl" required="required">
+                        </div>
+                        <div class="col-md-6">
+                          <small><b>Note:</b><ul><li> Maximum PDF size is 10MB</li></ul></small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 <!--  <div class="form-group">
                     <label for="paidPdfUrl">Paid book PDF file</label>
                     <input type="file" id="paidPdfUrl" name="paidPdfUrl" required="required">
                      <small><b>Note:</b> Maximum PDF size is 10MB</small>
-                  </div>
+                  </div> -->
 
-                  <div class="form-group">
-                    <label for="unpaidPdfUrl">Unpaid book PDF file</label>
-                    <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl" required="required">
-                    <small><b>Note:</b> Maximum PDF size is 10MB</small>
-                  </div>
                   
                   <!-- <div class="form-group">
                     <label for="shortDescription">Book Short Description</label>

@@ -55,7 +55,7 @@
                               <img src="{{$species->imageUrl}}" alt="{{$species->speciesName}}" class="admin-book-img">
                           @endif
                           <input type="file" id="imageUrl" name="imageUrl_new">
-                          <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
+                          <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -65,7 +65,7 @@
                               <img src="{{$species->map}}" alt="{{$species->bookName}} map" class="admin-book-img">
                           @endif
                           <input type="file" id="map" name="map_new">
-                          <small><b>Note:</b>1) Image type should be JPG, PNG.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Maximum image size is 5MB</small>
+                          <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
                         </div>
                     </div>
                   </div>
