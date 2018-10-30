@@ -47,17 +47,17 @@
                   <div class="form-group">
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <label for="bookName">Book Name</label>
-                    <input type="text" name="bookName" class="form-control" id="bookName" placeholder="Enter Book Name" required="required" value="{{$book_details->bookName}}">
+                    <input type="text" name="bookName" class="form-control" id="bookName" placeholder="Enter Book Name" required="required" value="{{ old('bookName', $book_details->bookName) }}">
                   </div>
 
                   <div class="form-group">
                     <label for="price">Cost</label>
-                    <input type="number" class="form-control" name="price" id="price" placeholder="Cost" required="required" value="{{$book_details->price}}">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="Cost" required="required" value="{{ old('price', $book_details->price) }}">
                   </div>
 
                   <div class="form-group">
                     <label for="author">Author Name</label>
-                    <input type="text" name="author" class="form-control" id="author" placeholder="Enter Author Name" required="required" value="{{$book_details->author}}">
+                    <input type="text" name="author" class="form-control" id="author" placeholder="Enter Author Name" required="required" value="{{ old('author', $book_details->author) }}">
                   </div>
                   <div class="row">
                     <div class="col-md-4">
@@ -66,8 +66,8 @@
                             @if ($book_details->imageUrl != '')
                                 <img src="{{$book_details->imageUrl}}" alt="{{$book_details->bookName}}" class="admin-book-img">
                             @endif
-                            <input type="file" id="imageUrl" name="imageUrl_new">
-                            <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                            <input type="file" id="imageUrl" name="imageUrl_new" value="{{ old('imageUrl_new') }}">
+                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
                         </div>
                     </div>
                     <!-- <div class="col-md-4">
@@ -86,7 +86,7 @@
                            @if ($book_details->unpaidPdfUrl != '')
                               <embed src="{{$book_details->unpaidPdfUrl}}" width="150px" height="180px" />
                           @endif
-                          <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl_new">
+                          <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl_new" value="{{ old('unpaidPdfUrl_new') }}">
                           <small><b>Note:</b><ul><li> Maximum PDF size is 10MB</li></ul></small>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                   
                   <div class="form-group">
                     <label for="description">Book Description</label>
-                    <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Book Description..." required="required">{{$book_details->description}}</textarea>
+                    <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Book Description..." required="required">{{ old('description', $book_details->description) }}</textarea>
                   </div>
                   
                 </div>

@@ -208,8 +208,8 @@ class SpeciesController extends Controller
     {
         $this->validate($request, [
             'speciesName' => 'required',
-            'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
-            'map' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'map_new' => 'image|mimes:jpeg,png,jpg|max:10240',
             // 'shortDescription' => 'required|min:10',
             'description' => 'min:10'
         ]);

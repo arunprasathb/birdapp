@@ -49,10 +49,10 @@
                 <div class="input-group control-group increment" >
                   <div class="row">
                     <div class="col-md-6">
-                      <input type="text" placeholder="Audio Name" name="audio-name[]" class="form-control">
+                      <input type="text" placeholder="Audio Name" name="audio-name[]" class="form-control" value="{{ old('audio-name[]') }}">
                     </div>
                     <div class="col-md-4">
-                      <input type="file" name="audio[]" class="form-control">
+                      <input type="file" name="audio[]" class="form-control" value="{{ old('audio[]') }}">
                     </div>
                   </div>
                   <div class="input-group-btn"> 
@@ -63,10 +63,10 @@
                   <div class="control-group input-group" style="margin-top:10px">
                     <div class="row">
                       <div class="col-md-6">
-                        <input type="text" placeholder="Audio Name" name="audio-name[]" class="form-control">
+                        <input type="text" placeholder="Audio Name" name="audio-name[]" class="form-control" value="{{ old('audio-name[]') }}">
                       </div>
                       <div class="col-md-4">
-                        <input type="file" name="audio[]" class="form-control">
+                        <input type="file" name="audio[]" class="form-control" value="{{ old('audio[]') }}">
                       </div>
                     </div>
                     <div class="input-group-btn"> 

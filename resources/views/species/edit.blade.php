@@ -45,7 +45,7 @@
                   <div class="form-group">
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <label for="speciesName">Species Name</label>
-                    <input type="text" name="speciesName" class="form-control" id="speciesName" placeholder="Enter Species Name" required="required" value="{{$species->speciesName}}">
+                    <input type="text" name="speciesName" class="form-control" id="speciesName" placeholder="Enter Species Name" required="required" value="{{ old('speciesName', $species->speciesName) }}">
                   </div>
                   <div class="row">
                     <div class="col-md-6">
@@ -54,7 +54,7 @@
                           @if ($species->imageUrl != '')
                               <img src="{{$species->imageUrl}}" alt="{{$species->speciesName}}" class="admin-book-img">
                           @endif
-                          <input type="file" id="imageUrl" name="imageUrl_new">
+                          <input type="file" id="imageUrl" name="imageUrl_new" value="{{ old('speciesName') }}">
                           <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                          <div class="form-group">
                           <label for="map">Map</label><br>
                           @if ($species->map != '')
-                              <img src="{{$species->map}}" alt="{{$species->bookName}} map" class="admin-book-img">
+                              <img src="{{$species->map}}" alt="{{$species->bookName}} map" class="admin-book-img" value="{{ old('speciesName') }}">
                           @endif
                           <input type="file" id="map" name="map_new">
                           <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
@@ -72,7 +72,7 @@
                   
                   <div class="form-group">
                     <label for="description">Species Description</label>
-                    <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Species Description..." required="required">{{$species->description}}</textarea>
+                    <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Species Description..." required="required">{{ old('description', $species->description) }}</textarea>
                   </div>
                   
                 </div>

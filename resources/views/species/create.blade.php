@@ -46,7 +46,7 @@
                   <div class="form-group">
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <label for="speciesName">Species Name</label>
-                    <input type="text" name="speciesName" class="form-control" id="speciesName" placeholder="Enter Species Name" required="required">
+                    <input type="text" name="speciesName" class="form-control" id="speciesName" placeholder="Enter Species Name" required="required" value="{{ old('speciesName') }}">
                   </div>
 
                   <div class="form-group">
@@ -54,10 +54,10 @@
                       <div class="panel-heading"><label for="imageUrl">Species Image</label></div>
                       <div class="panel-body">
                         <div class="col-md-6">
-                          <input type="file" id="imageUrl" name="imageUrl" required="required">
+                          <input type="file" id="imageUrl" name="imageUrl" required="required"  value="{{ old('imageUrl') }}">
                         </div>
                         <div class="col-md-6">
-                          <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
                         </div>
                       </div>
                     </div>
@@ -72,17 +72,17 @@
                       <div class="panel-heading"><label for="map">Map</label></div>
                       <div class="panel-body">
                         <div class="col-md-6">
-                          <input type="file" id="map" name="map" required="required">
+                          <input type="file" id="map" name="map" required="required" value="{{ old('map') }}">
                         </div>
                         <div class="col-md-6">
-                          <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="description">Species Description</label>
-                    <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Species Description..." required="required"></textarea>
+                    <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Species Description..." required="required">{{ old('description') }}</textarea>
                   </div>
                   
                 </div>

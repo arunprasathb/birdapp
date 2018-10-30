@@ -54,17 +54,17 @@
                   <div class="form-group">
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <label for="bookName">Book Name</label>
-                    <input type="text" name="bookName" class="form-control" id="bookName" placeholder="Enter Book Name" required="required">
+                    <input type="text" name="bookName" class="form-control" id="bookName" placeholder="Enter Book Name" required="required" value="{{ old('bookName') }}">
                   </div>
 
                   <div class="form-group">
                     <label for="price">Cost</label>
-                    <input type="number" class="form-control" name="price" id="price" placeholder="Cost" required="required">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="Cost" required="required" value="{{ old('price') }}">
                   </div>
 
                   <div class="form-group">
                     <label for="author">Author Name</label>
-                    <input type="text" name="author" class="form-control" id="author" placeholder="Enter Author Name" required="required">
+                    <input type="text" name="author" class="form-control" id="author" placeholder="Enter Author Name" required="required" value="{{ old('author') }}">
 
                   </div>
 
@@ -73,10 +73,10 @@
                       <div class="panel-heading"><label for="imageUrl">Book Image</label></div>
                       <div class="panel-body">
                         <div class="col-md-6">
-                          <input type="file" id="imageUrl" name="imageUrl" required="required">
+                          <input type="file" id="imageUrl" name="imageUrl" required="required" value="{{ old('imageUrl') }}">
                         </div>
                         <div class="col-md-6">
-                          <small><b>Note:</b><ul><li> Image type should be JPG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
                         </div>
                       </div>
                     </div>
@@ -86,7 +86,7 @@
                       <div class="panel-heading"><label for="unpaidPdfUrl">Unpaid book PDF file</label></div>
                       <div class="panel-body">
                         <div class="col-md-6">
-                          <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl" required="required">
+                          <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl" required="required" value="{{ old('unpaidPdfUrl') }}">
                         </div>
                         <div class="col-md-6">
                           <small><b>Note:</b><ul><li> Maximum PDF size is 10MB</li></ul></small>
@@ -108,7 +108,7 @@
                   
                   <div class="form-group">
                     <label for="description">Book Description</label>
-                    <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Book Description..." required="required"></textarea>
+                    <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Book Description..." required="required">{{ old('description') }}</textarea>
                   </div>
                   
                 </div>
