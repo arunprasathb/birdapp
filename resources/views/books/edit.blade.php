@@ -82,7 +82,7 @@
                     </div> -->
                     <div class="col-md-4">
                         <div class="form-group">
-                          <label for="unpaidPdfUrl">Unpaid book PDF file</label><br>
+                          <label for="unpaidPdfUrl">Part-1 book PDF file</label><br>
                            @if ($book_details->unpaidPdfUrl != '')
                               <embed src="{{$book_details->unpaidPdfUrl}}" width="150px" height="180px" />
                           @endif

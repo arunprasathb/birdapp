@@ -32,9 +32,9 @@ class GalleryController extends Controller
 	            
 	            $file_name = 'galleries'.'_'. str_random(8) . '.' . $value->getClientOriginalExtension();
 	            Image::make($value)
-	                  ->resize(120,180,function ($constraint) {
+	                  /*->resize(120,180,function ($constraint) {
 	                    $constraint->aspectRatio();
-	                     })
+	                     })*/
 	                  ->save($thumbnail_path . $file_name);
 	            $galleries->imageUrl = url('/').'/images/galleries/'.$file_name;
 	        }
@@ -42,7 +42,7 @@ class GalleryController extends Controller
 	        $galleries->save();
        	}
    		flash('Species gallery imgae added successfully.')->success();
-		return redirect('/admin/species/'.$id.'/view');
+		return redirect('/admin/species/'.$id.'/edit');
     }
 
     public function delete($id){
@@ -57,6 +57,6 @@ class GalleryController extends Controller
         gallery::destroy($id);
 
         flash('Gallery Image deleted successfully.')->success();
-        return redirect('/admin/species/'.$species_details->id.'/view');
+        return redirect('/admin/species/'.$species_details->id.'/edit');
     }
 }

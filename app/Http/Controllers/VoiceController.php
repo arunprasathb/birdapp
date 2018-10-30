@@ -47,7 +47,7 @@ class VoiceController extends Controller
 	        
        	}
    		flash('Species voice audio added successfully.')->success();
-		return redirect('/admin/species/'.$id.'/view');
+		return redirect('/admin/species/'.$id.'/edit');
     }
 
     public function delete($id){
@@ -62,6 +62,6 @@ class VoiceController extends Controller
         voice::destroy($id);
 
         flash('Voice deleted successfully.')->success();
-        return redirect('/admin/species/'.$species_details->id.'/view');
+        return redirect('/admin/species/'.$species_details->id.'/edit');
     }
 }

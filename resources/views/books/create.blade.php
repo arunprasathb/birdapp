@@ -83,7 +83,7 @@
                   </div>
                   <div class="form-group">
                     <div class="panel panel-default">
-                      <div class="panel-heading"><label for="unpaidPdfUrl">Unpaid book PDF file</label></div>
+                      <div class="panel-heading"><label for="unpaidPdfUrl">Part-1 book PDF file</label></div>
                       <div class="panel-body">
                         <div class="col-md-6">
                           <input type="file" id="unpaidPdfUrl" name="unpaidPdfUrl" required="required" value="{{ old('unpaidPdfUrl') }}">

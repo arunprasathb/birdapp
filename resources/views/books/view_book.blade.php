@@ -79,7 +79,7 @@
                 @endif -->
                 @if ($book_details->unpaidPdfUrl != '')
                   <div class="col-md-6">
-                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Unpaid PDF</strong> <br>
+                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Part-1 Book PDF</strong> <br>
                     <embed src="{{$book_details->unpaidPdfUrl}}"  style="min-height: 370px;width: 90%;" />
                   </div>
               @endif

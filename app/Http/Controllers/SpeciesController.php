@@ -156,7 +156,7 @@ class SpeciesController extends Controller
         voice::where('species_id', $id)->delete();
         species::destroy($id);
         flash('Species deleted successfully.')->success();
-        return redirect('/admin/books/'.$book_details->id.'/view');
+        return redirect('/admin/books/'.$book_details->id.'/edit');
     }
 
     public function speciesById(Request $request){  
@@ -192,9 +192,25 @@ class SpeciesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $species = species::where('id', $id)
-                        ->first();
-        return view('species.edit', compact('species', 'id'));
+        $user = auth()->guard('admin')->user();
+        $species_details = species::find($id);
+        $book_details = books::find($species_details['book_id']);
+        $galleries_list = species::join('galleries', 'galleries.species_id', '=', 'species.id')
+                ->select('galleries.*')
+                ->where('species.id',$id)
+                ->get();
+                $galleries = [];
+                foreach ($galleries_list as $key => $value) {
+                    $galleries[$key]['imageUrl'] = $galleries_list[$key]->imageUrl;
+                    $galleries[$key]['id'] = $galleries_list[$key]->id;
+                }
+
+        $voices_list = species::join('voices', 'voices.species_id', '=', 'species.id')
+                ->select('voices.*')
+                ->where('species.id',$id)
+                ->get();
+        // return view('species.edit', compact('species', 'id'));
+          return view('species.edit')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'id']);
     }
 
      /**
@@ -273,8 +289,8 @@ class SpeciesController extends Controller
               }
               $species->save();
           }
-
-        return redirect('/admin/books/'.$book_id.'/edit')->with('success', 'Species has been updated!!');
+          flash('Species has been updated!!')->success();
+        return redirect('/admin/species/'.$id.'/edit');
     }
 
     /**
