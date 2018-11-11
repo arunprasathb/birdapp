@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('avatar')->nullable();
+            $table->string('role')->default(2)->comment('1->superadmin,2->admin');
             $table->string('remember_token', 100)->nullable();
             $table->timestamps();
         });

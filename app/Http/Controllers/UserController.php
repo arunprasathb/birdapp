@@ -26,9 +26,9 @@ class UserController extends BaseApiController
         $this->userServiceProvider = new UserServiceProvider();
     }
     public function index(){
-        $user = auth()->guard('admin')->user();
+        $admin = auth()->guard('admin')->user();
         $users = User::select()->get();
-        return view('users.users_list')->with(['users'=>$users]);
+        return view('users.users_list')->with(['users'=>$users, 'admin'=>$admin]);
     }
     /**
      * EdCreateit the specified user.
@@ -38,7 +38,8 @@ class UserController extends BaseApiController
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('users.create');
+        $admin = auth()->guard('admin')->user();
+        return view('users.create')->with(['admin'=>$admin]);
     }
 
     /**
@@ -84,7 +85,8 @@ class UserController extends BaseApiController
     public function edit($id){
         $users = user   ::where('id', $id)
                         ->first();
-        return view('users.edit', compact('users', 'id'));
+        $admin = auth()->guard('admin')->user();
+        return view('users.edit', compact('users', 'id'), compact('admin', $admin));
     }
 
      /**
@@ -115,9 +117,9 @@ class UserController extends BaseApiController
     }
 
     public function show_user($id){
-        $user = auth()->guard('admin')->user();
+        $admin = auth()->guard('admin')->user();
         $user_details = User::where('id', $id)->firstOrFail();
-        return view('users.view_user')->with(['user_details'=>$user_details]);
+        return view('users.view_user')->with(['user_details'=>$user_details, 'admin'=>$admin]);
     }
     public function register(RegisterUserRequest $request) {
         $result = $this->userServiceProvider->registerUser($request);

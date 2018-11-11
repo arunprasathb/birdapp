@@ -26,7 +26,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/images/avatar.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Administrator</span>
+              <span class="hidden-xs">{{$admin->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -34,13 +34,15 @@
                 <img src="/images/avatar.png" class="img-circle" alt="User Image">
 
                 <p>
-                  Administrator - Admin
+                  {{$admin->name}}
                 </p>
               </li>
               <!-- Menu Body -->
+              @if ($admin->role == '1')
                 <div class="pull-left">
-                  <!-- <a href="#" class="btn btn-default btn-flat">Profile</a> -->
+                  <a href="/admin/settings" class="btn btn-default btn-flat">settings</a>
                 </div>
+              @endif
                 <div class="pull-right">
                   <a href="/admin/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>

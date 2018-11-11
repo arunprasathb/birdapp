@@ -15,6 +15,7 @@
         Route::post('/species/commentImageUpload', 'SpeciesController@commentImageUpload');
         Route::post('/species/comments', 'SpeciesController@comments');
         Route::post('/books/getBookFullDetails', 'BookPaymentController@getBookFullDetails');
+        Route::get('/appSettings', 'AdminController@appSettings');
     });
     
 // });

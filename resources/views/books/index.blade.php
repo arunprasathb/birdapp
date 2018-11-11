@@ -38,7 +38,7 @@
                   <th>Book Name</th>
                   <th>Book Cost</th>
                   <th>Author</th>
-                  <th>Status</th>
+                  <!-- <th>Status</th> -->
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -49,7 +49,7 @@
                       <td>{{$book->bookName}}</td>
                       <td>{{$book->price}}</td>
                       <td>{{$book->author}}</td>
-                      <td>{{$book->status}}</td>
+                      <!-- <td>{{$book->status}}</td> -->
                       <td>
                         <a href="/admin/books/{{$book->id}}/view" title="View"><i class='fa fa-eye button-link'></i></a> 
                         <a href="/admin/books/{{$book->id}}/edit" title="Edit"><i class='fa fa-pencil button-link'></i></a>

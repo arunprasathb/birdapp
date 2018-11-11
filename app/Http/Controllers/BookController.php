@@ -19,23 +19,23 @@ class BookController extends BaseApiController
     }
  
     public function index() {
-        $user = auth()->guard('admin')->user();
+        $admin = auth()->guard('admin')->user();
         $books = books::select()->get();
-        return view('books.index')->with(['books'=>$books]);
+        return view('books.index')->with(['books'=>$books, 'admin'=>$admin]);
     }
     public function bookList(Request $request) {
        $result = $this->bookServiceProvider->getBooks($request);
        return $this->returnResponse($result);
     }
     public function show_book($id){
-        $user = auth()->guard('admin')->user();
+        $admin = auth()->guard('admin')->user();
         $book_details = books::find($id);
         $book_species = books::join('species', 'species.book_id', '=', 'books.id')
                 ->select('species.*')
                 ->where('books.id',$id)
                 ->get();
         $book_details = books::where('id', $id)->firstOrFail();
-        return view('books.view_book')->with(['book_details'=>$book_details, 'book_species'=> $book_species]);
+        return view('books.view_book')->with(['book_details'=>$book_details, 'book_species'=> $book_species, 'admin'=>$admin]);
     }
     
     public function delete($id){
@@ -112,7 +112,8 @@ class BookController extends BaseApiController
         return $this->returnResponse($result);
     }
     public function create(Request $request){
-        return view('books.create');
+        $admin = auth()->guard('admin')->user();
+        return view('books.create')->with(['admin'=>$admin]);
     }
     public function store(Request $request){
         $this->validate($request, [
@@ -198,14 +199,14 @@ class BookController extends BaseApiController
     public function edit($id){
         $book = books::where('id', $id)
                         ->first();
-        $user = auth()->guard('admin')->user();
+        $admin = auth()->guard('admin')->user();
         $book_details = books::find($id);
         $book_species = books::join('species', 'species.book_id', '=', 'books.id')
                 ->select('species.*')
                 ->where('books.id',$id)
                 ->get();
         $book_details = books::where('id', $id)->firstOrFail();
-        return view('books.edit')->with(['book_details'=>$book_details, 'book_species'=> $book_species, 'id' => $id]);
+        return view('books.edit')->with(['book_details'=>$book_details, 'book_species'=> $book_species, 'id' => $id, 'admin'=>$admin]);
         // return view('books.edit', compact('book', 'id'));
     }
 

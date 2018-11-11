@@ -1,0 +1,230 @@
+@section('content')
+@extends('layout')
+@include('header')
+@include('sidebar')
+
+
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        App Settings
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">App Settings</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+     <!-- Main content -->
+    <section class="content">
+      @include('flash::message')
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">App Settings</h3>
+            </div>
+            <div class="box-body">
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div><br />
+              @endif
+            <!-- form start -->
+              <form role="form" method="post"  action="{{action('AdminController@settingsUpdate')}}" enctype="multipart/form-data">
+                {{csrf_field()}}
+                <div class="box-body">
+
+                  <div class="form-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">Booklist Background settings</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                            <label for="bookName">Booklist Bg Option: </label>
+                            <input type="radio" name="booklist_bg_option" value="color" {{ ($app_settings->booklist_bg_option == "color")? "checked" : "" }} ><label>Color</label>
+                            <input type="radio" name="booklist_bg_option" value="image" {{ ($app_settings->booklist_bg_option == "image")? "checked" : "" }} ><label>Images</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="author">Booklist Bg Image: </label><br>
+                             @if ($app_settings->booklist_bg_image != '')
+                                <img src="{{$app_settings->booklist_bg_image}}" alt="Booklist Background Image" class="admin-book-img">
+                            @endif
+                            <input type="file" name="booklist_bg_image" class="form-control colorpicker" placeholder="Enter Color code" value="{{ old('booklist_bg_image', $app_settings->booklist_bg_image) }}">
+                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                            
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="price">Booklist Bg color: </label>
+                            <input type="text" class="form-control colorpicker" name="booklist_bg_color" placeholder="Color code" value="{{ old('booklist_bg_color', $app_settings->booklist_bg_color) }}">
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">Species list Background settings</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="bookName">Species list Bg Option: </label>
+                            <input type="radio" name="specieslist_bg_option" value="color" {{ ($app_settings->specieslist_bg_option == "color")? "checked" : "" }} ><label>Color</label>
+                            <input type="radio" name="specieslist_bg_option" value="image" {{ ($app_settings->specieslist_bg_option == "image")? "checked" : "" }} ><label>Images</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="author">Species list Bg Image: </label><br>
+                            @if ($app_settings->specieslist_bg_image != '')
+                                <img src="{{$app_settings->specieslist_bg_image}}" alt="Specieslist Background Image" class="admin-book-img">
+                            @endif
+                            <input type="file" name="specieslist_bg_image" class="form-control colorpicker" placeholder="Enter Color code" value="{{ old('specieslist_bg_image', $app_settings->specieslist_bg_image) }}">
+                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="price">Species list Bg color: </label>
+                            
+                            <input type="text" class="form-control colorpicker" name="specieslist_bg_color" placeholder="Color code" value="{{ old('specieslist_bg_color', $app_settings->specieslist_bg_color) }}">
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">Voicelist Background settings</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="bookName">Voicelist Bg Option: </label>
+                            <input type="radio" name="voicelist_bg_option" value="color" {{ ($app_settings->voicelist_bg_option == "color")? "checked" : "" }} ><label>Color</label>
+                            <input type="radio" name="voicelist_bg_option" value="image" {{ ($app_settings->voicelist_bg_option == "image")? "checked" : "" }} ><label>Images</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="author">Voicelist Bg Image: </label><br>
+                            @if ($app_settings->voicelist_bg_image != '')
+                                <img src="{{$app_settings->voicelist_bg_image}}" alt="Voicelist Background Image" class="admin-book-img">
+                            @endif
+                            <input type="file" name="voicelist_bg_image" class="form-control colorpicker" placeholder="Enter Color code" value="{{ old('voicelist_bg_image', $app_settings->voicelist_bg_image) }}">
+                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="price">Voicelist Bg color: </label>
+                            <input type="text" class="form-control colorpicker" name="voicelist_bg_color" placeholder="Color code" value="{{ old('voicelist_bg_color', $app_settings->voicelist_bg_color) }}">
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">Page-A Background settings</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="bookName">Page-A Bg Option: </label>
+                            <input type="radio" name="pageA_bg_option" value="color" {{ ($app_settings->pageA_bg_option == "color")? "checked" : "" }} ><label>Color</label>
+                            <input type="radio" name="pageA_bg_option" value="image" {{ ($app_settings->pageA_bg_option == "image")? "checked" : "" }} ><label>Images</label>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="author">page-A Bg Image:</label><br>
+                            @if ($app_settings->pageA_bg_image != '')
+                                <img src="{{$app_settings->pageA_bg_image}}" alt="pageA Background Image" class="admin-book-img">
+                            @endif
+                            <input type="file" name="pageA_bg_image" class="form-control colorpicker" placeholder="Enter Color code" value="{{ old('pageA_bg_image', $app_settings->pageA_bg_image) }}">
+                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="price">page-A Bg color:</label>
+                            <input type="text" class="form-control colorpicker" name="pageA_bg_color" placeholder="Color code" value="{{ old('pageA_bg_color', $app_settings->pageA_bg_color) }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">page-B Background settings</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                            <label for="bookName">page-B Bg Option: </label>
+                            <input type="radio" name="pageB_bg_option" value="color" {{ ($app_settings->pageB_bg_option == "color")? "checked" : "" }} ><label> Color</label>
+                            <input type="radio" name="pageB_bg_option" value="image" {{ ($app_settings->pageB_bg_option == "image")? "checked" : "" }} ><label> Images</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="author">page-B Bg Image: </label><br>
+                            @if ($app_settings->pageB_bg_image != '')
+                                <img src="{{$app_settings->pageB_bg_image}}" alt="pageB Background Image" class="admin-book-img">
+                            @endif
+                            <input type="file" name="pageB_bg_image" class="form-control colorpicker" placeholder="Enter Color code" value="{{ old('pageB_bg_image', $app_settings->pageB_bg_image) }}">
+                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          </div>
+                        </div>  
+                        <div class="col-md-12">
+                          <div class="form-group col-md-6">
+                            <label for="price">page-B Bg color:</label>
+                            <input type="text" class="form-control colorpicker" name="pageB_bg_color" placeholder="Color code" value="{{ old('pageB_bg_color', $app_settings->pageB_bg_color) }}">
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+@stop

@@ -22,6 +22,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('admin/login', ['as'=>'admin.auth','uses'=>'AdminLoginController@adminAuth']);
     Route::group(['middleware' => ['admin']], function () {
         Route::get('admin/dashboard', ['as'=>'admin.dashboard','uses'=>'AdminController@dashboard']);
+        Route::get('admin/settings', ['as'=>'settings','uses'=>'AdminController@settings']);
+        Route::post('admin/settings', ['as'=>'settings','uses'=>'AdminController@settingsUpdate']);
         // Route::group(['prefix' => 'users'], function(){
             Route::get('admin/users', ['as'=>'users','uses'=>'UserController@index']);
             Route::get('admin/users/{userId}/view', ['as'=>'users','uses'=>'UserController@show_user']);

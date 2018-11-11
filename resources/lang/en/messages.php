@@ -26,4 +26,5 @@ return [
     'image_upload_success' => 'Image uploaded successfully',
     'comment_success' => 'Comment added successfully',
     'book_full_details' => 'Book full details retrieved successfully',
+    'app_settings_details' => 'App Settings details retrieved successfully',
 ];

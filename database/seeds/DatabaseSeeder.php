@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
 
          $this->call(GalleriesTableSeeder::class);
          $this->command->info("Gallery table seeded");
+
+         $this->call(AppSettingsTableSeeder::class);
+         $this->command->info("App Settings table seeded");
          
     }
 }

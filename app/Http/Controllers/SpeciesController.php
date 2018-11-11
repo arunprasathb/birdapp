@@ -164,7 +164,7 @@ class SpeciesController extends Controller
         return response()->json($result);
     }
     public function show_species($id){
-        $user = auth()->guard('admin')->user();
+        $admin = auth()->guard('admin')->user();
         $species_details = species::find($id);
         $book_details = books::find($species_details['book_id']);
         $galleries_list = species::join('galleries', 'galleries.species_id', '=', 'species.id')
@@ -181,7 +181,7 @@ class SpeciesController extends Controller
                 ->select('voices.*')
                 ->where('species.id',$id)
                 ->get();
-        return view('species.view_species')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details]);
+        return view('species.view_species')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'admin'=>$admin]);
     }
 
      /**
@@ -192,7 +192,7 @@ class SpeciesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $user = auth()->guard('admin')->user();
+        $admin = auth()->guard('admin')->user();
         $species_details = species::find($id);
         $book_details = books::find($species_details['book_id']);
         $galleries_list = species::join('galleries', 'galleries.species_id', '=', 'species.id')
@@ -210,7 +210,7 @@ class SpeciesController extends Controller
                 ->where('species.id',$id)
                 ->get();
         // return view('species.edit', compact('species', 'id'));
-          return view('species.edit')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'id']);
+          return view('species.edit')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'id', 'admin'=>$admin]);
     }
 
      /**
