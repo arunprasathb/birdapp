@@ -4,6 +4,7 @@
     Route::post('/user/register', 'UserController@register');
     Route::post('/user/login', 'UserController@login');
     Route::post('user/forgetPassword', 'UserController@forgetPassword'); 
+    Route::get('/appSettings', 'AdminController@appSettings');
     Route::group(['middleware' => 'userAuth'], function () {
     	Route::post('/user/logout', 'UserController@logout');
         Route::post('/user/profileupdate/{id}', 'UserController@profileupdate');
@@ -15,7 +16,7 @@
         Route::post('/species/commentImageUpload', 'SpeciesController@commentImageUpload');
         Route::post('/species/comments', 'SpeciesController@comments');
         Route::post('/books/getBookFullDetails', 'BookPaymentController@getBookFullDetails');
-        Route::get('/appSettings', 'AdminController@appSettings');
+        
     });
     
 // });
