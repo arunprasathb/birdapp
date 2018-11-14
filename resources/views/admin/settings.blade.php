@@ -79,6 +79,39 @@
 
                   <div class="form-group">
                     <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">Part Screen Background settings</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                            <label for="bookName">Part Screen Bg Option: </label>
+                            <input type="radio" name="part_screen_bg_option" value="color" onclick="ShowHideDiv4()" class="color_option4" {{ ($app_settings->part_screen_bg_option == "color")? "checked" : "" }} ><label> Color</label>
+                            <input type="radio" name="part_screen_bg_option" value="image" onclick="ShowHideDiv4()" class="image_option4" {{ ($app_settings->part_screen_bg_option == "image")? "checked" : "" }} ><label> Images</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12 image_field4">
+                          <div class="form-group col-md-6">
+                            <label for="author">Part Screen Bg Image: </label><br>
+                            @if ($app_settings->part_screen_bg_image != '')
+                                <img src="{{$app_settings->part_screen_bg_image}}" alt="part_screen Background Image" class="admin-book-img">
+                            @endif
+                            <input type="file" name="part_screen_bg_image" class="form-control" placeholder="Enter Color code" value="{{ old('part_screen_bg_image', $app_settings->part_screen_bg_image) }}">
+                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          </div>
+                        </div>  
+                        <div class="col-md-12 color_field4">
+                          <div class="form-group col-md-6">
+                            <label for="price">Part Screen Bg color:</label>
+                            <input type="text" class="form-control colorpicker" name="part_screen_bg_color" placeholder="Color code" value="{{ old('part_screen_bg_color', $app_settings->part_screen_bg_color) }}">
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="panel panel-default">
                       <div class="panel-heading"><label for="imageUrl">Species list Background settings</label></div>
                       <div class="panel-body">
                         <div class="col-md-12">
@@ -110,7 +143,38 @@
                       </div>
                     </div>
                   </div>
-
+                  
+                  <div class="form-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><label for="imageUrl">Species Detail Background settings</label></div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="bookName">Species Detail Bg Option: </label>
+                            <input type="radio" name="species_detail_bg_option" value="color" onclick="ShowHideDiv3()" class="color_option3" {{ ($app_settings->species_detail_bg_option == "color")? "checked" : "" }} ><label>Color</label>
+                            <input type="radio" name="species_detail_bg_option" value="image" onclick="ShowHideDiv3()" class="image_option3" {{ ($app_settings->species_detail_bg_option == "image")? "checked" : "" }} ><label>Images</label>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-12 image_field3">
+                          <div class="form-group col-md-6">
+                            <label for="author">Species Detail Bg Image:</label><br>
+                            @if ($app_settings->species_detail_bg_image != '')
+                                <img src="{{$app_settings->species_detail_bg_image}}" alt="species_detail Background Image" class="admin-book-img">
+                            @endif
+                            <input type="file" name="species_detail_bg_image" class="form-control" placeholder="Enter Color code" value="{{ old('species_detail_bg_image', $app_settings->species_detail_bg_image) }}">
+                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
+                          </div>
+                        </div>
+                        <div class="col-md-12 color_field3">
+                          <div class="form-group col-md-6">
+                            <label for="price">Species Detail Bg color:</label>
+                            <input type="text" class="form-control colorpicker" name="species_detail_bg_color" placeholder="Color code" value="{{ old('species_detail_bg_color', $app_settings->species_detail_bg_color) }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <div class="panel panel-default">
                       <div class="panel-heading"><label for="imageUrl">Voicelist Background settings</label></div>
@@ -143,70 +207,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <div class="panel panel-default">
-                      <div class="panel-heading"><label for="imageUrl">Species Detail Background settings</label></div>
-                      <div class="panel-body">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="bookName">Species Detail Bg Option: </label>
-                            <input type="radio" name="species_detail_bg_option" value="color" onclick="ShowHideDiv3()" class="color_option3" {{ ($app_settings->species_detail_bg_option == "color")? "checked" : "" }} ><label>Color</label>
-                            <input type="radio" name="species_detail_bg_option" value="image" onclick="ShowHideDiv3()" class="image_option3" {{ ($app_settings->species_detail_bg_option == "image")? "checked" : "" }} ><label>Images</label>
-                          </div>
-                        </div>
-                        
-                        <div class="col-md-12 image_field3">
-                          <div class="form-group col-md-6">
-                            <label for="author">Species Detail Bg Image:</label><br>
-                            @if ($app_settings->species_detail_bg_image != '')
-                                <img src="{{$app_settings->species_detail_bg_image}}" alt="species_detail Background Image" class="admin-book-img">
-                            @endif
-                            <input type="file" name="species_detail_bg_image" class="form-control" placeholder="Enter Color code" value="{{ old('species_detail_bg_image', $app_settings->species_detail_bg_image) }}">
-                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
-                          </div>
-                        </div>
-                        <div class="col-md-12 color_field3">
-                          <div class="form-group col-md-6">
-                            <label for="price">Species Detail Bg color:</label>
-                            <input type="text" class="form-control colorpicker" name="species_detail_bg_color" placeholder="Color code" value="{{ old('species_detail_bg_color', $app_settings->species_detail_bg_color) }}">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="form-group">
-                    <div class="panel panel-default">
-                      <div class="panel-heading"><label for="imageUrl">Part Screen Background settings</label></div>
-                      <div class="panel-body">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
-                            <label for="bookName">Part Screen Bg Option: </label>
-                            <input type="radio" name="part_screen_bg_option" value="color" onclick="ShowHideDiv4()" class="color_option4" {{ ($app_settings->part_screen_bg_option == "color")? "checked" : "" }} ><label> Color</label>
-                            <input type="radio" name="part_screen_bg_option" value="image" onclick="ShowHideDiv4()" class="image_option4" {{ ($app_settings->part_screen_bg_option == "image")? "checked" : "" }} ><label> Images</label>
-                          </div>
-                        </div>
-                        <div class="col-md-12 image_field4">
-                          <div class="form-group col-md-6">
-                            <label for="author">Part Screen Bg Image: </label><br>
-                            @if ($app_settings->part_screen_bg_image != '')
-                                <img src="{{$app_settings->part_screen_bg_image}}" alt="part_screen Background Image" class="admin-book-img">
-                            @endif
-                            <input type="file" name="part_screen_bg_image" class="form-control" placeholder="Enter Color code" value="{{ old('part_screen_bg_image', $app_settings->part_screen_bg_image) }}">
-                            <small><b>Note:</b><ul><li> Image type should be JPG, JPEG, PNG.</li> <li>Maximum image size is 5MB</li></ul></small>
-                          </div>
-                        </div>  
-                        <div class="col-md-12 color_field4">
-                          <div class="form-group col-md-6">
-                            <label for="price">Part Screen Bg color:</label>
-                            <input type="text" class="form-control colorpicker" name="part_screen_bg_color" placeholder="Color code" value="{{ old('part_screen_bg_color', $app_settings->part_screen_bg_color) }}">
-                          </div>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
 
                   </div>
                 <!-- /.box-body -->
