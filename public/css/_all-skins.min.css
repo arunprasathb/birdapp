@@ -18,3 +18,7 @@ table{
 	}
 }
 small{color: #736767}
+.settings input[type=radio]{
+	margin: auto 10px auto;
+	vertical-align: middle;
+}

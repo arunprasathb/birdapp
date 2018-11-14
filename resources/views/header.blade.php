@@ -5,7 +5,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b></span>
+      <span class="logo-lg"><b>{{config('constants.site_name')}}</b></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -23,13 +23,14 @@
           <!-- Tasks: style can be found in dropdown.less -->
           
           <!-- User Account: style can be found in dropdown.less -->
+          <li class="user"><a href="/admin/settings"><i class="fa fa-gear"></i>Settings</a></li>
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="/admin/logout" class=""><i class="fa fa-sign-out"></i>Sign out</a>
+            <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/images/avatar.png" class="user-image" alt="User Image">
               <span class="hidden-xs">{{$admin->name}}</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
+            </a> -->
+            <!-- <ul class="dropdown-menu">
               <li class="user-header">
                 <img src="/images/avatar.png" class="img-circle" alt="User Image">
 
@@ -37,7 +38,6 @@
                   {{$admin->name}}
                 </p>
               </li>
-              <!-- Menu Body -->
               @if ($admin->role == '1')
                 <div class="pull-left">
                   <a href="/admin/settings" class="btn btn-default btn-flat">settings</a>
@@ -47,7 +47,7 @@
                   <a href="/admin/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
-            </ul>
+            </ul> -->
           </li>
           
         </ul>

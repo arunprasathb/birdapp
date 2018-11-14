@@ -8,7 +8,7 @@
           <img src="/images/avatar.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Administrator</p>
+          <p>{{$admin->name}}</p>
           <i class="fa fa-circle text-success"></i> Online
         </div>
       </div>
