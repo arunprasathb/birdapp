@@ -24,15 +24,15 @@ class CreateAppSettingsTable extends Migration
             $table->string('voicelist_bg_option')->default("color");
             $table->string('voicelist_bg_color')->nullable();
             $table->string('voicelist_bg_image')->nullable();
-            $table->string('pageA_bg_option')->default("color");
-            $table->string('pageA_bg_color')->nullable();
-            $table->string('pageA_bg_image')->nullable();
-            $table->string('pageB_bg_option')->default("color");
-            $table->string('pageB_bg_color')->nullable();
-            $table->string('pageB_bg_image')->nullable();
-            $table->string('pageC_bg_option')->default("color");
+            $table->string('species_detail_bg_option')->default("color");
+            $table->string('species_detail_bg_color')->nullable();
+            $table->string('species_detail_bg_image')->nullable();
+            $table->string('part_screen_bg_option')->default("color");
+            $table->string('part_screen_bg_color')->nullable();
+            $table->string('part_screen_bg_image')->nullable();
+            /*$table->string('pageC_bg_option')->default("color");
             $table->string('pageC_bg_color')->nullable();
-            $table->string('pageC_bg_image')->nullable();
+            $table->string('pageC_bg_image')->nullable();*/
             $table->timestamps();
         });
     }

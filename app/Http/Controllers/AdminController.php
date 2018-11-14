@@ -40,8 +40,8 @@ class AdminController extends Controller
             'booklist_bg_option' => 'required',
             'specieslist_bg_option' => 'required',
             'voicelist_bg_option' => 'required',
-            'pageA_bg_option' => 'required',
-            'pageB_bg_option' => 'required'
+            'species_detail_bg_option' => 'required',
+            'part_screen_bg_option' => 'required'
         ]);
         $settings = app_settings::find(1);
         $settings->booklist_bg_option = $request->input('booklist_bg_option');
@@ -80,29 +80,29 @@ class AdminController extends Controller
                   ->save($thumbnail_path . $file_name);
             $settings->voicelist_bg_image = url('/').'/images/'.$file_name;
         }
-        $settings->pageA_bg_option = $request->input('pageA_bg_option');
-        $settings->pageA_bg_color = $request->input('pageA_bg_color');
-        if($request->hasFile('pageA_bg_image')){
-            $file = $request->file('pageA_bg_image');
+        $settings->species_detail_bg_option = $request->input('species_detail_bg_option');
+        $settings->species_detail_bg_color = $request->input('species_detail_bg_color');
+        if($request->hasFile('species_detail_bg_image')){
+            $file = $request->file('species_detail_bg_image');
             
             $thumbnail_path = public_path('/images/');
             
-            $file_name = 'pageA_bg'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+            $file_name = 'species_detail_bg'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
             Image::make($file)
                   ->save($thumbnail_path . $file_name);
-            $settings->pageA_bg_image = url('/').'/images/'.$file_name;
+            $settings->species_detail_bg_image = url('/').'/images/'.$file_name;
         }
-        $settings->pageB_bg_option = $request->input('pageB_bg_option');
-        $settings->pageB_bg_color = $request->input('pageB_bg_color');
-        if($request->hasFile('pageB_bg_image')){
-            $file = $request->file('pageB_bg_image');
+        $settings->part_screen_bg_option = $request->input('part_screen_bg_option');
+        $settings->part_screen_bg_color = $request->input('part_screen_bg_color');
+        if($request->hasFile('part_screen_bg_image')){
+            $file = $request->file('part_screen_bg_image');
             
             $thumbnail_path = public_path('/images/');
             
-            $file_name = 'pageB_bg'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
+            $file_name = 'part_screen_bg'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
             Image::make($file)
                   ->save($thumbnail_path . $file_name);
-            $settings->pageB_bg_image = url('/').'/images/'.$file_name;
+            $settings->part_screen_bg_image = url('/').'/images/'.$file_name;
         }
 
         $settings->save();
