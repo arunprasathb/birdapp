@@ -23,7 +23,7 @@
           <!-- Tasks: style can be found in dropdown.less -->
           
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="user"><a href="/admin/settings"><i class="fa fa-gear"></i>Settings</a></li>
+          <!-- <li class="user"><a href="/admin/settings"><i class="fa fa-gear"></i>Settings</a></li> -->
           <li class="dropdown user user-menu">
             <a href="/admin/logout" class=""><i class="fa fa-sign-out"></i>Sign out</a>
             <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">

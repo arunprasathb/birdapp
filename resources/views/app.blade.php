@@ -2,7 +2,7 @@
 <html lang='en'>
     <head>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>@yield('title') | User Admin</title>
+        <title>{{config('constants.site_name')}} | Admin</title>
 
         <link rel='stylesheet' href='/css/bootstrap.min.css'>
         <link href="/css/font-awesome/css/font-awesome.css" rel="stylesheet">

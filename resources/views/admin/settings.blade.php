@@ -14,7 +14,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">App Settings</li>
+        <li class="active">Settings</li>
       </ol>
     </section>
 
@@ -26,7 +26,7 @@
         <div class="col-xs-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">App Settings</h3>
+              <small><b>Disclaimer: It is advisable to change background color only, since we have multiple screen resolution devices, images may not fit in allover the screen in some devices. Upload image at your own risk. Some colors may affect the content of the text in the application, so change the color at your own risk.</b></small>
             </div>
             <div class="box-body">
               @if ($errors->any())

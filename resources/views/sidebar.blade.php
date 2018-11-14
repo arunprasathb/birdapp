@@ -50,6 +50,12 @@
             <li><a href="/admin/users"><i class="fa fa-circle-o"></i> Users List</a></li>
           </ul>
         </li>
+        <li class="{{ Route::currentRouteName() == 'settings' ? 'active menu-open' : '' }}">
+          <a href="/admin/settings">
+            <i class="fa fa-gear"></i>
+            <span>Settings</span>
+          </a>
+        </li>
        
         
         
