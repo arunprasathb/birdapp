@@ -226,7 +226,7 @@ class UserController extends BaseApiController
      public function forgetPassword(Request $request){
         try {
              $validator = Validator::make($request->all(), [
-                    'email' => 'required|email|exists:users,email',
+                    'email' => 'required|exists:users,email',
                 ]);
                 if ($validator->fails()) {
                    return response(array(
