@@ -50,12 +50,14 @@
             <li><a href="/admin/users"><i class="fa fa-circle-o"></i> Users List</a></li>
           </ul>
         </li>
+        @if ($admin->role == "1")
         <li class="{{ Route::currentRouteName() == 'settings' ? 'active menu-open' : '' }}">
           <a href="/admin/settings">
             <i class="fa fa-gear"></i>
             <span>Settings</span>
           </a>
         </li>
+        @endif
        
         
         

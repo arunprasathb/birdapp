@@ -21,7 +21,8 @@ class SpeciesController extends Controller
         $this->speciesServiceProvider = new SpeciesServiceProvider();
     }
     public function create($id){  
-        return view('species.create', compact('id'));
+        $admin = auth()->guard('admin')->user();
+        return view('species.create')->with(['id'=>$id, 'admin'=>$admin]);
     }
 
      /**

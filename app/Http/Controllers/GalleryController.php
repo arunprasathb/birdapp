@@ -12,7 +12,8 @@ use Session;
 class GalleryController extends Controller
 {
     public function create($id){  
-        return view('galleries.create', compact('id'));
+        $admin = auth()->guard('admin')->user();
+        return view('galleries.create')->with(['id'=>$id, 'admin'=>$admin]);
     }
 
     public function store(Request $request, $id)
