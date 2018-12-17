@@ -86,13 +86,6 @@ class BookController extends BaseApiController
               }   
           }
         
-        /*if(isset($book_details['paidPdfUrl'])){
-              $bookPaidPdfUrlArray = explode('/', $book_details['paidPdfUrl']);
-              $book_paid_pdf_url_path = public_path('/images/books/files/'.$bookPaidPdfUrlArray[count($bookPaidPdfUrlArray)-1]);
-              if(file_exists($book_paid_pdf_url_path)) {
-                  @unlink($book_paid_pdf_url_path);
-              }   
-          }*/
         if(isset($book_details['unpaidPdfUrl'])){
               $bookUnPaidPdfUrlArray = explode('/', $book_details['unpaidPdfUrl']);
               $book_unpaid_pdf_url_path = public_path('/images/books/files/'.$bookUnPaidPdfUrlArray[count($bookUnPaidPdfUrlArray)-1]);
@@ -118,70 +111,33 @@ class BookController extends BaseApiController
     public function store(Request $request){
         $this->validate($request, [
             'bookName' => 'required|min:2|unique:books,bookName',
-            // 'shortDescription' => 'required|min:10',
             'price' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
-            // 'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240',
-            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240'
+            'unpaidPdfUrl' => 'mimes:pdf|max:10240'
         ]);
 
         $books = new books();
         $books->bookName = $request->input('bookName');
-        // $books->shortDescription = $request->input('shortDescription');
         $books->description = $request->input('description');
         $books->price = $request->input('price');
         $books->author = $request->input('author');
 
         if($request->hasFile('imageUrl')){
             $file = $request->file('imageUrl');
-            /* $validator = Validator::make($request->all(), [
-                'imageUrl' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
-            ]);
-            if ($validator->fails()) {
-               return response(array(
-                'message' => 'parameters missing',
-                'missing_parameters' =>  $validator->errors()
-            ), 400);
-            }*/
-            /*min:4*/
             $thumbnail_path = public_path('/images/books/');
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
             Image::make($file)
-                 /* ->resize(120,180,function ($constraint) {
-                    $constraint->aspectRatio();
-                     })*/
                   ->save($thumbnail_path . $file_name);
             $books->imageUrl = url('/').'/images/books/'.$file_name;
         }
         
-        /*if($request->hasFile('paidPdfUrl')){
-            $file = $request->file('paidPdfUrl');
-            
-            $thumbnail_path = public_path('/images/books/files/');
-            
-            $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
-
-            if ($file->move($thumbnail_path,  $file_name)) {
-                $books->paidPdfUrl = url('/').'/images/books/files/'.$file_name;
-            }
-
-        }*/
         if($request->hasFile('unpaidPdfUrl')){
             $file = $request->file('unpaidPdfUrl');
-            /*$validator = Validator::make($request->all(), [
-                'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:'.env('PDF_MAX_SIZE'),
-            ]);
-            if ($validator->fails()) {
-               return response(array(
-                'message' => 'parameters missing',
-                'missing_parameters' =>  $validator->errors()
-            ), 400);
-            }*/
-            $thumbnail_path = public_path('/images/books/files/');
+            $files_path = public_path('/images/books/files/');
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
-            if ($file->move($thumbnail_path,  $file_name)) {
+            if ($file->move($files_path,  $file_name)) {
                 $books->unpaidPdfUrl = url('/').'/images/books/files/'.$file_name;
             }
         }
@@ -207,7 +163,6 @@ class BookController extends BaseApiController
                 ->get();
         $book_details = books::where('id', $id)->firstOrFail();
         return view('books.edit')->with(['book_details'=>$book_details, 'book_species'=> $book_species, 'id' => $id, 'admin'=>$admin]);
-        // return view('books.edit', compact('book', 'id'));
     }
 
      /**
@@ -221,31 +176,21 @@ class BookController extends BaseApiController
     {
         $this->validate($request, [
             'bookName' => 'required|min:2|unique:books,bookName,'.$id,
-            // 'shortDescription' => 'required|min:10',
             'price' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
-            // 'paidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240',
-            'unpaidPdfUrl' => 'mimes:pdf,jpeg,png,jpg|max:10240'
+            'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'unpaidPdfUrl' => 'mimes:pdf|max:10240',
+            'unpaidPdfUrl_new' => 'mimes:pdf|max:10240'
         ]);
 
         $books = books::find($id);
         $books->bookName = $request->input('bookName');
-        // $books->shortDescription = $request->input('shortDescription');
         $books->description = $request->input('description');
         $books->price = $request->input('price');
         $books->author = $request->input('author');
         
         if($request->hasFile('imageUrl_new')){
             $file = $request->file('imageUrl_new');
-            /* $validator = Validator::make($request->all(), [
-                'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:'.env('IMAGE_MAX_SIZE'),
-            ]);
-            if ($validator->fails()) {
-               return response(array(
-                'message' => 'parameters missing',
-                'missing_parameters' =>  $validator->errors()
-            ), 400);
-            }*/
             $this->validate($request, [
                  'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:10240'
             ]);
@@ -253,34 +198,19 @@ class BookController extends BaseApiController
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
             Image::make($file)
-                  // ->resize(120,180,function ($constraint) {
-                  //   $constraint->aspectRatio();
-                  //    })
                   ->save($thumbnail_path . $file_name);
             $books->imageUrl = url('/').'/images/books/'.$file_name;
         }
         
-        /*if($request->hasFile('paidPdfUrl_new')){
-            $file = $request->file('paidPdfUrl_new');
-            $thumbnail_path = public_path('/images/books/files/');
-            
-            $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
-            Image::make($file)
-                  ->save($thumbnail_path . $file_name);
-            $books->paidPdfUrl = url('/').'/images/books/files/'.$file_name;
-        }*/
         if($request->hasFile('unpaidPdfUrl_new')){
             $file = $request->file('unpaidPdfUrl_new');
             
-            $thumbnail_path = public_path('/images/books/files/');
+            $files_path = public_path('/images/books/files/');
             
             $file_name = 'book'.'_'. str_random(8) . '.' . $file->getClientOriginalExtension();
-            Image::make($file)
-                  // ->resize(120,180,function ($constraint) {
-                  //   $constraint->aspectRatio();
-                  //    })
-                  ->save($thumbnail_path . $file_name);
-            $books->unpaidPdfUrl = url('/').'/images/books/files/'.$file_name;
+            if ($file->move($files_path,  $file_name)) {
+                $books->unpaidPdfUrl = url('/').'/images/books/files/'.$file_name;
+            }
         }
         
         $books->save();
