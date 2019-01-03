@@ -22,7 +22,11 @@ class SpeciesController extends Controller
     }
     public function create($id){  
         $admin = auth()->guard('admin')->user();
-        return view('species.create')->with(['id'=>$id, 'admin'=>$admin]);
+        $residency = ["Introduced", "resident", "Summer migrants", "Winter resident"];
+        $endemism = ["CUASI ENDEMIC96", "Endemics", "Semi endemic"];
+        $risk_level = ["endangered-64", "Near Threatened", "Threatened-64"];
+        $habitat = ["Habitat all", "Habitat Coastal", "Habitat Crops  11.59.33", "Habitat lowland", "Habitat Mountains-96", "Habitat Open sea", "Habitat Park-96", "Habitat pine forest", "Habitat Pine Oak Forest", "Habitat Selva", "Habitat Urban 96", "habitat wetland 96"];
+        return view('species.create')->with(['id'=>$id, 'admin'=>$admin, 'residency'=>$residency, 'endemism'=>$endemism, 'risk_level'=>$risk_level, 'habitat'=>$habitat]);
     }
 
      /**
@@ -53,6 +57,10 @@ class SpeciesController extends Controller
             $species->speciesName = $request->input('speciesName');
             // $species->shortDescription = "";
             $species->description = $request->input('description');
+            $species->residency = $request->input('residency');
+            $species->endemism = $request->input('endemism');
+            $species->risk_level = $request->input('risk_level');
+            $species->habitat = $request->input('habitat');
             if($request->hasFile('imageUrl')){
                 $file = $request->file('imageUrl');
                 /* $validator = Validator::make($request->all(), [
@@ -210,8 +218,12 @@ class SpeciesController extends Controller
                 ->select('voices.*')
                 ->where('species.id',$id)
                 ->get();
+        $residency = ["Introduced", "resident", "Summer migrants", "Winter resident"];
+        $endemism = ["CUASI ENDEMIC96", "Endemics", "Semi endemic"];
+        $risk_level = ["endangered-64", "Near Threatened", "Threatened-64"];
+        $habitat = ["Habitat all", "Habitat Coastal", "Habitat Crops  11.59.33", "Habitat lowland", "Habitat Mountains-96", "Habitat Open sea", "Habitat Park-96", "Habitat pine forest", "Habitat Pine Oak Forest", "Habitat Selva", "Habitat Urban 96", "habitat wetland 96"];
         // return view('species.edit', compact('species', 'id'));
-          return view('species.edit')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'id', 'admin'=>$admin]);
+          return view('species.edit')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'id', 'admin'=>$admin, 'residency'=>$residency, 'endemism'=>$endemism, 'risk_level'=>$risk_level, 'habitat'=>$habitat]);
     }
 
      /**
@@ -246,6 +258,10 @@ class SpeciesController extends Controller
               $species->speciesName = $request->input('speciesName');
               // $species->shortDescription = "";
               $species->description = $request->input('description');
+              $species->residency = $request->input('residency');
+              $species->endemism = $request->input('endemism');
+              $species->risk_level = $request->input('risk_level');
+              $species->habitat = $request->input('habitat');
               if($request->hasFile('imageUrl_new')){
                   $file = $request->file('imageUrl_new');
                    /*$validator = Validator::make($request->all(), [

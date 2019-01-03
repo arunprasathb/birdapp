@@ -75,7 +75,46 @@
                     <label for="description">Species Description</label>
                     <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Species Description..." required="required">{{ old('description', $species_details->description) }}</textarea>
                   </div>
-                  
+                  <div class="form-group">
+                    <label for="description">Residency Type</label>
+                    <select class="form-control" name="residency">
+                        <option value="">Select Residency Type</option>
+                        @foreach ($residency as $key => $value)
+                            <option value="{{ $value }}"{{ ( $species_details->residency == $value ) ? 'selected' : '' }}>{{ $value }}</option>
+                        @endforeach
+                    </select>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Endemism Type</label>
+                    <select class="form-control" name="endemism">
+                        <option value="">Select Endemism Type</option>
+                        @foreach ($endemism as $key => $value)
+                            <option value="{{ $value }}"{{ ( $species_details->endemism == $value ) ? 'selected' : '' }}>{{ $value }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Risk level Type</label>
+                    <select class="form-control" name="risk_level">
+                        <option value="">Select Risk level Type</option>
+                        @foreach ($risk_level as $key => $value)
+                            <option value="{{ $value }}"{{ ( $species_details->risk_level == $value ) ? 'selected' : '' }}>{{ $value }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Habitat Type</label>
+                    <select class="form-control" name="habitat">
+                        <option value="">Select Habitat Type</option>
+                        @foreach ($habitat as $key => $value)
+                            <option value="{{ $value }}"{{ ( $species_details->habitat == $value ) ? 'selected' : '' }}>{{ $value }}</option>
+                        @endforeach
+                    </select>
+                  </div>
                 </div>
                 <!-- /.box-body -->
 

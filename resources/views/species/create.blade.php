@@ -84,6 +84,48 @@
                     <label for="description">Species Description</label>
                     <textarea class="form-control" rows="3" id="description" name="description" placeholder="Enter Species Description..." required="required">{{ old('description') }}</textarea>
                   </div>
+
+                  <div class="form-group">
+                    <label for="description">Residency Type</label>
+                    <select class="form-control" name="residency">
+                        <option value="">Select Residency Type</option>
+                        @foreach ($residency as $key => $value)
+                            <option value="{{ $value }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Endemism Type</label>
+                    <select class="form-control" name="endemism">
+                        <option value="">Select Endemism Type</option>
+                        @foreach ($endemism as $key => $value)
+                            <option value="{{ $value }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Risk level Type</label>
+                    <select class="form-control" name="risk_level">
+                        <option value="">Select Risk level Type</option>
+                        @foreach ($risk_level as $key => $value)
+                            <option value="{{ $value }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Habitat Type</label>
+                    <select class="form-control" name="habitat">
+                        <option value="">Select Habitat Type</option>
+                        @foreach ($habitat as $key => $value)
+                            <option value="{{ $value }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                </div>
                   
                 </div>
                 <!-- /.box-body -->
