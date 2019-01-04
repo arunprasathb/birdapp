@@ -20,10 +20,10 @@ class CreateSpeciesTable extends Migration
             $table->text('description');
             $table->string('imageUrl');
             $table->string('map');
-            $table->string('residency')->nullable();
-            $table->string('endemism')->nullable();
-            $table->string('risk_level')->nullable();
-            $table->string('habitat')->nullable();
+            $table->string('residency');
+            $table->string('endemism');
+            $table->string('risk_level');
+            $table->string('habitat');
             $table->integer('book_id')->unsigned();
             $table->foreign('book_id')->references('id')->on('books');
             $table->timestamps();

@@ -132,6 +132,10 @@
                         <th>S.No</th>
                         <th>Species Name</th>
                         <th>Species Image</th>
+                        <th>Residency</th>
+                        <th>Endemism</th>
+                        <th>Risk level</th>
+                        <th>Habitat</th>
                         <th>Actions</th>
                       </tr>
                       </thead>
@@ -144,6 +148,42 @@
                                 @if ($book_details->imageUrl != '')
                                     <img src="{{$species->imageUrl}}" alt="{{$species->speciesName}}" class="admin-species-list-img">
                                 @endif
+                            </td>
+                            <td>
+                              @if ($species->residency != '')
+                                  @if(file_exists( public_path().'/images/residency/'.$species->residency.'.png' ))
+                                  <img src="/images/residency/{{$species->residency}}.png" alt="{{$species->residency}}" class="admin-book-img max-h-40">
+                                  @else
+                                    <img src="/images/residency/{{$species->residency}}.jpg" alt="{{$species->residency}}" class="admin-book-img max-h-40">
+                                  @endif
+                              @endif
+                            </td>
+                            <td>@if ($species->endemism != '')
+                                      @if(file_exists( public_path().'/images/endemism/'.$species->endemism.'.png' ))
+                                      <img src="/images/endemism/{{$species->endemism}}.png" alt="{{$species->endemism}}" class="admin-book-img max-h-40">
+                                      @else
+                                        <img src="/images/endemism/{{$species->endemism}}.jpg" alt="{{$species->endemism}}" class="admin-book-img max-h-40">
+                                      @endif
+                                @endif
+                            </td>
+                            <td>
+                              @if ($species->risk_level != '')
+                                    @if(file_exists( public_path().'/images/risk_level/'.$species->risk_level.'.png' ))
+                                    <img src="/images/risk_level/{{$species->risk_level}}.png" alt="{{$species->risk_level}}" class="admin-book-img max-h-40">
+                                    @else
+                                      <img src="/images/risk_level/{{$species->risk_level}}.jpg" alt="{{$species->risk_level}}" class="admin-book-img max-h-40">
+                                    @endif
+                              @endif
+                            </td>
+                            <td>
+                              @if ($species->habitat != '')
+                                    @if(file_exists( public_path().'/images/habitat/'.$species->habitat.'.png' ))
+                                    <img src="/images/habitat/{{$species->habitat}}.png" alt="{{$species->habitat}}" class="admin-book-img max-h-40">
+                                    @else
+                                      <img src="/images/habitat/{{$species->habitat}}.jpg" alt="{{$species->habitat}}" class="admin-book-img max-h-40">
+                                    @endif
+                              @endif
+                            </td>
                             <td>
                               <a href="/admin/species/{{$species['id']}}/view"><i class='fa fa-eye button-link'></i></a> 
                               <a href="/admin/species/{{$species['id']}}/edit"><i class='fa fa-pencil button-link'></i></a>

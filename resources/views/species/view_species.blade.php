@@ -72,6 +72,55 @@
                 </div>
               @endif
               </div>
+               <hr>
+              <div class="row">
+                
+              @if ($species_details->residency != '')
+                  <div class="col-md-6">
+                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Residency</strong> <br>
+                    @if(file_exists( public_path().'/images/residency/'.$species_details->residency.'.png' ))
+                    <img src="/images/residency/{{$species_details->residency}}.png" alt="{{$species_details->residency}}" class="admin-book-img max-h-100">
+                    @else
+                      <img src="/images/residency/{{$species_details->residency}}.jpg" alt="{{$species_details->residency}}" class="admin-book-img max-h-100">
+                    @endif
+                  </div>
+              @endif
+
+             @if ($species_details->endemism != '')
+                  <div class="col-md-6">
+                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Endemism</strong> <br>
+                    @if(file_exists( public_path().'/images/endemism/'.$species_details->endemism.'.png' ))
+                    <img src="/images/endemism/{{$species_details->endemism}}.png" alt="{{$species_details->endemism}}" class="admin-book-img max-h-100">
+                    @else
+                      <img src="/images/endemism/{{$species_details->endemism}}.jpg" alt="{{$species_details->endemism}}" class="admin-book-img max-h-100">
+                    @endif
+                  </div>
+              @endif
+              </div>
+              <div class="row">
+                
+              @if ($species_details->risk_level != '')
+                  <div class="col-md-6">
+                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Risk level</strong> <br>
+                    @if(file_exists( public_path().'/images/risk_level/'.$species_details->risk_level.'.png' ))
+                    <img src="/images/risk_level/{{$species_details->risk_level}}.png" alt="{{$species_details->risk_level}}" class="admin-book-img max-h-100">
+                    @else
+                      <img src="/images/risk_level/{{$species_details->risk_level}}.jpg" alt="{{$species_details->risk_level}}" class="admin-book-img max-h-100">
+                    @endif
+                  </div>
+              @endif
+
+             @if ($species_details->habitat != '')
+                  <div class="col-md-6">
+                    <strong><i class="fa fa-file-image-o margin-r-5"></i> Habitat</strong> <br>
+                    @if(file_exists( public_path().'/images/habitat/'.$species_details->habitat.'.png' ))
+                    <img src="/images/habitat/{{$species_details->habitat}}.png" alt="{{$species_details->habitat}}" class="admin-book-img max-h-100">
+                    @else
+                      <img src="/images/habitat/{{$species_details->habitat}}.jpg" alt="{{$species_details->habitat}}" class="admin-book-img max-h-100">
+                    @endif
+                  </div>
+              @endif
+              </div>
             </div>
             <!-- /.box-body -->
           </div>

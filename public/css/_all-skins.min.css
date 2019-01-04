@@ -22,3 +22,5 @@ small{color: #736767}
 	margin: auto 10px auto;
 	vertical-align: middle;
 }
+.max-h-40{max-height: 40px;}
+.max-h-100{max-height: 100px;}

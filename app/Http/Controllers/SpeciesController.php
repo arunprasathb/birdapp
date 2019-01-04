@@ -24,7 +24,7 @@ class SpeciesController extends Controller
         $admin = auth()->guard('admin')->user();
         $residency = ["Introduced", "resident", "Summer migrants", "Winter resident"];
         $endemism = ["CUASI ENDEMIC96", "Endemics", "Semi endemic"];
-        $risk_level = ["endangered-64", "Near Threatened", "Threatened-64"];
+        $risk_level = ["endangered-64", "Near Threatened-64", "Threatened-64"];
         $habitat = ["Habitat all", "Habitat Coastal", "Habitat Crops  11.59.33", "Habitat lowland", "Habitat Mountains-96", "Habitat Open sea", "Habitat Park-96", "Habitat pine forest", "Habitat Pine Oak Forest", "Habitat Selva", "Habitat Urban 96", "habitat wetland 96"];
         return view('species.create')->with(['id'=>$id, 'admin'=>$admin, 'residency'=>$residency, 'endemism'=>$endemism, 'risk_level'=>$risk_level, 'habitat'=>$habitat]);
     }
@@ -43,7 +43,11 @@ class SpeciesController extends Controller
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
             'map' => 'image|mimes:jpeg,png,jpg|max:10240',
             // 'shortDescription' => 'required|min:10',
-            'description' => 'min:10'
+            'description' => 'min:10',
+            'residency' => 'required',
+            'endemism' => 'required',
+            'risk_level' => 'required',
+            'habitat' => 'required'
         ]);
         $species_details = species::where('book_id', $book_id)
         ->where('speciesName', $request->input('speciesName'))
@@ -220,7 +224,7 @@ class SpeciesController extends Controller
                 ->get();
         $residency = ["Introduced", "resident", "Summer migrants", "Winter resident"];
         $endemism = ["CUASI ENDEMIC96", "Endemics", "Semi endemic"];
-        $risk_level = ["endangered-64", "Near Threatened", "Threatened-64"];
+        $risk_level = ["endangered-64", "Near Threatened-64", "Threatened-64"];
         $habitat = ["Habitat all", "Habitat Coastal", "Habitat Crops  11.59.33", "Habitat lowland", "Habitat Mountains-96", "Habitat Open sea", "Habitat Park-96", "Habitat pine forest", "Habitat Pine Oak Forest", "Habitat Selva", "Habitat Urban 96", "habitat wetland 96"];
         // return view('species.edit', compact('species', 'id'));
           return view('species.edit')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'id', 'admin'=>$admin, 'residency'=>$residency, 'endemism'=>$endemism, 'risk_level'=>$risk_level, 'habitat'=>$habitat]);
@@ -240,7 +244,11 @@ class SpeciesController extends Controller
             'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:10240',
             'map_new' => 'image|mimes:jpeg,png,jpg|max:10240',
             // 'shortDescription' => 'required|min:10',
-            'description' => 'min:10'
+            'description' => 'min:10',
+            'residency' => 'required',
+            'endemism' => 'required',
+            'risk_level' => 'required',
+            'habitat' => 'required'
         ]);
 
         $species = species::find($id);

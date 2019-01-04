@@ -86,9 +86,9 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="description">Residency Type</label>
-                    <select class="form-control" name="residency">
-                        <option value="">Select Residency Type</option>
+                    <label for="description">Residency</label>
+                    <select class="form-control" name="residency" required="required">
+                        <option value="">Select Residency</option>
                         @foreach ($residency as $key => $value)
                             <option value="{{ $value }}">{{ $value }}</option>
                         @endforeach
@@ -97,9 +97,9 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="description">Endemism Type</label>
-                    <select class="form-control" name="endemism">
-                        <option value="">Select Endemism Type</option>
+                    <label for="description">Endemism</label>
+                    <select class="form-control" name="endemism" required="required">
+                        <option value="">Select Endemism</option>
                         @foreach ($endemism as $key => $value)
                             <option value="{{ $value }}">{{ $value }}</option>
                         @endforeach
@@ -107,9 +107,9 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="description">Risk level Type</label>
-                    <select class="form-control" name="risk_level">
-                        <option value="">Select Risk level Type</option>
+                    <label for="description">Risk level</label>
+                    <select class="form-control" name="risk_level" required="required">
+                        <option value="">Select Risk level</option>
                         @foreach ($risk_level as $key => $value)
                             <option value="{{ $value }}">{{ $value }}</option>
                         @endforeach
@@ -117,9 +117,9 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="description">Habitat Type</label>
-                    <select class="form-control" name="habitat">
-                        <option value="">Select Habitat Type</option>
+                    <label for="description">Habitat</label>
+                    <select class="form-control" name="habitat" required="required">
+                        <option value="">Select Habitat</option>
                         @foreach ($habitat as $key => $value)
                             <option value="{{ $value }}">{{ $value }}</option>
                         @endforeach
