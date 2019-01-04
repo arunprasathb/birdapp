@@ -22,10 +22,10 @@ class SpeciesController extends Controller
     }
     public function create($id){  
         $admin = auth()->guard('admin')->user();
-        $residency = ["Introduced", "resident", "Summer migrants", "Winter resident"];
-        $endemism = ["CUASI ENDEMIC96", "Endemics", "Semi endemic"];
-        $risk_level = ["endangered-64", "Near Threatened-64", "Threatened-64"];
-        $habitat = ["Habitat all", "Habitat Coastal", "Habitat Crops  11.59.33", "Habitat lowland", "Habitat Mountains-96", "Habitat Open sea", "Habitat Park-96", "Habitat pine forest", "Habitat Pine Oak Forest", "Habitat Selva", "Habitat Urban 96", "habitat wetland 96"];
+        $residency = ["Introduced", "Resident", "Summer Migratory", "Winter Migratory"];
+        $endemism = ["Cuasi Endemic", "Endemic", "Semi-Endemic"];
+        $risk_level = ["Endangered", "Near Threatened", "Threatened"];
+        $habitat = ["Habitat All", "Habitat Coastal", "Habitat Crops", "Habitat Lowland", "Habitat Mountains", "Habitat Open sea", "Habitat Park", "Habitat Pine forest", "Habitat Pine Oak forest", "Habitat Selva", "Habitat Urban", "Habitat Wetland"];
         return view('species.create')->with(['id'=>$id, 'admin'=>$admin, 'residency'=>$residency, 'endemism'=>$endemism, 'risk_level'=>$risk_level, 'habitat'=>$habitat]);
     }
 
@@ -222,10 +222,10 @@ class SpeciesController extends Controller
                 ->select('voices.*')
                 ->where('species.id',$id)
                 ->get();
-        $residency = ["Introduced", "resident", "Summer migrants", "Winter resident"];
-        $endemism = ["CUASI ENDEMIC96", "Endemics", "Semi endemic"];
-        $risk_level = ["endangered-64", "Near Threatened-64", "Threatened-64"];
-        $habitat = ["Habitat all", "Habitat Coastal", "Habitat Crops  11.59.33", "Habitat lowland", "Habitat Mountains-96", "Habitat Open sea", "Habitat Park-96", "Habitat pine forest", "Habitat Pine Oak Forest", "Habitat Selva", "Habitat Urban 96", "habitat wetland 96"];
+        $residency = ["Introduced", "Resident", "Summer Migratory", "Winter Migratory"];
+        $endemism = ["Cuasi Endemic", "Endemic", "Semi-Endemic"];
+        $risk_level = ["Endangered", "Near Threatened", "Threatened"];
+        $habitat = ["Habitat All", "Habitat Coastal", "Habitat Crops", "Habitat Lowland", "Habitat Mountains", "Habitat Open sea", "Habitat Park", "Habitat Pine forest", "Habitat Pine Oak forest", "Habitat Selva", "Habitat Urban", "Habitat Wetland"];
         // return view('species.edit', compact('species', 'id'));
           return view('species.edit')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'id', 'admin'=>$admin, 'residency'=>$residency, 'endemism'=>$endemism, 'risk_level'=>$risk_level, 'habitat'=>$habitat]);
     }
