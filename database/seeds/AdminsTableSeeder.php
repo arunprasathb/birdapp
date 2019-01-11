@@ -11,8 +11,8 @@ class AdminsTableSeeder extends Seeder {
          //insert some dummy records
          DB::table('admins')->insert(
          	array(
-	            array('name'=> 'Super Admin', 'email'=> "saad.towheed@gmail.com", "password" => bcrypt('password'), "avatar"=>"http://ec2-18-220-207-98.us-east-2.compute.amazonaws.com:8000/images/avatar.png", 'role'=>1),
-                array('name'=> 'Administrator', 'email'=> "arunb.crm@gmail.com", "password" => bcrypt('password'), "avatar"=>"http://ec2-18-220-207-98.us-east-2.compute.amazonaws.com:8000/images/avatar.png", 'role'=>2)
+	            array('name'=> 'Super Admin', 'email'=> "saad.towheed@gmail.com", "password" => bcrypt('password'), "avatar"=>"http://18.222.200.228/images/avatar.png", 'role'=>1),
+                array('name'=> 'Administrator', 'email'=> "arunb.crm@gmail.com", "password" => bcrypt('password'), "avatar"=>"http://18.222.200.228/images/avatar.png", 'role'=>2)
          	)
         );
     }
