@@ -106,14 +106,16 @@ class BookController extends BaseApiController
     }
     public function create(Request $request){
         $admin = auth()->guard('admin')->user();
-        return view('books.create')->with(['admin'=>$admin]);
+        $font_style = ["Italic", "Bold"];
+        return view('books.create')->with(['admin'=>$admin, 'font_style'=>$font_style]);
     }
     public function store(Request $request){
         $this->validate($request, [
             'bookName' => 'required|min:2|unique:books,bookName',
             'price' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
-            'unpaidPdfUrl' => 'mimes:pdf|max:10240'
+            'unpaidPdfUrl' => 'mimes:pdf|max:10240',
+            'font_style' => 'required'
         ]);
 
         $books = new books();
@@ -121,6 +123,7 @@ class BookController extends BaseApiController
         $books->description = $request->input('description');
         $books->price = $request->input('price');
         $books->author = $request->input('author');
+        $books->font_style = $request->input('font_style');
 
         if($request->hasFile('imageUrl')){
             $file = $request->file('imageUrl');
@@ -153,6 +156,7 @@ class BookController extends BaseApiController
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
+        $font_style = ["Italic", "Bold"];
         $book = books::where('id', $id)
                         ->first();
         $admin = auth()->guard('admin')->user();
@@ -162,7 +166,7 @@ class BookController extends BaseApiController
                 ->where('books.id',$id)
                 ->get();
         $book_details = books::where('id', $id)->firstOrFail();
-        return view('books.edit')->with(['book_details'=>$book_details, 'book_species'=> $book_species, 'id' => $id, 'admin'=>$admin]);
+        return view('books.edit')->with(['book_details'=>$book_details, 'book_species'=> $book_species, 'id' => $id, 'admin'=>$admin, 'font_style'=>$font_style]);
     }
 
      /**
@@ -180,7 +184,8 @@ class BookController extends BaseApiController
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
             'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:10240',
             'unpaidPdfUrl' => 'mimes:pdf|max:10240',
-            'unpaidPdfUrl_new' => 'mimes:pdf|max:10240'
+            'unpaidPdfUrl_new' => 'mimes:pdf|max:10240',
+            'font_style' => 'required'
         ]);
 
         $books = books::find($id);
@@ -188,6 +193,7 @@ class BookController extends BaseApiController
         $books->description = $request->input('description');
         $books->price = $request->input('price');
         $books->author = $request->input('author');
+        $books->font_style = $request->input('font_style');
         
         if($request->hasFile('imageUrl_new')){
             $file = $request->file('imageUrl_new');

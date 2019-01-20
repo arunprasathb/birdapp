@@ -22,9 +22,9 @@ class SpeciesController extends Controller
     }
     public function create($id){  
         $admin = auth()->guard('admin')->user();
-        $residency = ["Introduced", "Resident", "Summer Migratory", "Winter Migratory"];
-        $endemism = ["Cuasi Endemic", "Endemic", "Semi-Endemic"];
-        $risk_level = ["Endangered", "Near Threatened", "Threatened"];
+        $residency = ["Introduced", "Resident", "Summer Migrants", "Winter Resident"];
+        $endemism = ["Cuasi Endemic", "Endemic", "Not endemic", "Semi-Endemic"];
+        $risk_level = ["Endangered", "Near Threatened", "Threatened", "Not at risk"];
         $habitat = ["Habitat All", "Habitat Coastal", "Habitat Crops", "Habitat Lowland", "Habitat Mountains", "Habitat Open sea", "Habitat Park", "Habitat Pine forest", "Habitat Pine Oak forest", "Habitat Selva", "Habitat Urban", "Habitat Wetland"];
         return view('species.create')->with(['id'=>$id, 'admin'=>$admin, 'residency'=>$residency, 'endemism'=>$endemism, 'risk_level'=>$risk_level, 'habitat'=>$habitat]);
     }
@@ -222,9 +222,9 @@ class SpeciesController extends Controller
                 ->select('voices.*')
                 ->where('species.id',$id)
                 ->get();
-        $residency = ["Introduced", "Resident", "Summer Migratory", "Winter Migratory"];
-        $endemism = ["Cuasi Endemic", "Endemic", "Semi-Endemic"];
-        $risk_level = ["Endangered", "Near Threatened", "Threatened"];
+        $residency = ["Introduced", "Resident", "Summer Migrants", "Winter Resident"];
+        $endemism = ["Cuasi Endemic", "Endemic", "Not endemic", "Semi-Endemic"];
+        $risk_level = ["Endangered", "Near Threatened", "Threatened", "Not at risk"];
         $habitat = ["Habitat All", "Habitat Coastal", "Habitat Crops", "Habitat Lowland", "Habitat Mountains", "Habitat Open sea", "Habitat Park", "Habitat Pine forest", "Habitat Pine Oak forest", "Habitat Selva", "Habitat Urban", "Habitat Wetland"];
         // return view('species.edit', compact('species', 'id'));
           return view('species.edit')->with(['species_details'=>$species_details, 'galleries_list'=> $galleries, 'voices_list'=> $voices_list, 'book_details' => $book_details, 'id', 'admin'=>$admin, 'residency'=>$residency, 'endemism'=>$endemism, 'risk_level'=>$risk_level, 'habitat'=>$habitat]);

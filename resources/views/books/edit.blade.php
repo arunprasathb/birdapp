@@ -59,6 +59,18 @@
                     <label for="author">Author Name</label>
                     <input type="text" name="author" class="form-control" id="author" placeholder="Enter Author Name" required="required" value="{{ old('author', $book_details->author) }}">
                   </div>
+
+                  <div class="form-group">
+                    <label for="font_style">Font Style</label>
+                    <select class="form-control" name="font_style" required="required">
+                        <option value="">Select Font Style</option>
+                        @foreach ($font_style as $key => $value)
+                            <option value="{{ $value }}" {{ ( $book_details->font_style == $value ) ? 'selected' : '' }}>{{ $value }}</option>
+                        @endforeach
+                    </select>
+
+                  </div>
+
                   <div class="row">
                     <div class="col-md-4">
                          <div class="form-group">

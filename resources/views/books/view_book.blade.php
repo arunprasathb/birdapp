@@ -37,11 +37,11 @@
                 {{$book_details->bookName}}
               </p>
 
-              <!-- <hr>
+              <hr>
 
-              <strong><i class="fa fa-sticky-note margin-r-5"></i> Short Description</strong>
+              <strong><i class="fa fa-sticky-note margin-r-5"></i> Font Style</strong>
 
-              <p class="text-muted">{{$book_details->shortDescription}}</p> -->
+              <p class="text-muted">{{$book_details->font_style}}</p>
 
               <hr>
 

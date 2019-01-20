@@ -69,6 +69,16 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="description">Font Style</label>
+                    <select class="form-control" name="font_style" required="required">
+                        <option value="">Select Font Style</option>
+                        @foreach ($font_style as $key => $value)
+                            <option value="{{ $value }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
                     <div class="panel panel-default">
                       <div class="panel-heading"><label for="imageUrl">Book Image</label></div>
                       <div class="panel-body">
