@@ -71,11 +71,15 @@
                   <div class="form-group">
                     <label for="description">Font Style</label>
                     <select class="form-control" name="font_style" required="required">
-                        <option value="">Select Font Style</option>
                         @foreach ($font_style as $key => $value)
                             <option value="{{ $value }}">{{ $value }}</option>
                         @endforeach
                     </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="font_color">Font Color</label>
+                    <input type="text" class="form-control colorpicker" name="font_color" placeholder="Color code">
                   </div>
 
                   <div class="form-group">

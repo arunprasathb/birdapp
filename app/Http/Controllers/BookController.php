@@ -106,7 +106,7 @@ class BookController extends BaseApiController
     }
     public function create(Request $request){
         $admin = auth()->guard('admin')->user();
-        $font_style = ["Italic", "Bold"];
+        $font_style = ["Regular", "Italic", "Bold"];
         return view('books.create')->with(['admin'=>$admin, 'font_style'=>$font_style]);
     }
     public function store(Request $request){
@@ -115,7 +115,8 @@ class BookController extends BaseApiController
             'price' => 'required',
             'imageUrl' => 'image|mimes:jpeg,png,jpg|max:10240',
             'unpaidPdfUrl' => 'mimes:pdf|max:10240',
-            'font_style' => 'required'
+            'font_style' => 'required',
+            'font_color' => 'required'
         ]);
 
         $books = new books();
@@ -124,6 +125,7 @@ class BookController extends BaseApiController
         $books->price = $request->input('price');
         $books->author = $request->input('author');
         $books->font_style = $request->input('font_style');
+        $books->font_color = $request->input('font_color');
 
         if($request->hasFile('imageUrl')){
             $file = $request->file('imageUrl');
@@ -156,7 +158,7 @@ class BookController extends BaseApiController
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $font_style = ["Italic", "Bold"];
+        $font_style = ["Regular", "Italic", "Bold"];
         $book = books::where('id', $id)
                         ->first();
         $admin = auth()->guard('admin')->user();
@@ -185,7 +187,8 @@ class BookController extends BaseApiController
             'imageUrl_new' => 'image|mimes:jpeg,png,jpg|max:10240',
             'unpaidPdfUrl' => 'mimes:pdf|max:10240',
             'unpaidPdfUrl_new' => 'mimes:pdf|max:10240',
-            'font_style' => 'required'
+            'font_style' => 'required',
+            'font_color' => 'required'
         ]);
 
         $books = books::find($id);
@@ -194,6 +197,7 @@ class BookController extends BaseApiController
         $books->price = $request->input('price');
         $books->author = $request->input('author');
         $books->font_style = $request->input('font_style');
+        $books->font_color = $request->input('font_color');
         
         if($request->hasFile('imageUrl_new')){
             $file = $request->file('imageUrl_new');

@@ -23,7 +23,8 @@ class CreateBooksTable extends Migration
             // $table->string('paidPdfUrl');
             $table->string('unpaidPdfUrl');
             $table->string('author');
-            $table->string('font_style')->nullable();;
+            $table->string('font_style')->default("Regular");
+            $table->string('font_color')->default("#000000");
             $table->boolean('status')->default(1)->comment('1->Active, 0->Inactive');
 //            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 //            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

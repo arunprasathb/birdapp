@@ -44,6 +44,11 @@
               <p class="text-muted">{{$book_details->font_style}}</p>
 
               <hr>
+              <strong><i class="fa fa-sticky-note margin-r-5"></i> Font Color</strong>
+
+              <p class="text-muted">{{$book_details->font_color}}</p>
+
+              <hr>
 
               <strong><i class="fa fa-file-pdf-o margin-r-5"></i>Description</strong>
 

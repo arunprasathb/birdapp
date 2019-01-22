@@ -63,12 +63,16 @@
                   <div class="form-group">
                     <label for="font_style">Font Style</label>
                     <select class="form-control" name="font_style" required="required">
-                        <option value="">Select Font Style</option>
                         @foreach ($font_style as $key => $value)
                             <option value="{{ $value }}" {{ ( $book_details->font_style == $value ) ? 'selected' : '' }}>{{ $value }}</option>
                         @endforeach
                     </select>
 
+                  </div>
+
+                  <div class="form-group">
+                    <label for="font_color">Font Color</label>
+                    <input type="text" class="form-control colorpicker" name="font_color" placeholder="Color code" value="{{ old('font_color', $book_details->font_color) }}">
                   </div>
 
                   <div class="row">
