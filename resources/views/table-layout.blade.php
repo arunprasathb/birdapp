@@ -37,7 +37,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/js/bootstrap-colorpicker.min.js"></script> 
         <!-- Include Editor JS files. -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.0/js/froala_editor.pkgd.min.js"></script>
-        <script type="text/javascript" src="/tinymce/tinymce.min.js"></script>
         <script src="/js/adminlte.min.js"></script>
     </body> 
 </html>
