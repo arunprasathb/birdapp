@@ -46,7 +46,8 @@
                   <div class="form-group">
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <label for="speciesName">Species Name</label>
-                    <input type="text" name="speciesName" class="form-control" id="speciesName" placeholder="Enter Species Name" required="required" value="{{ old('speciesName') }}">
+                    <textarea name="speciesName" class="form-control froala-editor" id="speciesName" placeholder="Enter Species Name" required="required" value="{{ old('speciesName') }}">
+                      </textarea>
                   </div>
 
                   <div class="form-group">
