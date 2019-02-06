@@ -159,7 +159,7 @@
                         @foreach($book_species as $index => $species)
                           <tr>
                             <td>{{$index+1}}</td>
-                            <td>{{$species['speciesName']}}</td>
+                            <td>{!! html_entity_decode($species['speciesName'], ENT_QUOTES, 'UTF-8') !!}</td>
                             <td>
                                 @if ($book_details->imageUrl != '')
                                     <img src="{{$species->imageUrl}}" alt="{{$species->speciesName}}" class="admin-species-list-img">
