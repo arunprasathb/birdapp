@@ -90,11 +90,13 @@ class BookServiceProvider extends BaseServiceProvider {
                 $species_result = books::join('species', 'species.book_id', '=', 'books.id')
                 ->select('species.*')
                 ->where('books.id',$request->book_id)
+                ->orderBy('species.speciesName', 'asc')
                 ->get();
             }else{
                 $species_result = books::join('species', 'species.book_id', '=', 'books.id')
                 ->select('species.*')
                 ->where('books.id',$request->book_id)
+                ->orderBy('species.speciesName', 'asc')
                 ->limit(5)
                 ->get();
             }
