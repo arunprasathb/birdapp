@@ -24,9 +24,19 @@ class VoiceController extends Controller
 		$this->validate($request, [
 			'audio-name' => 'required',
 		    'audio' => 'required',
-		    'audio.*' => 'mimes:mp3,ogg,mpga'
+		    'audio.*' => 'max:10240',
 
 		]);
+        foreach($request->file('audio') as $key => $value) {
+            $file = $value;
+            $mimeType = $file->getMimeType();
+            $supportedTypes = ['audio/mpeg', 'audio/mpeg3', 'audio/mp3', 'application/octet-stream'];
+            
+            if (!in_array($mimeType, $supportedTypes)) {
+                flash('Audio file type only allowed')->error();
+                return redirect('/admin/species/'.$id.'/add-voices');
+            } 
+        }
 		foreach($request->file('audio') as $key => $value) {
 			if($request->hasFile('audio')){
 	            $voices = new voice();
