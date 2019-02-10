@@ -21,7 +21,7 @@ class BookServiceProvider extends BaseServiceProvider {
      */
     public function getBooks($request) {
         try {
-            $books = books::select()->get();
+            $books = books::select()->orderBy('bookName', 'asc')->get();
             foreach ($books as $key => $value) {
                 $userbook = book_payment::where('bookId', $value->id)->where('user_id', $request->user_id)->get();
                 if(count($userbook) > 0){
