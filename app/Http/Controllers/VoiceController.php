@@ -36,6 +36,10 @@ class VoiceController extends Controller
                 flash('Audio file type only allowed')->error();
                 return redirect('/admin/species/'.$id.'/add-voices');
             } 
+            if(!isset($request->input('audio-name')[$key])){
+                flash('Audio name required')->error();
+                return redirect('/admin/species/'.$id.'/add-voices');
+            }
         }
 		foreach($request->file('audio') as $key => $value) {
 			if($request->hasFile('audio')){
