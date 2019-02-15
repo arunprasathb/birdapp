@@ -16,7 +16,7 @@ class CreateSpeciesTable extends Migration
         Schema::create('species', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->text('speciesName');
-            // $table->text('shortDescription');
+            $table->text('slug');
             $table->text('description');
             $table->string('imageUrl');
             $table->string('map');

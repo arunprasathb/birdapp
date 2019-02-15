@@ -59,7 +59,7 @@ class SpeciesController extends Controller
             $species = new species();
             $species->book_id = $book_id;
             $species->speciesName = $request->input('speciesName');
-            // $species->shortDescription = "";
+            $species->slug = trim(preg_replace('/\s\s+/', ' ', strip_tags($request->input('speciesName'))));
             $species->description = $request->input('description');
             $species->residency = $request->input('residency');
             $species->endemism = $request->input('endemism');
@@ -264,7 +264,7 @@ class SpeciesController extends Controller
           }else{
 
               $species->speciesName = $request->input('speciesName');
-              // $species->shortDescription = "";
+              $species->slug = trim(preg_replace('/\s\s+/', ' ', strip_tags($request->input('speciesName'))));
               $species->description = $request->input('description');
               $species->residency = $request->input('residency');
               $species->endemism = $request->input('endemism');

@@ -15,7 +15,7 @@
       <ol class="breadcrumb">
         <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="javascript:void();"><i class="fa fa-book"></i> Species</a></li>
-        <li class="active">{{$species_details->speciesName}}</li>
+        <li class="active">{{$species_details->slug}}</li>
       </ol>
     </section>
 
@@ -27,14 +27,14 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">{{$species_details->speciesName}} - Details</h3>
+              <h3 class="box-title">{{$species_details->slug}} - Details</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <strong><i class="fa fa-book margin-r-5"></i> Species Name</strong>
 
               <p class="text-muted">
-                {{$species_details->speciesName}}
+                {!! html_entity_decode($species_details->speciesName, ENT_QUOTES, 'UTF-8') !!}
               </p>
 
               <hr>
