@@ -166,6 +166,7 @@ class BookController extends BaseApiController
         $book_species = books::join('species', 'species.book_id', '=', 'books.id')
                 ->select('species.*')
                 ->where('books.id',$id)
+                ->orderBy('species.slug', 'asc')
                 ->get();
         $book_details = books::where('id', $id)->firstOrFail();
         return view('books.edit')->with(['book_details'=>$book_details, 'book_species'=> $book_species, 'id' => $id, 'admin'=>$admin, 'font_style'=>$font_style]);

@@ -145,7 +145,7 @@
                     <table id="species-list" class="table table-striped table-bordered dt-responsive nowrap">
                       <thead>
                       <tr>
-                        <th>S.No</th>
+                        <!-- <th>S.No</th> -->
                         <th>Species Name</th>
                         <th>Species Image</th>
                         <th>Residency</th>
@@ -158,7 +158,7 @@
                       <tbody>
                         @foreach($book_species as $index => $species)
                           <tr>
-                            <td>{{$index+1}}</td>
+                            <!-- <td>{{$index+1}}</td> -->
                             <td>{!! html_entity_decode($species['speciesName'], ENT_QUOTES, 'UTF-8') !!}</td>
                             <td>
                                 @if ($book_details->imageUrl != '')
